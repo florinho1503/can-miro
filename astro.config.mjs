@@ -3,10 +3,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  // GitHub Pages project site: https://florinho1503.github.io/can-miro/
-  // On a custom domain later, set `site` to it and remove `base`.
-  site: 'https://florinho1503.github.io',
-  base: '/can-miro',
+  // Custom domain on GitHub Pages: the site lives at the domain root, so no `base`.
+  site: 'https://villacanmiro.com',
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'nl', 'de', 'es'],
