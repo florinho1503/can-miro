@@ -59,21 +59,29 @@ export function daysInMonth(year: number, month: number): number {
 /**
  * Deterministic pseudo-random availability. Same date always yields the same
  * result, and short "booked" clusters appear so it reads like a real calendar.
- * ~75% of future nights are available. Past dates are never available.
+ * Past dates are never available.
+ *
+ * `blockedRanges` holds confirmed bookings as [start, end) date strings
+ * (YYYY-MM-DD; `end` = checkout day, i.e. that night is free again). It is
+ * EMPTY for now (no bookings yet, no fake data). When the admin/booking backend
+ * is connected, populate this list (at build time or via a client-side fetch of
+ * a PII-free availability feed) and the calendar updates automatically.
  */
+export interface BlockedRange {
+  start: string; // first booked night, inclusive (YYYY-MM-DD)
+  end: string; // checkout day, exclusive (YYYY-MM-DD)
+}
+
+export const blockedRanges: BlockedRange[] = [];
+
+function isoDay(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 export function isAvailable(d: Date, today: Date): boolean {
   const start = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   const day = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-  if (day < start) return false;
-
-  const key = day.getFullYear() * 10000 + (day.getMonth() + 1) * 100 + day.getDate();
-  // Cheap hash → 0..1
-  const rand = (n: number) => {
-    const x = Math.sin(n * 12.9898) * 43758.5453;
-    return x - Math.floor(x);
-  };
-  // Book occasional multi-night blocks by seeding on a ~4-day bucket, plus a
-  // little per-day noise, so unavailability comes in believable runs.
-  const bucket = Math.floor(key / 3);
-  return !(rand(bucket) < 0.22 || rand(key) < 0.08);
+  if (day < start) return false; // past
+  const iso = isoDay(day);
+  return !blockedRanges.some((r) => iso >= r.start && iso < r.end);
 }
