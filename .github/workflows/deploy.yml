@@ -18,6 +18,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Public Web3Forms key (client-side by design). Stored as a repo variable
+      # so the deployed build receives it without committing it to source.
+      PUBLIC_WEB3FORMS_KEY: ${{ vars.PUBLIC_WEB3FORMS_KEY }}
+      PUBLIC_WHATSAPP_NUMBER: '31614059644'
+      PUBLIC_CONTACT_EMAIL: 'michaelabokx@gmail.com'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
