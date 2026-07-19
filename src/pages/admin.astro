@@ -1,0 +1,266 @@
+---
+// Private booking-management portal for Can Miró.
+// Standalone page (not linked from the site, noindex). Talks to Supabase:
+// login via Supabase Auth, CRUD on the `bookings` table (protected by RLS so
+// only authenticated users can read/write). The public calendar only ever sees
+// the PII-free `availability()` RPC. Not configured -> shows a notice.
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/manrope';
+import '../styles/tokens.css';
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Can Miró — Beheer</title>
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="top">
+        <span class="brand">Can <em>Miró</em> · Beheer</span>
+        <button type="button" class="btn btn--ghost" data-logout hidden>Uitloggen</button>
+      </header>
+
+      <!-- Not configured -->
+      <section class="card notice" data-notice hidden>
+        <h1>Beheer nog niet geconfigureerd</h1>
+        <p>Er zijn nog geen Supabase-gegevens ingesteld. Zodra de Project URL en anon key
+          zijn toegevoegd, werkt dit portaal.</p>
+      </section>
+
+      <!-- Login -->
+      <section class="card login" data-login hidden>
+        <h1>Inloggen</h1>
+        <form data-login-form>
+          <label>E-mail<input type="email" name="email" required autocomplete="username" /></label>
+          <label>Wachtwoord<input type="password" name="password" required autocomplete="current-password" /></label>
+          <button type="submit" class="btn">Inloggen</button>
+          <p class="msg" data-login-msg role="alert"></p>
+        </form>
+      </section>
+
+      <!-- App -->
+      <section class="app" data-app hidden>
+        <div class="card">
+          <h2 data-form-title>Nieuwe boeking</h2>
+          <form data-booking-form class="grid">
+            <input type="hidden" name="id" />
+            <label class="f">Aankomst<input type="date" name="arrival" required /></label>
+            <label class="f">Vertrek<input type="date" name="departure" required /></label>
+            <label class="f f--wide">Naam<input type="text" name="guest_name" placeholder="Naam van de gast" /></label>
+            <label class="f f--wide">Contact<input type="text" name="contact" placeholder="E-mail / telefoon" /></label>
+            <label class="f">Personen<input type="number" name="guests" min="1" max="12" value="2" /></label>
+            <label class="f">Status
+              <select name="status">
+                <option value="confirmed">Bevestigd</option>
+                <option value="tentative">Optie</option>
+                <option value="blocked">Geblokkeerd</option>
+              </select>
+            </label>
+            <label class="f check"><input type="checkbox" name="paid" /> Betaald</label>
+            <label class="f f--full">Bijzonderheden<textarea name="notes" rows="2" placeholder="Aanbetaling, wensen, opmerkingen…"></textarea></label>
+            <div class="f--full actions">
+              <button type="submit" class="btn" data-save>Boeking opslaan</button>
+              <button type="button" class="btn btn--ghost" data-cancel hidden>Annuleren</button>
+              <span class="msg" data-form-msg role="status"></span>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Boekingen</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Aankomst</th><th>Vertrek</th><th>Naam</th><th>Pers.</th><th>Betaald</th><th>Status</th><th>Notities</th><th></th></tr>
+              </thead>
+              <tbody data-rows>
+                <tr><td colspan="8" class="empty">Laden…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <style>
+      body { background: var(--bg); color: var(--text); font-family: var(--font-body); margin: 0; }
+      .wrap { max-width: 1000px; margin-inline: auto; padding: 1.5rem 1.25rem 4rem; }
+      .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+      .brand { font-family: var(--font-display); font-size: 1.4rem; color: var(--heading); }
+      .brand em { color: var(--accent); font-style: italic; }
+      h1 { font-family: var(--font-display); font-size: 1.6rem; color: var(--heading); margin: 0 0 1rem; }
+      h2 { font-family: var(--font-display); font-size: 1.3rem; color: var(--heading); margin: 0 0 1rem; }
+      .card { background: var(--c-white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); margin-bottom: 1.5rem; }
+      .notice { max-width: 520px; }
+      label { display: flex; flex-direction: column; gap: 0.35rem; font-size: var(--fs-small); font-weight: 600; color: var(--heading); }
+      input, select, textarea { font: inherit; font-size: 1rem; font-weight: 400; padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--c-sand-50); color: var(--text); width: 100%; box-sizing: border-box; }
+      input:focus, select:focus, textarea:focus { outline: none; border-color: var(--c-sea); box-shadow: 0 0 0 3px rgba(47,109,120,0.15); }
+      .login form { display: grid; gap: 1rem; max-width: 360px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .f--wide { grid-column: span 1; }
+      .f--full { grid-column: 1 / -1; }
+      .check { flex-direction: row; align-items: center; gap: 0.5rem; }
+      .check input { width: auto; }
+      .actions { display: flex; align-items: center; gap: 0.75rem; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.7rem 1.3rem; font: inherit; font-weight: 600; border: 1px solid transparent; border-radius: var(--radius-pill); background: var(--accent); color: #fff; cursor: pointer; }
+      .btn:hover { background: var(--accent-hover); }
+      .btn--ghost { background: transparent; color: var(--heading); border-color: var(--border); }
+      .msg { font-size: var(--fs-small); }
+      .msg[data-state='error'] { color: var(--c-terracotta-dark); font-weight: 600; }
+      .msg[data-state='ok'] { color: var(--c-olive); font-weight: 600; }
+      .table-wrap { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+      th, td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+      th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-soft); }
+      td.empty { text-align: center; color: var(--text-soft); padding: 1.5rem; }
+      .pill { display: inline-block; padding: 0.15rem 0.55rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 700; }
+      .pill--paid { background: rgba(125,138,95,0.18); color: var(--c-olive); cursor: pointer; }
+      .pill--unpaid { background: rgba(192,106,74,0.16); color: var(--c-terracotta-dark); cursor: pointer; }
+      .pill--confirmed { background: rgba(47,109,120,0.14); color: var(--c-sea-dark); }
+      .pill--tentative { background: var(--bg-raised); color: var(--text-soft); }
+      .pill--blocked { background: var(--c-ink-900); color: #fff; }
+      .row-actions { display: flex; gap: 0.4rem; white-space: nowrap; }
+      .link { background: none; border: 0; color: var(--c-sea); font: inherit; font-size: 0.85rem; cursor: pointer; padding: 0.2rem; }
+      .link--danger { color: var(--c-terracotta-dark); }
+      @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+
+    <script>
+      import { createClient } from '@supabase/supabase-js';
+
+      const url = import.meta.env.PUBLIC_SUPABASE_URL;
+      const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+      const $ = (s) => document.querySelector(s);
+      const show = (el, on = true) => el && el.toggleAttribute('hidden', !on);
+
+      if (!url || !key) {
+        show($('[data-notice]'), true);
+      } else {
+        const sb = createClient(url, key);
+        const loginView = $('[data-login]');
+        const appView = $('[data-app]');
+        const logoutBtn = $('[data-logout]');
+        const rowsEl = $('[data-rows]');
+        const form = $('[data-booking-form]');
+        const formTitle = $('[data-form-title]');
+        const formMsg = $('[data-form-msg]');
+        const cancelBtn = $('[data-cancel]');
+        const fmtDate = (s) => (s ? new Date(s + 'T00:00:00').toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' }) : '');
+        const esc = (s) => (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+        const setMsg = (el, text, state) => { el.textContent = text || ''; if (state) el.dataset.state = state; else delete el.dataset.state; };
+
+        async function refreshSession() {
+          const { data } = await sb.auth.getSession();
+          const authed = !!data.session;
+          show(loginView, !authed);
+          show(appView, authed);
+          show(logoutBtn, authed);
+          if (authed) loadBookings();
+        }
+
+        // Login
+        $('[data-login-form]').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const f = new FormData(e.target);
+          const msg = $('[data-login-msg]');
+          setMsg(msg, 'Bezig met inloggen…');
+          const { error } = await sb.auth.signInWithPassword({ email: f.get('email'), password: f.get('password') });
+          if (error) setMsg(msg, 'Inloggen mislukt: ' + error.message, 'error');
+          else { setMsg(msg, ''); refreshSession(); }
+        });
+
+        logoutBtn.addEventListener('click', async () => { await sb.auth.signOut(); refreshSession(); });
+
+        // Load + render bookings
+        async function loadBookings() {
+          rowsEl.innerHTML = '<tr><td colspan="8" class="empty">Laden…</td></tr>';
+          const { data, error } = await sb.from('bookings').select('*').order('arrival', { ascending: true });
+          if (error) { rowsEl.innerHTML = `<tr><td colspan="8" class="empty">Fout: ${esc(error.message)}</td></tr>`; return; }
+          if (!data.length) { rowsEl.innerHTML = '<tr><td colspan="8" class="empty">Nog geen boekingen. Voeg er hierboven een toe.</td></tr>'; return; }
+          const statusLabel = { confirmed: 'Bevestigd', tentative: 'Optie', blocked: 'Geblokkeerd' };
+          rowsEl.innerHTML = data.map((b) => `
+            <tr data-id="${b.id}">
+              <td>${fmtDate(b.arrival)}</td>
+              <td>${fmtDate(b.departure)}</td>
+              <td>${esc(b.guest_name)}${b.contact ? `<br><span style="color:var(--text-soft);font-size:0.8rem">${esc(b.contact)}</span>` : ''}</td>
+              <td>${b.guests ?? ''}</td>
+              <td><span class="pill ${b.paid ? 'pill--paid' : 'pill--unpaid'}" data-toggle-paid role="button" title="Klik om te wisselen">${b.paid ? 'Betaald' : 'Niet betaald'}</span></td>
+              <td><span class="pill pill--${b.status}">${statusLabel[b.status] || b.status}</span></td>
+              <td style="max-width:220px;color:var(--text-soft)">${esc(b.notes)}</td>
+              <td><div class="row-actions"><button class="link" data-edit>Bewerken</button><button class="link link--danger" data-del>Verwijderen</button></div></td>
+            </tr>`).join('');
+          rowsEl.querySelectorAll('[data-edit]').forEach((el) => el.addEventListener('click', () => startEdit(data.find((x) => x.id === el.closest('tr').dataset.id))));
+          rowsEl.querySelectorAll('[data-del]').forEach((el) => el.addEventListener('click', () => del(el.closest('tr').dataset.id)));
+          rowsEl.querySelectorAll('[data-toggle-paid]').forEach((el) => el.addEventListener('click', () => togglePaid(data.find((x) => x.id === el.closest('tr').dataset.id))));
+        }
+
+        function startEdit(b) {
+          if (!b) return;
+          form.id.value = b.id;
+          form.arrival.value = b.arrival;
+          form.departure.value = b.departure;
+          form.guest_name.value = b.guest_name || '';
+          form.contact.value = b.contact || '';
+          form.guests.value = b.guests ?? '';
+          form.status.value = b.status || 'confirmed';
+          form.paid.checked = !!b.paid;
+          form.notes.value = b.notes || '';
+          formTitle.textContent = 'Boeking bewerken';
+          show(cancelBtn, true);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetForm() {
+          form.reset();
+          form.id.value = '';
+          formTitle.textContent = 'Nieuwe boeking';
+          show(cancelBtn, false);
+        }
+        cancelBtn.addEventListener('click', resetForm);
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const f = new FormData(form);
+          const rec = {
+            arrival: f.get('arrival'),
+            departure: f.get('departure'),
+            guest_name: f.get('guest_name') || null,
+            contact: f.get('contact') || null,
+            guests: f.get('guests') ? Number(f.get('guests')) : null,
+            status: f.get('status'),
+            paid: f.get('paid') === 'on',
+            notes: f.get('notes') || null,
+          };
+          if (rec.departure <= rec.arrival) { setMsg(formMsg, 'Vertrek moet na aankomst liggen.', 'error'); return; }
+          setMsg(formMsg, 'Opslaan…');
+          const id = f.get('id');
+          const { error } = id
+            ? await sb.from('bookings').update(rec).eq('id', id)
+            : await sb.from('bookings').insert(rec);
+          if (error) setMsg(formMsg, 'Fout: ' + error.message, 'error');
+          else { setMsg(formMsg, 'Opgeslagen ✓', 'ok'); resetForm(); loadBookings(); }
+        });
+
+        async function togglePaid(b) {
+          if (!b) return;
+          await sb.from('bookings').update({ paid: !b.paid }).eq('id', b.id);
+          loadBookings();
+        }
+
+        async function del(id) {
+          if (!confirm('Deze boeking verwijderen?')) return;
+          const { error } = await sb.from('bookings').delete().eq('id', id);
+          if (!error) loadBookings();
+        }
+
+        refreshSession();
+      }
+    </script>
+  </body>
+</html>

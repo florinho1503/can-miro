@@ -425,7 +425,7 @@ const bi = {
 </style>
 
 <script>
-  import { priceForDate, isAvailable, fromPriceForMonth, daysInMonth } from '../data/availability';
+  import { priceForDate, isAvailable, fromPriceForMonth, daysInMonth, blockedRanges } from '../data/availability';
 
   const root = document.querySelector('[data-booking]');
   if (root) {
@@ -658,5 +658,31 @@ const bi = {
     });
 
     render();
+
+    // Pull real availability (confirmed bookings) from Supabase, then re-render.
+    // No backend configured -> everything stays available. Only PII-free date
+    // ranges are returned by the `availability()` RPC.
+    (async () => {
+      const url = import.meta.env.PUBLIC_SUPABASE_URL;
+      const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+      if (!url || !key) return;
+      try {
+        const res = await fetch(`${url}/rest/v1/rpc/availability`, {
+          method: 'POST',
+          headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+          body: '{}',
+        });
+        if (!res.ok) return;
+        const rows = await res.json();
+        if (Array.isArray(rows)) {
+          for (const r of rows) {
+            if (r.arrival && r.departure) blockedRanges.push({ start: r.arrival, end: r.departure });
+          }
+          render();
+        }
+      } catch {
+        /* offline / not configured: leave calendar fully available */
+      }
+    })();
   }
 </script>
