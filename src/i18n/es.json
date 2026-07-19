@@ -31,8 +31,8 @@
   },
   "intro": {
     "eyebrow": "Bienvenidos",
-    "title": "Su rincón sin prisas al sol del Mediterráneo",
-    "body": "Enclavada en la verde ladera de La Lluca, Can Miró es una amplia villa familiar pensada para mañanas tranquilas y largas veladas cálidas. Despierte con el canto de los pájaros, nade antes de desayunar y déjese llevar entre cuatro zonas de estar exteriores mientras la luz recorre el día. Las playas del Arenal y el empedrado casco antiguo de Jávea están ambos a pocos minutos en coche.",
+    "title": "Su refugio sin prisas al sol del Mediterráneo",
+    "body": "Enclavada en la verde ladera de La Lluca, Can Miró es una amplia villa familiar pensada para mañanas sin prisa y largas veladas cálidas. Despierte con el canto de los pájaros, dese un baño antes de desayunar y siga al sol de una zona de estar a otra a lo largo del día. La playa del Arenal y el casco antiguo de Jávea quedan a pocos minutos en coche.",
     "features": {
       "pool": "Piscina privada climatizada",
       "seating": "Cuatro zonas de estar exteriores",
@@ -61,8 +61,8 @@
   },
   "amenities": {
     "eyebrow": "La villa",
-    "title": "Espacio para extenderse, dentro y fuera",
-    "subtitle": "Cuatro dormitorios, tres baños y dos cocinas en una casa concebida en torno al exterior.",
+    "title": "Espacio de sobra, dentro y fuera",
+    "subtitle": "Cuatro dormitorios, tres baños y dos cocinas en una casa pensada para vivir al aire libre.",
     "groups": {
       "space": "Espacio y descanso",
       "outdoor": "Exterior y ocio",
@@ -71,7 +71,7 @@
     "items": {
       "bedrooms4": "4 dormitorios",
       "bathrooms3": "3 baños",
-      "sleeps8": "Capacidad para 8",
+      "sleeps8": "Capacidad para 8 personas",
       "twoKitchens": "Dos cocinas (arriba y abajo)",
       "privatePool": "Piscina privada climatizada",
       "fourSeating": "4 zonas de estar exteriores",
@@ -101,10 +101,10 @@
     },
     "doTitle": "Mientras esté aquí",
     "do": [
-      "Báñese en las calas cristalinas del Cap de Sant Antoni y el islote del Portitxol",
-      "Pasee por el mercado de los jueves y cene en las plazas del casco antiguo",
-      "Aperitivo al atardecer en el puerto con pescado fresco del Mediterráneo",
-      "Rutas de costa, ciclismo y el parque natural del Montgó a un paso"
+      "Bañarse en las calas cristalinas del Cap de Sant Antoni y junto al islote del Portitxol",
+      "Pasear por el mercado de los jueves y cenar en las plazas del casco antiguo",
+      "Tomar el aperitivo al atardecer en el puerto, con pescado fresco del mar",
+      "Rutas de costa, ciclismo y el parque natural del Montgó muy cerca"
     ]
   },
   "rates": {
@@ -135,7 +135,7 @@
     "ratingSummary": "{avg} de media en {count} estancias",
     "items": {
       "r1": "Las fotos no le hacen justicia. La piscina y las terrazas fueron el corazón de nuestra semana; casi no queríamos salir. Impecable, tranquila y cuidada con mimo.",
-      "r2": "Perfecta para nuestra familia de seis. Las dos cocinas lo facilitaron todo, los niños vivían en la mesa de ping-pong y la playa estaba a cinco minutos en coche. Ya estamos reservando de nuevo.",
+      "r2": "Perfecta para nuestra familia de seis. Con dos cocinas todo fue facilísimo, los niños no se despegaban de la mesa de ping-pong y la playa quedaba a diez minutos en coche. Ya estamos reservando otra vez.",
       "r3": "Una semana realmente relajante. Cómoda, tranquila, y cada rincón exterior recibe el sol a una hora distinta del día. Además, unos anfitriones estupendos."
     }
   },
@@ -145,11 +145,11 @@
     "items": {
       "checkin": {
         "q": "¿Cuáles son los horarios de entrada y salida?",
-        "a": "La entrada es a partir de las 16:00 y la salida hasta las 10:00. A menudo es posible flexibilizar los horarios según el cambio de huéspedes; solo tiene que pedirlo."
+        "a": "La entrada es a partir de las 16:00 y la salida hasta las 10:00. A menudo podemos flexibilizar los horarios según la ocupación de ese día; solo tiene que pedirlo."
       },
       "deposit": {
         "q": "¿Hay fianza?",
-        "a": "Sí, se retiene una fianza reembolsable antes de la llegada que se devuelve pocos días después de la salida, tras una inspección normal."
+        "a": "Sí, antes de la llegada se retiene una fianza reembolsable, que se devuelve pocos días después de la salida, tras la revisión habitual."
       },
       "cancellation": {
         "q": "¿Cuál es la política de cancelación?",
@@ -179,8 +179,8 @@
   },
   "enquiry": {
     "eyebrow": "Consultar",
-    "title": "Consulte fechas y contáctenos",
-    "subtitle": "Díganos sus fechas y le responderemos personalmente, normalmente en un día. ¿Prefiere hablar? Escríbanos por WhatsApp.",
+    "title": "Planifique su estancia",
+    "subtitle": "Díganos sus fechas y le responderemos personalmente, normalmente en un día. ¿Prefiere un mensaje rápido? Escríbanos por WhatsApp.",
     "fields": {
       "name": "Su nombre",
       "email": "Correo electrónico",

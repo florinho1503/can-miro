@@ -1,123 +1,170 @@
-# CLAUDE.md: Can Miró
+# CLAUDE.md — Can Miró
 
 Guidance for AI coding sessions on this repo. Read this first.
 
 ## What this is
 
-Marketing website for **Can Miró**, a private rental villa with pool in **La Lluca,
-Jávea** (Costa Blanca, Spain). It is a **single long-scroll page** whose job is to
-convert visitors into **direct enquiries** (WhatsApp + email), not a booking platform.
-Design brief: modern, luxurious, photography-first, warm Mediterranean feel.
+Marketing website for **Can Miró**, a private rental villa with a heated pool in the
+**Lluca district** of Jávea (Xàbia), Costa Blanca, Spain. Single **long-scroll page**
+whose job is to make the villa look irresistible and convert visitors into **direct
+enquiries** (WhatsApp + email). Not a booking platform. Modern, warm, luxurious feel.
 
 ## Stack
 
-- **Astro 5** (static output). No UI framework, no Tailwind, hand-written CSS.
-- Built-in **i18n**: English (default, at `/`), Dutch (`/nl/`), German (`/de/`),
-  Spanish (`/es/`). All four are fully translated.
-- Images via **`astro:assets`** (auto WebP/AVIF). Lightbox via **PhotoSwipe**.
+- **Astro 5** (static output). No UI framework, no Tailwind: hand-written CSS.
+- Built-in **i18n**: English (default, `/`), Dutch (`/nl/`), German (`/de/`), Spanish
+  (`/es/`). All four are fully translated and hand-polished for fluency (see Copy tone).
+- Images via **`astro:assets`** (auto WebP/AVIF). Lightbox: **PhotoSwipe**. Map: **Leaflet + OSM**.
 - Node 22, npm.
 
 ```bash
-npm run dev      # http://localhost:4321
+npm run dev      # http://localhost:4321/can-miro/
 npm run build    # -> dist/  (static)
 ```
 
+## Live deployment (GitHub Pages)
+
+- **Live URL:** https://florinho1503.github.io/can-miro/  (a *family preview* for now)
+- **Repo:** `florinho1503/can-miro` — **public** (GitHub Pages on a free account requires
+  a public repo). Auto-deploys on every push to `main` via `.github/workflows/deploy.yml`
+  (withastro/action + actions/deploy-pages). Just `git push` and it is live in ~40s.
+- **Base path:** it is a *project* site served under `/can-miro/`, so `astro.config.mjs`
+  sets `site: 'https://florinho1503.github.io'` + `base: '/can-miro'`. All root-absolute
+  internal links go through `localizePath()` / `withBase()` so they include the base. If
+  you add a new absolute asset link, prefix it with `import.meta.env.BASE_URL`.
+- **`noindex`:** `Base.astro` includes `<meta name="robots" content="noindex, nofollow">`
+  so the preview stays out of search engines. **Remove it at the real public launch.**
+- GitHub account in use this session: `florinho1503` (a second account `tamgroningen` is
+  also authenticated in `gh`). Commit identity: Floris Bokx <florisbokx@gmail.com>.
+
 ## Where things live
 
-- `src/pages/index.astro` (en) + `src/pages/[lang]/index.astro` (nl/de/es), thin
-  routes that render `src/components/Home.astro`, which assembles all sections.
-- `src/components/`, one component per section: `Header`, `Hero`, `Intro`, `Gallery`,
-  `Amenities`, `Area`, `Rates`, `Reviews`, `Faq`, `Enquiry`, `Footer`, `WhatsAppFab`,
-  plus `Icon.astro` (inline SVG set) and `LangSwitcher.astro`.
-- `src/layouts/Base.astro`, html shell, `<head>` meta/OG/hreflang, fonts, the global
-  scroll-reveal `IntersectionObserver`, skip link.
-- `src/styles/tokens.css`, **design tokens** (colours, type scale, spacing, motion).
-  `global.css`, base styles + helpers (`.container`, `.section`, `.btn`, `.reveal`, `.eyebrow`).
-- `src/data/villa.ts`, **language-neutral facts** (stats, amenity/distance ids + icons,
-  rate figures, review meta, FAQ ids, registration number, map coords). Edit numbers here.
-- `src/i18n/{en,nl,de,es}.json`, **all copy**, same nested shape. Missing keys fall back
-  to English (`src/i18n/index.ts` → `useTranslations(locale)`, dot-path keys).
-- `src/config.ts`, contact config from `PUBLIC_*` env vars (`whatsappLink()` helper).
+- `src/pages/index.astro` (en) + `src/pages/[lang]/index.astro` (nl/de/es) render
+  `src/components/Home.astro`, which assembles all sections in order.
+- Sections in `src/components/`: `Header`, `Hero`, `Intro`, `Gallery`, `Amenities`,
+  `Area`, `Rates`, `Booking`, `Reviews`, `Faq`, `Enquiry`, `Footer`, `WhatsAppFab`, plus
+  `Icon.astro` (inline SVG set) and `LangSwitcher.astro`.
+- `src/layouts/Base.astro`: html shell, head meta/OG/hreflang, fonts, scroll-reveal
+  IntersectionObserver, skip link, noindex.
+- `src/styles/tokens.css` = design tokens; `global.css` = base + helpers
+  (`.container`, `.section`, `.btn`, `.reveal`, `.eyebrow`).
+- `src/data/villa.ts` = language-neutral facts (stats, amenity/distance ids + icons,
+  rate figures, review meta, FAQ ids, registration number, map centre/radius).
+- `src/data/availability.ts` = booking-calendar pricing + availability logic.
+- `src/i18n/{en,nl,de,es}.json` = all copy, same nested shape; missing keys fall back to
+  English (`useTranslations(locale)`, dot-path keys). `src/config.ts` = contact config.
 
 ## Content editing rules
 
-- **Facts** (numbers, distances, rates, coords, registration no.) → `src/data/villa.ts`.
-- **Words** (any visible text, in every language) → `src/i18n/*.json`. Keep the four
-  files structurally identical; add a key to `en.json` first, then the others.
-- Amenities/distances/FAQ are driven by `id`s in `villa.ts` that resolve to
-  `amenities.items.<id>`, `area.places.<id>`, `faq.items.<id>.{q,a}` in the dictionaries.
+- **Facts** (numbers, distances, rates, coords, registration no.) -> `src/data/villa.ts`.
+- **Words** (any visible text, every language) -> `src/i18n/*.json`. Keep the four files
+  structurally identical; add a key to `en.json` first, then the others. Edit JSON safely
+  with a small Node script (JSON.parse -> set -> JSON.stringify) to avoid encoding issues
+  with accents/apostrophes; `perl -CSD` mangled `ó` into mojibake earlier, so avoid it.
+
+## Design & product decisions (this session)
+
+- **Name: keep "Can Miró"** as the clean brand/display name (logo, H1). "Can" is
+  Valencian/Catalan for "house of", so *Can Miró* = Miró's house: authentic, premium.
+  Do **not** add "Villa" under the logo (dilutes it, no SEO value). **Never** write
+  "Casa Can Miró" (redundant). Use **"Villa Can Miró"** only later in Airbnb/Booking
+  listing titles, where a category word helps scanning. Findability comes from the
+  keyword-rich `<title>`/description ("villa + Jávea/Xàbia + Costa Blanca + private pool"),
+  which is already in `meta.title`.
+- **Palette/type:** warm Mediterranean tokens (sand, terracotta, deep sea-blue), Fraunces
+  (serif display) + Manrope (sans). Generous whitespace, subtle scroll reveals + hover-zoom.
+- **Pool is private AND heated** (reflected in hero chip, amenities, FAQ).
+- **Pets: not allowed. Children: welcome, pool toys provided** (FAQ).
+- **Copy tone:** all four languages are hand-polished to read naturally, NOT literal
+  machine translation. Keep that bar: avoid word-for-word calques (e.g. don't reintroduce
+  "trage ochtenden", "Platz zum Ausbreiten", "the light moves across the day"). Match the
+  warm, unhurried, lightly editorial voice.
+- **Distances are real**, measured by road from the actual address via OSRM, nearest-first.
+- **Map shows a radius circle, no pin** (see below).
 
 ## Photos
 
-- Originals: `photos-source/{ground,drone}` (git-ignored, large).
-- Shipped/optimized copies: `src/assets/images/` (`hero.jpg`, `intro.jpg`, `gallery/NN-token.jpg`).
+- Originals: `photos-source/{ground,drone}` (git-ignored, large). Shipped/optimized copies
+  in `src/assets/images/` are committed and are what the site uses.
 - Pipeline: edit the `MAP` in `scripts/process-photos.mjs`, then
-  `node scripts/process-photos.mjs` (rebuilds gallery + hero + intro + `public/og-image.jpg`).
-- Gallery captions come from the **filename token** (e.g. `…-dining.jpg` → `alfresco`
-  caption). Token→caption map is in `Gallery.astro` (`captionByToken`). Grid features
-  tiles at index 0, 3, 6 (the `big` flag).
+  `node scripts/process-photos.mjs` (rebuilds gallery + hero + intro + `public/og-image.jpg`;
+  prints unused source files). Gallery caption comes from the filename token
+  (`…-dining.jpg` -> `alfresco`), mapped in `Gallery.astro` (`captionByToken`); grid features
+  tiles 0, 3, 6.
 - **Interior photos are still missing** (living rooms, the two kitchens, bedrooms,
-  bathrooms). Gallery is currently exterior/grounds only. Add interiors + `MAP` entries later.
-
-## Enquiry form
-
-Client-side in `Enquiry.astro`. Posts to **Web3Forms** if `PUBLIC_WEB3FORMS_KEY` is set,
-otherwise falls back to a `mailto:` compose. WhatsApp deep-link works regardless. Has a
-honeypot spam field.
+  bathrooms). The gallery is currently exterior/grounds only. The intro image is a natural
+  landscape crop (a prior portrait crop looked stretched, so avoid hard portrait crops).
 
 ## Booking calendar
 
-`Booking.astro` (section `#booking`, nav label `nav.book`) is a self-contained
-availability calendar with **year / month / week** views:
-- **Year**: 12 month cards with a "from" nightly price and an available-nights count.
-- **Month / Week**: per-day nightly price, tap to pick arrival then departure (range
-  highlighted); past days disabled, booked days struck out.
-- Selecting a range shows nights + total and a **Request these dates** button that fills
-  the enquiry form's date inputs (`#f-arrival`, `#f-departure`) and scrolls to `#enquire`.
+`Booking.astro` (section `#booking`, nav label `nav.book`) has **year / month / week**
+views: year = month cards with a "from" nightly price + available-nights count; month/week
+= per-day price + availability, tap arrival then departure (range highlighted); past days
+disabled, booked days struck out. Selecting a range shows nights + total and a **Request
+these dates** button that fills the enquiry form's date inputs (`#f-arrival`,
+`#f-departure`) and scrolls to `#enquire`.
 
-Pricing + availability live in `src/data/availability.ts`. Nightly prices derive from the
-weekly rates by season. Availability is **deterministic pseudo-random for now** (seeded by
-date, current-date-aware). **To connect Booking.com / Airbnb / a channel manager later,
-replace `isAvailable()`** with a lookup into the synced blocked-dates set (e.g. parsed from
-the platforms' iCal feeds). Nothing else changes.
+Pricing + availability: `src/data/availability.ts`. Nightly prices derive from the weekly
+rates by season. Availability is **deterministic pseudo-random for now** (seeded by date,
+current-date-aware). **To sync Booking.com / Airbnb later, replace `isAvailable()`** with a
+lookup into the synced blocked-dates set (e.g. parsed from the platforms' iCal feeds).
 
-Important Astro gotcha: calendar cells are injected by the client script at runtime, so
-they do NOT get Astro's scoped-style attribute. Their CSS lives in the `<style is:global>`
-block in `Booking.astro`, namespaced under `.booking`. Keep new cell styles there, not in
-the scoped block.
+Astro gotcha: calendar cells are injected by the client script at runtime, so they do NOT
+get Astro's scoped-style attribute. Their CSS lives in the `<style is:global>` block in
+`Booking.astro`, namespaced under `.booking`. Keep new cell styles there.
+
+## Enquiry form & contact
+
+`Enquiry.astro`, client-side. Posts to **Web3Forms** if `PUBLIC_WEB3FORMS_KEY` is set,
+else falls back to a `mailto:` compose. WhatsApp deep-link works regardless. Honeypot
+spam field included. Contact defaults are in `src/config.ts`:
+- WhatsApp **+31 6 14059644** (`31614059644`), email **michaelabokx@gmail.com** (also the
+  enquiry destination). These are committed as defaults (public info).
+- **`PUBLIC_WEB3FORMS_KEY` is not set yet** -> on the live site the form uses the mailto
+  fallback. To receive form enquiries in the Gmail inbox: get a free key at web3forms.com
+  (destination michaelabokx@gmail.com), then set it. For the deployed build, add it to the
+  GitHub Actions build env (a repo variable is fine; the key is public/client-side anyway).
 
 ## Map & location privacy
 
-The Area map (`Area.astro`) is **Leaflet + OpenStreetMap tiles** (no API key) drawing a
-**radius circle only, no pin**, so the exact villa is not pinpointed. Centre + radius come
-from `villa.location` (`lat`, `lng`, `mapRadiusMeters`). The villa is in the **Lluca
-district** of Jávea (near the golf); the map centre is **intentionally offset ~150 m** from
-the real address and the **street address is kept out of the repo and off the site** (owner
-reference only). The `distances` in `villa.ts` are **real, measured by road** from the
-actual address (via OSRM), so they stay accurate despite the offset. The "open in Google
-Maps" link points to the **neighbourhood** (`La Lluca, Jávea`), never the address. If Google
-tiles are ever wanted instead, that needs the paid Maps JS API + key; the circle logic ports
-over.
+Area map (`Area.astro`) = **Leaflet + OpenStreetMap tiles** (no API key), drawing a
+**radius circle only, no pin**. Centre + radius: `villa.location` (`lat`, `lng`,
+`mapRadiusMeters`). The villa is in the **Lluca district** near the golf; the map centre is
+**intentionally offset ~150 m** from the real address, and the **street address is kept out
+of the repo and off the site**. Distances in `villa.ts` are real (OSRM) so they stay
+accurate despite the offset. The "open in Google Maps" link points to the neighbourhood
+("La Lluca, Jávea"), never the address. Google tiles would need the paid Maps JS API + key.
 
-## Before launch (see README checklist)
+## Next steps roadmap
 
-Real rates/reviews/distances in `villa.ts`; the **tourist rental registration number**
-(`registrationNumber`, legally required in footer); `.env` (WhatsApp, email, Web3Forms
-key); real `site` domain in `astro.config.mjs`; check the map circle centre/radius still
-keep the address private.
+**A. To turn the family preview into a real launch**
+1. Get the **Web3Forms key** and wire it in (only missing piece for email enquiries).
+2. Add the real **tourist rental registration number** in `villa.ts` (`registrationNumber`,
+   still `VT-XXXXXX-A`; legally required in the footer for Comunidad Valenciana).
+3. Replace **placeholder rates, reviews and rating** with real ones (`villa.ts` + i18n
+   `reviews.*`). Note: placeholder reviews were written before distances were fixed.
+4. Add **interior photography** (+ new `MAP` entries in `process-photos.mjs`).
+5. **Remove the `noindex`** meta in `Base.astro`.
+6. Decide hosting for launch: keep GitHub Pages (consider a **custom domain** -> set `site`
+   to it and drop `base`), or move to Netlify/Cloudflare Pages.
 
-## Verifying visually
+**B. Bookings / channel management (when live)**
+7. Connect **Booking.com / Airbnb iCal** feeds and replace `isAvailable()` so the calendar
+   reflects real availability and prevents double bookings.
+8. Optionally set real seasonal **date ranges** (not just month buckets) in
+   `availability.ts`, and confirm nightly prices.
 
-The Chrome extension may not be connected. Fallback used in this repo: headless Chrome
-screenshots, `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new
---screenshot --window-size=W,H <url>`. Note the scroll-reveal hides below-fold content in a
-static shot; temporarily neutralize `.reveal { opacity:1 }` (and cap `.hero` height) while
-screenshotting, then revert.
+**C. Nice-to-haves**
+9. A proper **enquiries dashboard / CRM** (beyond email) if volume grows — needs a small
+   backend or a hosted service.
+10. Analytics (privacy-friendly, e.g. Plausible) once public.
 
 ## Working preferences
 
 - **Never use em-dashes** in any output or content. Use periods, commas, colons,
-  parentheses, or sentence splits. En-dashes for ranges are fine.
-- **Do not push to git without an explicit request.** Note: this folder currently sits
-  inside a git repo rooted at the user's home directory, confirm the intended repo before
-  running any `git` commands. Commit only when asked.
+  parentheses, or sentence splits. En-dashes for ranges (e.g. "Jul–Aug") are fine.
+- **Do not push to git without an explicit request.** This session the user asked to
+  deploy, so pushing to `florinho1503/can-miro` is authorized; keep that scope.
+- Iterate locally and verify visually (headless Chrome screenshots; the Chrome extension
+  may be unavailable). Scroll-reveal hides below-fold content in a static shot — temporarily
+  neutralize `.reveal { opacity: 1 }` (and cap `.hero` height) while screenshotting, then revert.

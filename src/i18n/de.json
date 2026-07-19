@@ -31,8 +31,8 @@
   },
   "intro": {
     "eyebrow": "Willkommen",
-    "title": "Ihr entschleunigter Platz an der mediterranen Sonne",
-    "body": "Eingebettet in die grünen Hügel von La Lluca ist die Can Miró eine großzügige Familienvilla, gemacht für gemächliche Morgen und lange, warme Abende. Wachen Sie mit Vogelgezwitscher auf, schwimmen Sie vor dem Frühstück und wechseln Sie zwischen vier Außenlounges, während das Licht über den Tag wandert. Die Strände des Arenal und die gepflasterte Altstadt von Jávea sind beide in wenigen Fahrminuten erreichbar.",
+    "title": "Entschleunigen in der mediterranen Sonne",
+    "body": "Eingebettet in die grünen Hügel von La Lluca ist Can Miró eine großzügige Familienvilla für gemächliche Morgen und lange, warme Abende. Wachen Sie mit Vogelgezwitscher auf, springen Sie vor dem Frühstück in den Pool und wandern Sie mit der Sonne von einer Lounge-Ecke zur nächsten. Der Strand von Arenal und die Altstadt von Jávea sind beide in wenigen Fahrminuten erreichbar.",
     "features": {
       "pool": "Beheizter Privatpool",
       "seating": "Vier Außenlounges",
@@ -43,7 +43,7 @@
   "gallery": {
     "eyebrow": "Galerie",
     "title": "Ein erster Eindruck",
-    "subtitle": "Jede Ecke gemacht für entspanntes mediterranes Leben.",
+    "subtitle": "Jede Ecke lädt zum entspannten Leben im Freien ein.",
     "cta": "Galerie öffnen",
     "captions": {
       "poolTerrace": "Pool & Terrasse",
@@ -61,17 +61,17 @@
   },
   "amenities": {
     "eyebrow": "Die Villa",
-    "title": "Platz zum Ausbreiten, drinnen wie draußen",
+    "title": "Viel Platz, drinnen wie draußen",
     "subtitle": "Vier Schlafzimmer, drei Bäder und zwei Küchen in einem Haus, das ganz auf das Leben im Freien ausgerichtet ist.",
     "groups": {
       "space": "Raum & Schlafen",
       "outdoor": "Draußen & Freizeit",
-      "comfort": "Komfort & Konnektivität"
+      "comfort": "Komfort & Technik"
     },
     "items": {
       "bedrooms4": "4 Schlafzimmer",
       "bathrooms3": "3 Badezimmer",
-      "sleeps8": "Platz für bis zu 8",
+      "sleeps8": "Platz für bis zu 8 Gäste",
       "twoKitchens": "Zwei Küchen (oben & unten)",
       "privatePool": "Beheizter Privatpool",
       "fourSeating": "4 Sitzbereiche im Freien",
@@ -86,7 +86,7 @@
   "area": {
     "eyebrow": "Die Umgebung",
     "title": "Jávea, direkt vor der Tür",
-    "subtitle": "Einer der beliebtesten Winkel der Costa Blanca: türkisfarbene Buchten, ein lebendiger Fischerhafen und eine Altstadt aus goldenem Stein voller Restaurants und Märkte.",
+    "subtitle": "Einer der beliebtesten Flecken der Costa Blanca: türkisfarbene Buchten, ein lebendiger Fischerhafen und eine Altstadt aus goldenem Stein voller Restaurants und Märkte.",
     "distancesTitle": "Wie weit bis…",
     "mapLabel": "Karte von La Lluca, Jávea",
     "kmAway": "km",
@@ -126,7 +126,7 @@
       "Klimaanlage und Poolpflege",
       "Willkommensinfos und lokale Tipps"
     ],
-    "note": "Die Preise sind Platzhalter. Aktuelle Preise erfragen Sie bitte bei Ihrer Anfrage. Es gilt eine erstattbare Kaution.",
+    "note": "Die Preise sind Richtwerte; die aktuellen Preise bestätigen wir bei Ihrer Anfrage. Es gilt eine erstattbare Kaution.",
     "cta": "Angebot anfragen"
   },
   "reviews": {
@@ -135,7 +135,7 @@
     "ratingSummary": "{avg} im Schnitt aus {count} Aufenthalten",
     "items": {
       "r1": "Die Fotos werden ihr nicht gerecht. Pool und Terrassen waren das Herz unserer Woche, wir wollten kaum weg. Blitzsauber, ruhig und wunderschön gepflegt.",
-      "r2": "Perfekt für unsere sechsköpfige Familie. Zwei Küchen machten alles einfach, die Kinder lebten an der Tischtennisplatte, und der Strand war fünf Minuten entfernt. Wir buchen schon wieder.",
+      "r2": "Perfekt für unsere sechsköpfige Familie. Mit zwei Küchen war alles unkompliziert, die Kinder waren von der Tischtennisplatte nicht wegzubekommen, und der Strand war zehn Minuten entfernt. Wir buchen schon wieder.",
       "r3": "Eine wirklich erholsame Woche. Komfortabel, ruhig, und jede Ecke im Freien fängt zu einer anderen Tageszeit die Sonne ein. Dazu wunderbare Gastgeber."
     }
   },
@@ -145,11 +145,11 @@
     "items": {
       "checkin": {
         "q": "Wann sind Check-in und Check-out?",
-        "a": "Check-in ab 16:00 Uhr, Check-out bis 10:00 Uhr. Flexible Zeiten sind je nach Wechsel oft möglich, fragen Sie einfach."
+        "a": "Check-in ab 16:00 Uhr, Check-out bis 10:00 Uhr. Flexible Zeiten sind je nach Belegung oft möglich, fragen Sie einfach."
       },
       "deposit": {
         "q": "Gibt es eine Kaution?",
-        "a": "Ja, vor der Anreise wird eine erstattbare Kaution hinterlegt, die nach einer normalen Kontrolle innerhalb weniger Tage nach dem Check-out zurückerstattet wird."
+        "a": "Ja, vor der Anreise wird eine erstattbare Kaution hinterlegt, die nach der üblichen Kontrolle innerhalb weniger Tage nach dem Check-out zurückerstattet wird."
       },
       "cancellation": {
         "q": "Wie sind die Stornobedingungen?",
@@ -179,8 +179,8 @@
   },
   "enquiry": {
     "eyebrow": "Anfragen",
-    "title": "Daten prüfen & Kontakt aufnehmen",
-    "subtitle": "Nennen Sie uns Ihre Daten und wir melden uns persönlich, meist innerhalb eines Tages. Lieber schreiben? Kontaktieren Sie uns über WhatsApp.",
+    "title": "Planen Sie Ihren Aufenthalt",
+    "subtitle": "Nennen Sie uns Ihre Wunschtermine und wir melden uns persönlich, meist innerhalb eines Tages. Lieber kurz schreiben? Erreichen Sie uns über WhatsApp.",
     "fields": {
       "name": "Ihr Name",
       "email": "E-Mail",
