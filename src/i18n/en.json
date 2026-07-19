@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "title": "Can Miró: Villa with private pool in La Lluca, Jávea",
+    "description": "A sun-filled 4-bedroom villa with a private pool in La Lluca, Jávea. Sea-facing terraces, two kitchens and four outdoor lounges on Spain's Costa Blanca.",
+    "langName": "English"
+  },
+  "nav": {
+    "gallery": "Gallery",
+    "villa": "The Villa",
+    "area": "The Area",
+    "rates": "Rates",
+    "reviews": "Reviews",
+    "enquire": "Enquire",
+    "menu": "Menu",
+    "close": "Close",
+    "availability": "Availability",
+    "book": "Book"
+  },
+  "hero": {
+    "kicker": "La Lluca · Jávea · Costa Blanca",
+    "title": "Can Miró",
+    "subtitle": "A light-filled villa with a private pool, a short drive from Jávea's beaches and old town.",
+    "cta": "Check availability",
+    "ctaSecondary": "View the villa",
+    "stats": {
+      "guests": "guests",
+      "bedrooms": "bedrooms",
+      "bathrooms": "bathrooms",
+      "pool": "heated pool"
+    }
+  },
+  "intro": {
+    "eyebrow": "Welcome",
+    "title": "Your unhurried place in the Mediterranean sun",
+    "body": "Tucked into the green hillside of La Lluca, Can Miró is a spacious family villa built for slow mornings and long, warm evenings. Wake to birdsong, swim before breakfast, and drift between four outdoor lounges as the light moves across the day. The beaches of the Arenal and the cobbled old town of Jávea are both a short drive away.",
+    "features": {
+      "pool": "Heated private pool",
+      "seating": "Four outdoor lounges",
+      "kitchens": "Two full kitchens",
+      "beach": "Short drive to the beach"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "A first look",
+    "subtitle": "Every corner made for easy Mediterranean living.",
+    "cta": "Open gallery",
+    "captions": {
+      "poolTerrace": "Pool & terrace",
+      "sunset": "Sunset by the pool",
+      "alfresco": "Al fresco dining",
+      "outdoorLounge": "Outdoor lounge",
+      "poolNight": "Pool by night",
+      "daybed": "Poolside daybed",
+      "villa": "The villa",
+      "aerial": "Aerial view",
+      "gardens": "Mediterranean gardens",
+      "setting": "The setting",
+      "overview": "From above"
+    }
+  },
+  "amenities": {
+    "eyebrow": "The Villa",
+    "title": "Room to spread out, inside and out",
+    "subtitle": "Four bedrooms, three bathrooms and two kitchens across a home designed around the outdoors.",
+    "groups": {
+      "space": "Space & sleeping",
+      "outdoor": "Outdoor & leisure",
+      "comfort": "Comfort & connectivity"
+    },
+    "items": {
+      "bedrooms4": "4 bedrooms",
+      "bathrooms3": "3 bathrooms",
+      "sleeps8": "Sleeps up to 8",
+      "twoKitchens": "Two kitchens (upstairs & down)",
+      "privatePool": "Private heated pool",
+      "fourSeating": "4 outdoor seating areas",
+      "tableTennis": "Table-tennis table",
+      "bbq": "Barbecue",
+      "airConditioning": "Air conditioning throughout",
+      "wifi": "High-speed internet",
+      "tv": "Smart TV",
+      "parking": "Private parking"
+    }
+  },
+  "area": {
+    "eyebrow": "The Area",
+    "title": "Jávea, at your doorstep",
+    "subtitle": "One of the Costa Blanca's most loved corners: turquoise coves, a working fishing port, and a golden-stone old town full of restaurants and markets.",
+    "distancesTitle": "How far to…",
+    "mapLabel": "Map of La Lluca, Jávea",
+    "kmAway": "km",
+    "places": {
+      "arenalBeach": "Arenal beach & promenade",
+      "oldTown": "Jávea old town",
+      "port": "Fishing port & marina",
+      "supermarket": "Nearest supermarket",
+      "golf": "Golf",
+      "alicanteAirport": "Alicante airport",
+      "valenciaAirport": "Valencia airport"
+    },
+    "doTitle": "While you're here",
+    "do": [
+      "Swim in the crystal coves of Cap de Sant Antoni and the Portitxol islet",
+      "Wander the Thursday market and dine in the old town's plazas",
+      "Sunset drinks at the port with fresh Mediterranean seafood",
+      "Coastal walks, cycling and the Montgó natural park on the doorstep"
+    ]
+  },
+  "rates": {
+    "eyebrow": "Rates",
+    "title": "Seasons & pricing",
+    "subtitle": "Indicative weekly rates. Get in touch for exact dates, shorter stays and long-stay offers.",
+    "perWeek": "per week",
+    "minNights": "min. nights",
+    "seasons": {
+      "low": "Low season",
+      "mid": "Mid season",
+      "high": "High season",
+      "peak": "Peak (Jul–Aug)"
+    },
+    "includedTitle": "Included in every stay",
+    "included": [
+      "Final cleaning & fresh linens and towels",
+      "Water, electricity and high-speed Wi-Fi",
+      "Air conditioning and pool maintenance",
+      "Welcome guidance and local tips"
+    ],
+    "note": "Rates are placeholders. Confirm current pricing on enquiry. A refundable damage deposit applies.",
+    "cta": "Request a quote"
+  },
+  "reviews": {
+    "eyebrow": "Reviews",
+    "title": "Loved by our guests",
+    "ratingSummary": "{avg} average from {count} stays",
+    "items": {
+      "r1": "The photos don't do it justice. The pool and terraces were the heart of our week, we barely wanted to leave. Spotless, calm and beautifully kept.",
+      "r2": "Perfect for our family of six. Two kitchens made everything easy, the kids lived at the table-tennis table, and the beach was a five-minute drive. We're already rebooking.",
+      "r3": "A truly relaxing week. Comfortable, quiet, and every outdoor corner catches the sun at a different time of day. Wonderful hosts, too."
+    }
+  },
+  "faq": {
+    "eyebrow": "Good to know",
+    "title": "Frequently asked questions",
+    "items": {
+      "checkin": {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is from 4:00 pm and check-out is by 10:00 am. Flexible timing is often possible depending on the changeover, just ask."
+      },
+      "deposit": {
+        "q": "Is there a security deposit?",
+        "a": "Yes, a refundable damage deposit is held before arrival and returned within a few days of check-out, subject to a normal inspection."
+      },
+      "cancellation": {
+        "q": "What is the cancellation policy?",
+        "a": "We offer a fair, clearly stated cancellation policy that we'll confirm with your booking. Contact us for the current terms for your dates."
+      },
+      "pets": {
+        "q": "Are pets allowed?",
+        "a": "We're sorry, but pets are not permitted at the villa."
+      },
+      "pool": {
+        "q": "Is the pool private and heated?",
+        "a": "Yes. The pool is private, for your group's exclusive use, and heated, so it's comfortable to swim in well beyond the summer months."
+      },
+      "kids": {
+        "q": "Is the villa suitable for children?",
+        "a": "Very much so. There's plenty of space, a table-tennis table and safe garden areas, and we keep a selection of pool toys for younger guests. Just tell us their ages and we'll be glad to advise."
+      },
+      "cleaning": {
+        "q": "Is cleaning included?",
+        "a": "A final clean and fresh linens and towels are included. Mid-stay cleaning and extra services can be arranged."
+      },
+      "parking": {
+        "q": "Is there parking?",
+        "a": "Yes, there is private parking at the villa. A car is recommended to make the most of the area."
+      }
+    }
+  },
+  "enquiry": {
+    "eyebrow": "Enquire",
+    "title": "Check dates & get in touch",
+    "subtitle": "Tell us your dates and we'll come back to you personally, usually within a day. Prefer to chat? Message us on WhatsApp.",
+    "fields": {
+      "name": "Your name",
+      "email": "Email",
+      "arrival": "Arrival",
+      "departure": "Departure",
+      "guests": "Guests",
+      "message": "Message",
+      "messagePlaceholder": "Tell us a little about your trip…"
+    },
+    "submit": "Send enquiry",
+    "sending": "Sending…",
+    "whatsapp": "Chat on WhatsApp",
+    "orEmail": "Or email us at",
+    "success": "Thank you! Your enquiry is on its way. We'll be in touch very soon.",
+    "error": "Something went wrong. Please try again, or reach us on WhatsApp or by email.",
+    "required": "Please complete the required fields."
+  },
+  "footer": {
+    "tagline": "A private villa in La Lluca, Jávea, Costa Blanca, Spain.",
+    "quickLinks": "Explore",
+    "contact": "Contact",
+    "registration": "Tourist registration no.",
+    "rights": "All rights reserved.",
+    "backToTop": "Back to top"
+  },
+  "whatsapp": {
+    "aria": "Chat with us on WhatsApp",
+    "prefill": "Hello! I'm interested in staying at Can Miró."
+  },
+  "booking": {
+    "eyebrow": "Availability",
+    "title": "Check dates & book",
+    "subtitle": "Live availability and nightly prices. Pick your arrival and departure, then send an enquiry to confirm.",
+    "year": "Year",
+    "month": "Month",
+    "week": "Week",
+    "available": "Available",
+    "booked": "Booked",
+    "selected": "Your stay",
+    "from": "from",
+    "perNight": "/ night",
+    "night": "night",
+    "nights": "nights",
+    "nightsAvailable": "nights available",
+    "selectArrival": "Select your arrival date",
+    "selectDeparture": "Now select your departure date",
+    "total": "Total",
+    "request": "Request these dates",
+    "change": "Clear dates",
+    "prevMonth": "Previous",
+    "nextMonth": "Next",
+    "viewMonth": "View month",
+    "weekOf": "Week of",
+    "note": "Availability is indicative and will be confirmed on enquiry. We keep the calendar in sync with our other booking channels."
+  }
+}

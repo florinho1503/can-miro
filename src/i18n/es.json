@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "title": "Can Miró: Villa con piscina privada en La Lluca, Jávea",
+    "description": "Una villa luminosa de 4 dormitorios con piscina privada en La Lluca, Jávea. Terrazas al sol, dos cocinas y cuatro zonas de estar exteriores en la Costa Blanca.",
+    "langName": "Español"
+  },
+  "nav": {
+    "gallery": "Galería",
+    "villa": "La villa",
+    "area": "La zona",
+    "rates": "Tarifas",
+    "reviews": "Opiniones",
+    "enquire": "Consultar",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "availability": "Disponibilidad",
+    "book": "Reservar"
+  },
+  "hero": {
+    "kicker": "La Lluca · Jávea · Costa Blanca",
+    "title": "Can Miró",
+    "subtitle": "Una villa luminosa con piscina privada, a pocos minutos en coche de las playas y el casco antiguo de Jávea.",
+    "cta": "Ver disponibilidad",
+    "ctaSecondary": "Ver la villa",
+    "stats": {
+      "guests": "huéspedes",
+      "bedrooms": "dormitorios",
+      "bathrooms": "baños",
+      "pool": "piscina climatizada"
+    }
+  },
+  "intro": {
+    "eyebrow": "Bienvenidos",
+    "title": "Su rincón sin prisas al sol del Mediterráneo",
+    "body": "Enclavada en la verde ladera de La Lluca, Can Miró es una amplia villa familiar pensada para mañanas tranquilas y largas veladas cálidas. Despierte con el canto de los pájaros, nade antes de desayunar y déjese llevar entre cuatro zonas de estar exteriores mientras la luz recorre el día. Las playas del Arenal y el empedrado casco antiguo de Jávea están ambos a pocos minutos en coche.",
+    "features": {
+      "pool": "Piscina privada climatizada",
+      "seating": "Cuatro zonas de estar exteriores",
+      "kitchens": "Dos cocinas completas",
+      "beach": "A pocos minutos en coche de la playa"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Galería",
+    "title": "Un primer vistazo",
+    "subtitle": "Cada rincón pensado para disfrutar del Mediterráneo con calma.",
+    "cta": "Abrir galería",
+    "captions": {
+      "poolTerrace": "Piscina y terraza",
+      "sunset": "Atardecer junto a la piscina",
+      "alfresco": "Comedor al aire libre",
+      "outdoorLounge": "Zona de estar exterior",
+      "poolNight": "Piscina de noche",
+      "daybed": "Cama balinesa junto a la piscina",
+      "villa": "La villa",
+      "aerial": "Vista aérea",
+      "gardens": "Jardines mediterráneos",
+      "setting": "El entorno",
+      "overview": "Desde el aire"
+    }
+  },
+  "amenities": {
+    "eyebrow": "La villa",
+    "title": "Espacio para extenderse, dentro y fuera",
+    "subtitle": "Cuatro dormitorios, tres baños y dos cocinas en una casa concebida en torno al exterior.",
+    "groups": {
+      "space": "Espacio y descanso",
+      "outdoor": "Exterior y ocio",
+      "comfort": "Confort y conectividad"
+    },
+    "items": {
+      "bedrooms4": "4 dormitorios",
+      "bathrooms3": "3 baños",
+      "sleeps8": "Capacidad para 8",
+      "twoKitchens": "Dos cocinas (arriba y abajo)",
+      "privatePool": "Piscina privada climatizada",
+      "fourSeating": "4 zonas de estar exteriores",
+      "tableTennis": "Mesa de ping-pong",
+      "bbq": "Barbacoa",
+      "airConditioning": "Aire acondicionado en toda la casa",
+      "wifi": "Internet de alta velocidad",
+      "tv": "Smart TV",
+      "parking": "Aparcamiento privado"
+    }
+  },
+  "area": {
+    "eyebrow": "La zona",
+    "title": "Jávea, a la puerta de casa",
+    "subtitle": "Uno de los rincones más queridos de la Costa Blanca: calas turquesa, un puerto pesquero con vida y un casco antiguo de piedra dorada lleno de restaurantes y mercados.",
+    "distancesTitle": "A qué distancia está…",
+    "mapLabel": "Mapa de La Lluca, Jávea",
+    "kmAway": "km",
+    "places": {
+      "arenalBeach": "Playa y paseo del Arenal",
+      "oldTown": "Casco antiguo de Jávea",
+      "port": "Puerto pesquero y náutico",
+      "supermarket": "Supermercado más cercano",
+      "golf": "Golf",
+      "alicanteAirport": "Aeropuerto de Alicante",
+      "valenciaAirport": "Aeropuerto de Valencia"
+    },
+    "doTitle": "Mientras esté aquí",
+    "do": [
+      "Báñese en las calas cristalinas del Cap de Sant Antoni y el islote del Portitxol",
+      "Pasee por el mercado de los jueves y cene en las plazas del casco antiguo",
+      "Aperitivo al atardecer en el puerto con pescado fresco del Mediterráneo",
+      "Rutas de costa, ciclismo y el parque natural del Montgó a un paso"
+    ]
+  },
+  "rates": {
+    "eyebrow": "Tarifas",
+    "title": "Temporadas y precios",
+    "subtitle": "Tarifas semanales orientativas. Escríbanos para fechas concretas, estancias más cortas y ofertas de larga estancia.",
+    "perWeek": "por semana",
+    "minNights": "noches mín.",
+    "seasons": {
+      "low": "Temporada baja",
+      "mid": "Temporada media",
+      "high": "Temporada alta",
+      "peak": "Máxima (jul–ago)"
+    },
+    "includedTitle": "Incluido en cada estancia",
+    "included": [
+      "Limpieza final y ropa de cama y toallas limpias",
+      "Agua, electricidad y wifi de alta velocidad",
+      "Aire acondicionado y mantenimiento de la piscina",
+      "Guía de bienvenida y consejos locales"
+    ],
+    "note": "Las tarifas son orientativas. Confirme el precio actual al hacer su consulta. Se aplica una fianza reembolsable.",
+    "cta": "Solicitar presupuesto"
+  },
+  "reviews": {
+    "eyebrow": "Opiniones",
+    "title": "Nuestros huéspedes la adoran",
+    "ratingSummary": "{avg} de media en {count} estancias",
+    "items": {
+      "r1": "Las fotos no le hacen justicia. La piscina y las terrazas fueron el corazón de nuestra semana; casi no queríamos salir. Impecable, tranquila y cuidada con mimo.",
+      "r2": "Perfecta para nuestra familia de seis. Las dos cocinas lo facilitaron todo, los niños vivían en la mesa de ping-pong y la playa estaba a cinco minutos en coche. Ya estamos reservando de nuevo.",
+      "r3": "Una semana realmente relajante. Cómoda, tranquila, y cada rincón exterior recibe el sol a una hora distinta del día. Además, unos anfitriones estupendos."
+    }
+  },
+  "faq": {
+    "eyebrow": "Conviene saber",
+    "title": "Preguntas frecuentes",
+    "items": {
+      "checkin": {
+        "q": "¿Cuáles son los horarios de entrada y salida?",
+        "a": "La entrada es a partir de las 16:00 y la salida hasta las 10:00. A menudo es posible flexibilizar los horarios según el cambio de huéspedes; solo tiene que pedirlo."
+      },
+      "deposit": {
+        "q": "¿Hay fianza?",
+        "a": "Sí, se retiene una fianza reembolsable antes de la llegada que se devuelve pocos días después de la salida, tras una inspección normal."
+      },
+      "cancellation": {
+        "q": "¿Cuál es la política de cancelación?",
+        "a": "Ofrecemos una política de cancelación justa y clara que confirmamos con su reserva. Contáctenos para conocer las condiciones vigentes para sus fechas."
+      },
+      "pets": {
+        "q": "¿Se admiten mascotas?",
+        "a": "Lo sentimos, pero no se admiten mascotas en la villa."
+      },
+      "pool": {
+        "q": "¿La piscina es privada y climatizada?",
+        "a": "Sí. La piscina es privada y de uso exclusivo de su grupo, y está climatizada, por lo que resulta agradable nadar mucho más allá de los meses de verano."
+      },
+      "kids": {
+        "q": "¿Es adecuada para niños?",
+        "a": "Por supuesto. Hay mucho espacio, una mesa de ping-pong y zonas de jardín seguras, y disponemos de una selección de juguetes de piscina para los más pequeños. Díganos sus edades y le asesoraremos con mucho gusto."
+      },
+      "cleaning": {
+        "q": "¿Está incluida la limpieza?",
+        "a": "La limpieza final y la ropa de cama y toallas limpias están incluidas. La limpieza durante la estancia y otros servicios pueden organizarse."
+      },
+      "parking": {
+        "q": "¿Hay aparcamiento?",
+        "a": "Sí, la villa cuenta con aparcamiento privado. Se recomienda coche para aprovechar al máximo la zona."
+      }
+    }
+  },
+  "enquiry": {
+    "eyebrow": "Consultar",
+    "title": "Consulte fechas y contáctenos",
+    "subtitle": "Díganos sus fechas y le responderemos personalmente, normalmente en un día. ¿Prefiere hablar? Escríbanos por WhatsApp.",
+    "fields": {
+      "name": "Su nombre",
+      "email": "Correo electrónico",
+      "arrival": "Llegada",
+      "departure": "Salida",
+      "guests": "Huéspedes",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntenos un poco sobre su viaje…"
+    },
+    "submit": "Enviar consulta",
+    "sending": "Enviando…",
+    "whatsapp": "Chatear por WhatsApp",
+    "orEmail": "O escríbanos a",
+    "success": "¡Gracias! Su consulta está en camino. Nos pondremos en contacto muy pronto.",
+    "error": "Algo salió mal. Inténtelo de nuevo o contáctenos por WhatsApp o correo electrónico.",
+    "required": "Por favor, complete los campos obligatorios."
+  },
+  "footer": {
+    "tagline": "Una villa privada en La Lluca, Jávea, Costa Blanca, España.",
+    "quickLinks": "Explorar",
+    "contact": "Contacto",
+    "registration": "Nº de registro turístico",
+    "rights": "Todos los derechos reservados.",
+    "backToTop": "Volver arriba"
+  },
+  "whatsapp": {
+    "aria": "Chatee con nosotros por WhatsApp",
+    "prefill": "¡Hola! Estoy interesado/a en alojarme en Can Miró."
+  },
+  "booking": {
+    "eyebrow": "Disponibilidad",
+    "title": "Consulte fechas y reserve",
+    "subtitle": "Disponibilidad y precios por noche en tiempo real. Elija su llegada y salida y envíe una consulta para confirmar.",
+    "year": "Año",
+    "month": "Mes",
+    "week": "Semana",
+    "available": "Disponible",
+    "booked": "Ocupado",
+    "selected": "Su estancia",
+    "from": "desde",
+    "perNight": "/ noche",
+    "night": "noche",
+    "nights": "noches",
+    "nightsAvailable": "noches libres",
+    "selectArrival": "Elija su fecha de llegada",
+    "selectDeparture": "Ahora elija su fecha de salida",
+    "total": "Total",
+    "request": "Solicitar estas fechas",
+    "change": "Borrar fechas",
+    "prevMonth": "Anterior",
+    "nextMonth": "Siguiente",
+    "viewMonth": "Ver mes",
+    "weekOf": "Semana del",
+    "note": "La disponibilidad es orientativa y se confirmará al hacer su consulta. Mantenemos el calendario sincronizado con nuestros otros canales de reserva."
+  }
+}

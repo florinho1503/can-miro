@@ -1,0 +1,77 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations } from '../i18n';
+import { villa, type Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="section faq" id="faq">
+  <div class="container container--narrow">
+    <div class="faq__head reveal">
+      <p class="eyebrow">{t('faq.eyebrow')}</p>
+      <h2 class="section-title">{t('faq.title')}</h2>
+    </div>
+
+    <div class="faq__list reveal">
+      {villa.faq.map((id) => (
+        <details class="faq__item" name="faq">
+          <summary class="faq__q">
+            <span>{t(`faq.items.${id}.q`)}</span>
+            <span class="faq__icon"><Icon name="chevron" size={20} /></span>
+          </summary>
+          <div class="faq__a"><p>{t(`faq.items.${id}.a`)}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__head { margin-bottom: 2.5rem; }
+  .faq__item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.35rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    color: var(--heading);
+    transition: color 0.2s var(--ease);
+  }
+  .faq__q::-webkit-details-marker { display: none; }
+  .faq__q:hover { color: var(--accent); }
+  .faq__icon {
+    display: inline-flex;
+    color: var(--accent);
+    transition: transform 0.3s var(--ease);
+    flex-shrink: 0;
+  }
+  .faq__item[open] .faq__icon { transform: rotate(180deg); }
+  .faq__a {
+    padding: 0 0 1.5rem;
+    max-width: 60ch;
+  }
+  .faq__a p { margin: 0; color: var(--text); line-height: 1.7; }
+
+  .faq__item[open] .faq__a {
+    animation: faqIn 0.35s var(--ease);
+  }
+  @keyframes faqIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq__item[open] .faq__a { animation: none; }
+  }
+</style>

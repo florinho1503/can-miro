@@ -1,0 +1,194 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations, getDict } from '../i18n';
+import { villa, type Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const doItems = getDict(locale).area.do;
+
+const { lat, lng, mapRadiusMeters } = villa.location;
+// Link out to the neighbourhood only (never the exact address).
+const areaQuery = encodeURIComponent(
+  `${villa.location.urbanisation}, ${villa.location.town}`
+);
+const mapLink = `https://www.google.com/maps/search/?api=1&query=${areaQuery}`;
+---
+
+<section class="section area" id="area">
+  <div class="container">
+    <div class="area__head reveal">
+      <p class="eyebrow">{t('area.eyebrow')}</p>
+      <h2 class="section-title">{t('area.title')}</h2>
+      <p class="lead">{t('area.subtitle')}</p>
+    </div>
+
+    <div class="area__grid">
+      <div class="area__map reveal">
+        <div
+          id="area-map"
+          class="area__map-canvas"
+          role="img"
+          aria-label={t('area.mapLabel')}
+          data-lat={lat}
+          data-lng={lng}
+          data-radius={mapRadiusMeters}
+        ></div>
+        <a class="area__map-link" href={mapLink} target="_blank" rel="noopener">
+          <Icon name="pin" size={16} /> {villa.location.urbanisation}, {villa.location.town}
+        </a>
+      </div>
+
+      <div class="area__info reveal">
+        <h3 class="area__subtitle">{t('area.distancesTitle')}</h3>
+        <ul class="area__distances">
+          {villa.distances.map((place) => (
+            <li>
+              <span class="area__place">
+                <Icon name={place.icon} size={20} />
+                {t(`area.places.${place.id}`)}
+              </span>
+              <span class="area__km">{place.km} {t('area.kmAway')}</span>
+            </li>
+          ))}
+        </ul>
+
+        <h3 class="area__subtitle area__subtitle--do">{t('area.doTitle')}</h3>
+        <ul class="area__do">
+          {doItems.map((item) => (
+            <li><Icon name="check" size={18} /> <span>{item}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .area__head {
+    max-width: var(--container-narrow);
+    margin-bottom: 3rem;
+  }
+  .area__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+  .area__map {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--bg-raised);
+  }
+  .area__map-canvas {
+    width: 100%;
+    height: 100%;
+    min-height: 440px;
+    display: block;
+    background: var(--bg-raised);
+    z-index: 0;
+  }
+  .area__map-link {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.9rem;
+    background: var(--c-white);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-sm);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--heading);
+  }
+  .area__map-link :global(svg) { color: var(--accent); }
+
+  .area__subtitle {
+    font-size: var(--fs-h3);
+    margin-bottom: 1.1rem;
+  }
+  .area__subtitle--do { margin-top: 2.25rem; }
+
+  .area__distances {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .area__distances li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .area__place {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 500;
+    color: var(--heading);
+  }
+  .area__place :global(svg) { color: var(--c-sea); flex-shrink: 0; }
+  .area__km {
+    font-variant-numeric: tabular-nums;
+    color: var(--text-soft);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .area__do { display: grid; gap: 0.85rem; }
+  .area__do li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    line-height: 1.5;
+  }
+  .area__do :global(svg) { color: var(--c-olive); flex-shrink: 0; margin-top: 3px; }
+
+  @media (max-width: 860px) {
+    .area__grid { grid-template-columns: 1fr; }
+    .area__map-canvas { min-height: 340px; }
+  }
+</style>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const el = document.getElementById('area-map');
+  if (el) {
+    const lat = parseFloat(el.dataset.lat || '0');
+    const lng = parseFloat(el.dataset.lng || '0');
+    const radius = parseFloat(el.dataset.radius || '800');
+
+    const map = L.map(el, {
+      scrollWheelZoom: false, // don't hijack page scroll
+      zoomControl: true,
+      attributionControl: true,
+    }).setView([lat, lng], 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(map);
+
+    // A radius circle, no pin, so the exact villa location stays private.
+    const circle = L.circle([lat, lng], {
+      radius,
+      color: '#2f6d78',
+      weight: 2,
+      fillColor: '#2f6d78',
+      fillOpacity: 0.18,
+    }).addTo(map);
+
+    map.fitBounds(circle.getBounds(), { padding: [26, 26] });
+    setTimeout(() => map.invalidateSize(), 200);
+  }
+</script>

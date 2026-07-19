@@ -1,0 +1,15 @@
+---
+import Home from '../../components/Home.astro';
+import { locales, defaultLocale, type Locale } from '../../data/villa';
+
+export function getStaticPaths() {
+  // Non-default locales get their own prefixed route (/nl, /de, /es).
+  return locales
+    .filter((l) => l !== defaultLocale)
+    .map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+---
+
+<Home locale={lang as Locale} />

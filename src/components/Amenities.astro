@@ -1,0 +1,85 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations } from '../i18n';
+import { villa, type Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="section amenities" id="villa">
+  <div class="container">
+    <div class="amenities__head reveal">
+      <p class="eyebrow">{t('amenities.eyebrow')}</p>
+      <h2 class="section-title">{t('amenities.title')}</h2>
+      <p class="lead">{t('amenities.subtitle')}</p>
+    </div>
+
+    <div class="amenities__groups">
+      {villa.amenityGroups.map((group) => (
+        <div class="amenities__group reveal">
+          <h3 class="amenities__group-title">{t(`amenities.groups.${group.id}`)}</h3>
+          <ul class="amenities__list">
+            {group.items.map((item) => (
+              <li class="amenities__item">
+                <span class="amenities__icon"><Icon name={item.icon} size={22} /></span>
+                <span>{t(`amenities.items.${item.id}`)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .amenities {
+    background: var(--bg-raised);
+  }
+  .amenities__head {
+    max-width: var(--container-narrow);
+    margin-bottom: 3rem;
+  }
+  .amenities__groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .amenities__group-title {
+    font-size: var(--fs-h3);
+    padding-bottom: 0.9rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .amenities__list { display: grid; gap: 1rem; }
+  .amenities__item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-weight: 500;
+    color: var(--heading);
+  }
+  .amenities__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius);
+    background: var(--c-white);
+    color: var(--c-sea);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 860px) {
+    .amenities__groups { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+  @media (max-width: 560px) {
+    .amenities__groups { grid-template-columns: 1fr; }
+  }
+</style>

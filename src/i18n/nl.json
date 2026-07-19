@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "title": "Can Miró: Villa met privézwembad in La Lluca, Jávea",
+    "description": "Een zonovergoten villa met 4 slaapkamers en een privézwembad in La Lluca, Jávea. Terrassen op het zuiden, twee keukens en vier buitenloungeplekken aan de Costa Blanca.",
+    "langName": "Nederlands"
+  },
+  "nav": {
+    "gallery": "Galerij",
+    "villa": "De villa",
+    "area": "De omgeving",
+    "rates": "Tarieven",
+    "reviews": "Reviews",
+    "enquire": "Aanvragen",
+    "menu": "Menu",
+    "close": "Sluiten",
+    "availability": "Beschikbaarheid",
+    "book": "Boeken"
+  },
+  "hero": {
+    "kicker": "La Lluca · Jávea · Costa Blanca",
+    "title": "Can Miró",
+    "subtitle": "Een lichte villa met privézwembad, op korte rijafstand van de stranden en de oude stad van Jávea.",
+    "cta": "Bekijk beschikbaarheid",
+    "ctaSecondary": "Bekijk de villa",
+    "stats": {
+      "guests": "gasten",
+      "bedrooms": "slaapkamers",
+      "bathrooms": "badkamers",
+      "pool": "verwarmd zwembad"
+    }
+  },
+  "intro": {
+    "eyebrow": "Welkom",
+    "title": "Uw ongehaaste plek in de mediterrane zon",
+    "body": "Verscholen in de groene heuvels van La Lluca is Can Miró een ruime familievilla, gemaakt voor trage ochtenden en lange, warme avonden. Word wakker met vogelgezang, zwem voor het ontbijt en dwaal tussen vier buitenloungeplekken terwijl het licht met de dag meebeweegt. De stranden van de Arenal en het geplaveide oude centrum van Jávea liggen allebei op korte rijafstand.",
+    "features": {
+      "pool": "Verwarmd privézwembad",
+      "seating": "Vier buitenlounges",
+      "kitchens": "Twee volledige keukens",
+      "beach": "Korte rit naar het strand"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Galerij",
+    "title": "Een eerste indruk",
+    "subtitle": "Elke hoek gemaakt voor ontspannen mediterraan leven.",
+    "cta": "Open galerij",
+    "captions": {
+      "poolTerrace": "Zwembad & terras",
+      "sunset": "Zonsondergang bij het zwembad",
+      "alfresco": "Buiten dineren",
+      "outdoorLounge": "Buitenlounge",
+      "poolNight": "Zwembad bij nacht",
+      "daybed": "Ligbed aan het zwembad",
+      "villa": "De villa",
+      "aerial": "Luchtfoto",
+      "gardens": "Mediterrane tuinen",
+      "setting": "De omgeving",
+      "overview": "Van bovenaf"
+    }
+  },
+  "amenities": {
+    "eyebrow": "De villa",
+    "title": "Ruimte om uit te waaieren, binnen en buiten",
+    "subtitle": "Vier slaapkamers, drie badkamers en twee keukens in een huis dat om het buitenleven is gebouwd.",
+    "groups": {
+      "space": "Ruimte & slapen",
+      "outdoor": "Buiten & ontspanning",
+      "comfort": "Comfort & connectiviteit"
+    },
+    "items": {
+      "bedrooms4": "4 slaapkamers",
+      "bathrooms3": "3 badkamers",
+      "sleeps8": "Slaapplaats voor 8",
+      "twoKitchens": "Twee keukens (boven & beneden)",
+      "privatePool": "Verwarmd privézwembad",
+      "fourSeating": "4 buitenzitplekken",
+      "tableTennis": "Tafeltennistafel",
+      "bbq": "Barbecue",
+      "airConditioning": "Airconditioning door het hele huis",
+      "wifi": "Snel internet",
+      "tv": "Smart-tv",
+      "parking": "Eigen parkeerplaats"
+    }
+  },
+  "area": {
+    "eyebrow": "De omgeving",
+    "title": "Jávea, voor de deur",
+    "subtitle": "Een van de meest geliefde hoekjes van de Costa Blanca: turquoise baaien, een levendige vissershaven en een oude stad van goudkleurige steen vol restaurants en markten.",
+    "distancesTitle": "Hoe ver naar…",
+    "mapLabel": "Kaart van La Lluca, Jávea",
+    "kmAway": "km",
+    "places": {
+      "arenalBeach": "Strand & boulevard Arenal",
+      "oldTown": "Oude stad Jávea",
+      "port": "Vissershaven & jachthaven",
+      "supermarket": "Dichtstbijzijnde supermarkt",
+      "golf": "Golf",
+      "alicanteAirport": "Vliegveld Alicante",
+      "valenciaAirport": "Vliegveld Valencia"
+    },
+    "doTitle": "Als u er bent",
+    "do": [
+      "Zwemmen in de kristalheldere baaien van Cap de Sant Antoni en het eilandje Portitxol",
+      "Slenter over de donderdagmarkt en dineer op de pleintjes van de oude stad",
+      "Borrelen bij zonsondergang in de haven met verse mediterrane vis",
+      "Kustwandelingen, fietsen en natuurpark Montgó op loopafstand"
+    ]
+  },
+  "rates": {
+    "eyebrow": "Tarieven",
+    "title": "Seizoenen & prijzen",
+    "subtitle": "Indicatieve weektarieven. Neem contact op voor exacte data, kortere verblijven en aanbiedingen voor langer verblijf.",
+    "perWeek": "per week",
+    "minNights": "min. nachten",
+    "seasons": {
+      "low": "Laagseizoen",
+      "mid": "Middenseizoen",
+      "high": "Hoogseizoen",
+      "peak": "Piek (jul–aug)"
+    },
+    "includedTitle": "Bij elk verblijf inbegrepen",
+    "included": [
+      "Eindschoonmaak & vers linnengoed en handdoeken",
+      "Water, elektriciteit en snelle wifi",
+      "Airconditioning en zwembadonderhoud",
+      "Welkomstinformatie en lokale tips"
+    ],
+    "note": "Tarieven zijn voorbeelden. Vraag de actuele prijzen op bij uw aanvraag. Een terugbetaalbare borg is van toepassing.",
+    "cta": "Vraag een offerte aan"
+  },
+  "reviews": {
+    "eyebrow": "Reviews",
+    "title": "Geliefd bij onze gasten",
+    "ratingSummary": "{avg} gemiddeld uit {count} verblijven",
+    "items": {
+      "r1": "De foto's doen het geen recht. Het zwembad en de terrassen waren het hart van onze week. We wilden nauwelijks weg. Brandschoon, rustig en prachtig onderhouden.",
+      "r2": "Perfect voor ons gezin van zes. Twee keukens maakten alles makkelijk, de kinderen leefden aan de tafeltennistafel en het strand was vijf minuten rijden. We boeken alweer opnieuw.",
+      "r3": "Een echt ontspannen week. Comfortabel, rustig, en elke buitenhoek vangt op een ander moment van de dag de zon. Bovendien fijne gastheren."
+    }
+  },
+  "faq": {
+    "eyebrow": "Goed om te weten",
+    "title": "Veelgestelde vragen",
+    "items": {
+      "checkin": {
+        "q": "Wat zijn de in- en uitchecktijden?",
+        "a": "Inchecken kan vanaf 16:00 uur en uitchecken tot 10:00 uur. Flexibele tijden zijn vaak mogelijk, afhankelijk van de wissel. Vraag het gerust."
+      },
+      "deposit": {
+        "q": "Is er een borg?",
+        "a": "Ja, er wordt vóór aankomst een terugbetaalbare borg gevraagd, die binnen enkele dagen na uitchecken wordt teruggestort, na een normale inspectie."
+      },
+      "cancellation": {
+        "q": "Wat is het annuleringsbeleid?",
+        "a": "Wij hanteren een eerlijk en duidelijk annuleringsbeleid dat we bij uw boeking bevestigen. Neem contact op voor de actuele voorwaarden voor uw data."
+      },
+      "pets": {
+        "q": "Zijn huisdieren toegestaan?",
+        "a": "Helaas zijn huisdieren niet toegestaan in de villa."
+      },
+      "pool": {
+        "q": "Is het zwembad privé en verwarmd?",
+        "a": "Ja. Het zwembad is privé en exclusief voor uw gezelschap, en verwarmd, zodat u ook ruim buiten de zomermaanden comfortabel kunt zwemmen."
+      },
+      "kids": {
+        "q": "Is de villa geschikt voor kinderen?",
+        "a": "Zeker. Er is volop ruimte, een tafeltennistafel en veilige tuingedeeltes, en we hebben een selectie zwembadspeelgoed voor de jongste gasten. Laat ons hun leeftijden weten, dan adviseren we graag."
+      },
+      "cleaning": {
+        "q": "Is schoonmaak inbegrepen?",
+        "a": "Een eindschoonmaak en vers linnengoed en handdoeken zijn inbegrepen. Tussentijdse schoonmaak en extra diensten zijn mogelijk."
+      },
+      "parking": {
+        "q": "Is er parkeergelegenheid?",
+        "a": "Ja, er is eigen parkeergelegenheid bij de villa. Een auto is aan te raden om de omgeving optimaal te ontdekken."
+      }
+    }
+  },
+  "enquiry": {
+    "eyebrow": "Aanvragen",
+    "title": "Check data & neem contact op",
+    "subtitle": "Vertel ons uw data en we reageren persoonlijk, meestal binnen een dag. Liever even chatten? Stuur ons een bericht op WhatsApp.",
+    "fields": {
+      "name": "Uw naam",
+      "email": "E-mail",
+      "arrival": "Aankomst",
+      "departure": "Vertrek",
+      "guests": "Gasten",
+      "message": "Bericht",
+      "messagePlaceholder": "Vertel ons iets over uw reis…"
+    },
+    "submit": "Aanvraag versturen",
+    "sending": "Versturen…",
+    "whatsapp": "Chat op WhatsApp",
+    "orEmail": "Of mail ons op",
+    "success": "Dank u wel! Uw aanvraag is onderweg. We nemen zeer binnenkort contact op.",
+    "error": "Er ging iets mis. Probeer het opnieuw, of bereik ons via WhatsApp of e-mail.",
+    "required": "Vul de verplichte velden in."
+  },
+  "footer": {
+    "tagline": "Een privévilla in La Lluca, Jávea, Costa Blanca, Spanje.",
+    "quickLinks": "Ontdek",
+    "contact": "Contact",
+    "registration": "Toeristisch registratienr.",
+    "rights": "Alle rechten voorbehouden.",
+    "backToTop": "Naar boven"
+  },
+  "whatsapp": {
+    "aria": "Chat met ons op WhatsApp",
+    "prefill": "Hallo! Ik ben geïnteresseerd in een verblijf in Can Miró."
+  },
+  "booking": {
+    "eyebrow": "Beschikbaarheid",
+    "title": "Bekijk data & boek",
+    "subtitle": "Actuele beschikbaarheid en prijzen per nacht. Kies uw aankomst en vertrek en stuur een aanvraag om te bevestigen.",
+    "year": "Jaar",
+    "month": "Maand",
+    "week": "Week",
+    "available": "Beschikbaar",
+    "booked": "Bezet",
+    "selected": "Uw verblijf",
+    "from": "vanaf",
+    "perNight": "/ nacht",
+    "night": "nacht",
+    "nights": "nachten",
+    "nightsAvailable": "nachten vrij",
+    "selectArrival": "Kies uw aankomstdatum",
+    "selectDeparture": "Kies nu uw vertrekdatum",
+    "total": "Totaal",
+    "request": "Vraag deze data aan",
+    "change": "Data wissen",
+    "prevMonth": "Vorige",
+    "nextMonth": "Volgende",
+    "viewMonth": "Bekijk maand",
+    "weekOf": "Week van",
+    "note": "De beschikbaarheid is indicatief en wordt bij uw aanvraag bevestigd. We houden de kalender gelijk met onze andere boekingskanalen."
+  }
+}

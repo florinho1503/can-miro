@@ -1,0 +1,102 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import { useTranslations, localizePath } from '../i18n';
+import { locales, type Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const fallbackSite = 'https://florinho1503.github.io';
+const base = import.meta.env.BASE_URL; // '/' or '/can-miro/'
+const withBase = (p: string) => `${base.replace(/\/+$/, '')}/${p}`.replace(/\/{2,}/g, '/');
+const faviconHref = withBase('favicon.svg');
+const canonical = new URL(localizePath('/', locale), Astro.site ?? fallbackSite);
+const ogImage = new URL(withBase('og-image.jpg'), Astro.site ?? fallbackSite);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={faviconHref} />
+    <title>{t('meta.title')}</title>
+    <meta name="description" content={t('meta.description')} />
+    <!-- PREVIEW ONLY: keep this out of search engines while showing family.
+         Remove this line before the real public launch. -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="canonical" href={canonical.href} />
+    {
+      locales.map((l) => (
+        <link
+          rel="alternate"
+          hreflang={l}
+          href={new URL(localizePath('/', l), Astro.site ?? 'https://canmiro.example.com').href}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(localizePath('/', 'en'), Astro.site ?? fallbackSite).href}
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Can Miró" />
+    <meta property="og:title" content={t('meta.title')} />
+    <meta property="og:description" content={t('meta.description')} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={ogImage.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#faf6f0" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
+
+    <script>
+      // Scroll-reveal for elements marked `.reveal`.
+      const els = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && els.length) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+
+    <style>
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: -3rem;
+        z-index: 200;
+        background: var(--heading);
+        color: var(--c-white);
+        padding: 0.6rem 1rem;
+        border-radius: var(--radius-sm);
+        transition: top 0.2s var(--ease);
+      }
+      .skip-link:focus {
+        top: 1rem;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations, getDict } from '../i18n';
+import { villa, type Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const included = getDict(locale).rates.included;
+const { currency, rows } = villa.rates;
+const fmt = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
+---
+
+<section class="section rates" id="rates">
+  <div class="container">
+    <div class="rates__head reveal">
+      <p class="eyebrow">{t('rates.eyebrow')}</p>
+      <h2 class="section-title">{t('rates.title')}</h2>
+      <p class="lead">{t('rates.subtitle')}</p>
+    </div>
+
+    <div class="rates__cards reveal">
+      {rows.map((row, i) => (
+        <div class:list={['rates__card', { 'rates__card--featured': i === 2 }]}>
+          <h3 class="rates__season">{t(`rates.seasons.${row.id}`)}</h3>
+          <p class="rates__price">
+            <span class="rates__currency">{currency}</span>{fmt.format(row.pricePerWeek)}
+          </p>
+          <p class="rates__per">{t('rates.perWeek')}</p>
+          <p class="rates__min">{row.minNights} {t('rates.minNights')}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="rates__footer reveal">
+      <div class="rates__included">
+        <h3 class="rates__included-title">{t('rates.includedTitle')}</h3>
+        <ul>
+          {included.map((item) => (
+            <li><Icon name="check" size={18} /> <span>{item}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="rates__cta-box">
+        <p class="rates__note">{t('rates.note')}</p>
+        <a href="#enquire" class="btn">{t('rates.cta')} <Icon name="arrow" size={18} /></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rates__head {
+    max-width: var(--container-narrow);
+    margin-bottom: 3rem;
+  }
+  .rates__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .rates__card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 1.5rem;
+    background: var(--c-white);
+    text-align: center;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .rates__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+  .rates__card--featured {
+    background: var(--c-sea);
+    border-color: var(--c-sea);
+    color: #fff;
+    box-shadow: var(--shadow);
+  }
+  .rates__card--featured .rates__per,
+  .rates__card--featured .rates__min { color: rgba(255, 255, 255, 0.85); }
+
+  .rates__season {
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: inherit;
+  }
+  .rates__card--featured .rates__season { color: #fff; }
+  .rates__price {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    line-height: 1;
+    margin: 0;
+    color: inherit;
+  }
+  .rates__currency { font-size: 1.4rem; vertical-align: super; opacity: 0.7; margin-right: 2px; }
+  .rates__per {
+    font-size: var(--fs-small);
+    color: var(--text-soft);
+    margin: 0.35rem 0 1rem;
+  }
+  .rates__min {
+    font-size: var(--fs-small);
+    color: var(--text-soft);
+    margin: 0;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+  .rates__card--featured .rates__min { border-top-color: rgba(255, 255, 255, 0.25); }
+
+  .rates__footer {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    background: var(--bg-raised);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+  }
+  .rates__included-title {
+    font-size: var(--fs-h3);
+    margin-bottom: 1.25rem;
+  }
+  .rates__included ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem 1.5rem;
+  }
+  .rates__included li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    line-height: 1.45;
+  }
+  .rates__included :global(svg) { color: var(--c-olive); flex-shrink: 0; margin-top: 3px; }
+  .rates__note {
+    font-size: var(--fs-small);
+    color: var(--text-soft);
+    margin-bottom: 1.25rem;
+  }
+  .rates__cta-box .btn { width: 100%; }
+
+  @media (max-width: 860px) {
+    .rates__cards { grid-template-columns: 1fr 1fr; }
+    .rates__footer { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 460px) {
+    .rates__cards { grid-template-columns: 1fr; }
+    .rates__included ul { grid-template-columns: 1fr; }
+  }
+</style>

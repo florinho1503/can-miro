@@ -1,0 +1,662 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations } from '../i18n';
+import type { Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+// Strings the client script needs, handed over as inline JSON.
+const bi = {
+  from: t('booking.from'),
+  perNight: t('booking.perNight'),
+  night: t('booking.night'),
+  nights: t('booking.nights'),
+  nightsAvailable: t('booking.nightsAvailable'),
+  selectArrival: t('booking.selectArrival'),
+  selectDeparture: t('booking.selectDeparture'),
+  total: t('booking.total'),
+  weekOf: t('booking.weekOf'),
+  booked: t('booking.booked'),
+};
+---
+
+<section class="section booking" id="booking">
+  <div class="container">
+    <div class="booking__head reveal">
+      <p class="eyebrow">{t('booking.eyebrow')}</p>
+      <h2 class="section-title">{t('booking.title')}</h2>
+      <p class="lead">{t('booking.subtitle')}</p>
+    </div>
+
+    <div class="booking__card reveal" data-booking data-locale={locale}>
+      <script type="application/json" data-booking-i18n is:inline set:html={JSON.stringify(bi)}
+      ></script>
+
+      <div class="booking__toolbar">
+        <div class="booking__views" role="tablist" aria-label="Calendar view">
+          <button type="button" class="booking__view" role="tab" data-view="year">{t('booking.year')}</button>
+          <button type="button" class="booking__view" role="tab" data-view="month" aria-selected="true">{t('booking.month')}</button>
+          <button type="button" class="booking__view" role="tab" data-view="week">{t('booking.week')}</button>
+        </div>
+        <div class="booking__nav">
+          <button type="button" class="booking__navbtn" data-nav="prev" aria-label={t('booking.prevMonth')}>
+            <Icon name="chevron" size={20} class="is-prev" />
+          </button>
+          <span class="booking__title" data-title></span>
+          <button type="button" class="booking__navbtn" data-nav="next" aria-label={t('booking.nextMonth')}>
+            <Icon name="chevron" size={20} class="is-next" />
+          </button>
+        </div>
+      </div>
+
+      <div class="booking__grid booking__grid--month" data-grid></div>
+
+      <div class="booking__legend">
+        <span><i class="booking__dot booking__dot--avail"></i>{t('booking.available')}</span>
+        <span><i class="booking__dot booking__dot--booked"></i>{t('booking.booked')}</span>
+        <span><i class="booking__dot booking__dot--sel"></i>{t('booking.selected')}</span>
+      </div>
+
+      <div class="booking__summary">
+        <p class="booking__summary-text" data-summary-text role="status" aria-live="polite"></p>
+        <div class="booking__summary-actions">
+          <button type="button" class="btn btn--ghost booking__clear" data-clear hidden>{t('booking.change')}</button>
+          <a class="btn booking__request" data-request href="#enquire" hidden>{t('booking.request')}</a>
+        </div>
+      </div>
+
+      <p class="booking__note">{t('booking.note')}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .booking__head {
+    max-width: var(--container-narrow);
+    margin-bottom: 2.5rem;
+  }
+  .booking__card {
+    background: var(--c-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+  }
+
+  .booking__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .booking__views {
+    display: inline-flex;
+    background: var(--bg-raised);
+    border-radius: var(--radius-pill);
+    padding: 4px;
+    gap: 2px;
+  }
+  .booking__view {
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+  }
+  .booking__view[aria-selected='true'] {
+    background: var(--c-white);
+    color: var(--heading);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .booking__nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .booking__title {
+    min-width: 11ch;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--heading);
+    text-transform: capitalize;
+  }
+  .booking__navbtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--c-white);
+    color: var(--heading);
+    cursor: pointer;
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+  }
+  .booking__navbtn:hover { border-color: var(--c-stone-400); background: var(--bg-raised); }
+  .booking__navbtn :global(.is-prev) { transform: rotate(90deg); }
+  .booking__navbtn :global(.is-next) { transform: rotate(-90deg); }
+
+  /* Month grid */
+  .booking__grid--month .b-weekdays,
+  .booking__grid--month .b-month {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+  .b-weekdays {
+    margin-bottom: 6px;
+  }
+  .b-weekdays span {
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    padding-bottom: 4px;
+  }
+  .b-day {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--c-white);
+    font: inherit;
+    color: var(--heading);
+    cursor: pointer;
+    padding: 2px;
+    transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease),
+      transform 0.15s var(--ease);
+  }
+  .b-day.is-empty { border: 0; background: transparent; cursor: default; }
+  .b-num { font-size: 0.95rem; font-weight: 600; line-height: 1; }
+  .b-price { font-size: 0.68rem; color: var(--text-soft); line-height: 1; white-space: nowrap; }
+
+  .b-day.is-avail:hover { border-color: var(--c-sea); background: var(--c-sand-50); transform: translateY(-1px); }
+  .b-day.is-booked {
+    background: var(--bg-raised);
+    color: var(--c-stone-400);
+    cursor: not-allowed;
+    text-decoration: line-through;
+    text-decoration-color: var(--c-stone-400);
+  }
+  .b-day.is-past { opacity: 0.32; cursor: default; }
+  .b-day.is-range { background: rgba(47, 109, 120, 0.12); border-color: transparent; }
+  .b-day.is-arrival,
+  .b-day.is-departure {
+    background: var(--c-sea);
+    border-color: var(--c-sea);
+    color: #fff;
+  }
+  .b-day.is-arrival .b-price,
+  .b-day.is-departure .b-price { color: rgba(255, 255, 255, 0.85); }
+
+  /* Week grid */
+  .booking__grid--week .b-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  .b-wday {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 1rem 0.3rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--c-white);
+    font: inherit;
+    color: var(--heading);
+    cursor: pointer;
+    transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease);
+  }
+  .b-wday-name { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-soft); }
+  .b-wday .b-num { font-size: 1.5rem; font-family: var(--font-display); }
+  .b-wday.is-avail:hover { border-color: var(--c-sea); background: var(--c-sand-50); }
+  .b-wday.is-booked { background: var(--bg-raised); color: var(--c-stone-400); cursor: not-allowed; }
+  .b-wday.is-past { opacity: 0.32; cursor: default; }
+  .b-wday.is-range { background: rgba(47, 109, 120, 0.12); }
+  .b-wday.is-arrival, .b-wday.is-departure { background: var(--c-sea); border-color: var(--c-sea); color: #fff; }
+  .b-price--muted { color: var(--c-stone-400); }
+
+  /* Year grid */
+  .booking__grid--year .b-year {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.9rem;
+  }
+  .b-mcard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--c-white);
+    font: inherit;
+    text-align: left;
+    color: var(--heading);
+    cursor: pointer;
+    transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+  .b-mcard:hover { border-color: var(--c-sea); transform: translateY(-3px); box-shadow: var(--shadow); }
+  .b-mcard.is-past { opacity: 0.4; cursor: default; }
+  .b-mname { font-family: var(--font-display); font-size: 1.35rem; text-transform: capitalize; }
+  .b-mfrom { font-size: 0.9rem; color: var(--text-soft); }
+  .b-mfrom strong { color: var(--accent); font-size: 1.05rem; }
+  .b-mavail { font-size: 0.8rem; color: var(--c-olive); font-weight: 600; }
+
+  /* Legend + summary */
+  .booking__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    font-size: var(--fs-small);
+    color: var(--text-soft);
+  }
+  .booking__legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .booking__dot { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+  .booking__dot--avail { background: var(--c-white); border: 1px solid var(--border); }
+  .booking__dot--booked { background: var(--bg-raised); border: 1px solid var(--c-stone-400); }
+  .booking__dot--sel { background: var(--c-sea); }
+
+  .booking__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .booking__summary-text { margin: 0; color: var(--text); font-size: 1.05rem; }
+  .booking__summary-text strong { color: var(--heading); }
+  .booking__summary-actions { display: inline-flex; gap: 0.75rem; }
+  .booking__note { margin: 1.25rem 0 0; font-size: var(--fs-small); color: var(--text-soft); }
+
+  @media (max-width: 560px) {
+    .booking__toolbar { justify-content: center; }
+    .booking__summary { justify-content: center; text-align: center; }
+    .booking__summary-actions { width: 100%; }
+    .booking__request { flex: 1; }
+  }
+</style>
+
+<!--
+  The calendar cells are injected by the client script at runtime, so they do
+  not receive Astro's scoped-style attribute. Their styles must be global.
+  Everything here is namespaced under .booking so nothing leaks out.
+-->
+<style is:global>
+  .booking .booking__grid--month .b-weekdays,
+  .booking .booking__grid--month .b-month {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+  .booking .b-weekdays { margin-bottom: 6px; }
+  .booking .b-weekdays span {
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    padding-bottom: 4px;
+  }
+  .booking .b-day {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--c-white);
+    font: inherit;
+    color: var(--heading);
+    cursor: pointer;
+    padding: 2px;
+    transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease),
+      transform 0.15s var(--ease);
+  }
+  .booking .b-day.is-empty { border: 0; background: transparent; cursor: default; }
+  .booking .b-num { font-size: 0.95rem; font-weight: 600; line-height: 1; }
+  .booking .b-price { font-size: 0.68rem; color: var(--text-soft); line-height: 1; white-space: nowrap; }
+  .booking .b-day.is-avail:hover { border-color: var(--c-sea); background: var(--c-sand-50); transform: translateY(-1px); }
+  .booking .b-day.is-booked {
+    background: var(--bg-raised);
+    color: var(--c-stone-400);
+    cursor: not-allowed;
+    text-decoration: line-through;
+    text-decoration-color: var(--c-stone-400);
+  }
+  .booking .b-day.is-past { opacity: 0.32; cursor: default; }
+  .booking .b-day.is-range { background: rgba(47, 109, 120, 0.12); border-color: transparent; }
+  .booking .b-day.is-arrival,
+  .booking .b-day.is-departure { background: var(--c-sea); border-color: var(--c-sea); color: #fff; }
+  .booking .b-day.is-arrival .b-price,
+  .booking .b-day.is-departure .b-price { color: rgba(255, 255, 255, 0.85); }
+
+  .booking .booking__grid--week .b-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  .booking .b-wday {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 1rem 0.3rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--c-white);
+    font: inherit;
+    color: var(--heading);
+    cursor: pointer;
+    transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease);
+  }
+  .booking .b-wday-name { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-soft); }
+  .booking .b-wday .b-num { font-size: 1.5rem; font-family: var(--font-display); }
+  .booking .b-wday.is-avail:hover { border-color: var(--c-sea); background: var(--c-sand-50); }
+  .booking .b-wday.is-booked { background: var(--bg-raised); color: var(--c-stone-400); cursor: not-allowed; }
+  .booking .b-wday.is-past { opacity: 0.32; cursor: default; }
+  .booking .b-wday.is-range { background: rgba(47, 109, 120, 0.12); }
+  .booking .b-wday.is-arrival, .booking .b-wday.is-departure { background: var(--c-sea); border-color: var(--c-sea); color: #fff; }
+  .booking .b-price--muted { color: var(--c-stone-400); }
+
+  .booking .booking__grid--year .b-year {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.9rem;
+  }
+  .booking .b-mcard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--c-white);
+    font: inherit;
+    text-align: left;
+    color: var(--heading);
+    cursor: pointer;
+    transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+  .booking .b-mcard:hover { border-color: var(--c-sea); transform: translateY(-3px); box-shadow: var(--shadow); }
+  .booking .b-mcard.is-past { opacity: 0.4; cursor: default; }
+  .booking .b-mname { font-family: var(--font-display); font-size: 1.35rem; text-transform: capitalize; }
+  .booking .b-mfrom { font-size: 0.9rem; color: var(--text-soft); }
+  .booking .b-mfrom strong { color: var(--accent); font-size: 1.05rem; }
+  .booking .b-mavail { font-size: 0.8rem; color: var(--c-olive); font-weight: 600; }
+
+  @media (max-width: 560px) {
+    .booking .b-price { font-size: 0.6rem; }
+    .booking .b-wday .b-num { font-size: 1.15rem; }
+  }
+</style>
+
+<script>
+  import { priceForDate, isAvailable, fromPriceForMonth, daysInMonth } from '../data/availability';
+
+  const root = document.querySelector('[data-booking]');
+  if (root) {
+    const locale = root.getAttribute('data-locale') || 'en';
+    const t = JSON.parse(root.querySelector('[data-booking-i18n]').textContent || '{}');
+    const grid = root.querySelector('[data-grid]');
+    const titleEl = root.querySelector('[data-title]');
+    const summaryText = root.querySelector('[data-summary-text]');
+    const clearBtn = root.querySelector('[data-clear]');
+    const requestBtn = root.querySelector('[data-request]');
+    const viewBtns = Array.from(root.querySelectorAll('[data-view]'));
+    const navBtns = Array.from(root.querySelectorAll('[data-nav]'));
+
+    const money = new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: 'EUR',
+      maximumFractionDigits: 0,
+    });
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const monthStart = (d) => new Date(d.getFullYear(), d.getMonth(), 1);
+
+    const state = { view: 'month', focus: monthStart(today), arrival: null, departure: null };
+
+    const iso = (d) =>
+      `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const parseISO = (s) => {
+      const [y, m, dd] = s.split('-').map(Number);
+      return new Date(y, m - 1, dd);
+    };
+    const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+    const startOfWeek = (d) => addDays(d, -((d.getDay() + 6) % 7));
+    const nightsBetween = (a, b) => Math.round((b - a) / 86400000);
+
+    const weekdayNames = Array.from({ length: 7 }, (_, i) =>
+      new Date(2024, 0, 1 + i).toLocaleDateString(locale, { weekday: 'short' })
+    );
+
+    const rangeAvailable = (a, b) => {
+      for (let d = new Date(a); d < b; d = addDays(d, 1)) if (!isAvailable(d, today)) return false;
+      return true;
+    };
+    const totalPrice = (a, b) => {
+      let s = 0;
+      for (let d = new Date(a); d < b; d = addDays(d, 1)) s += priceForDate(d);
+      return s;
+    };
+    const dayFlags = (d) => ({
+      avail: isAvailable(d, today),
+      past: d < today,
+      isArr: state.arrival && +d === +state.arrival,
+      isDep: state.departure && +d === +state.departure,
+      inRange: state.arrival && state.departure && d > state.arrival && d < state.departure,
+    });
+    const dayClasses = (d, base) => {
+      const f = dayFlags(d);
+      const c = [base];
+      if (f.past) c.push('is-past');
+      else if (!f.avail) c.push('is-booked');
+      else c.push('is-avail');
+      if (f.isArr) c.push('is-arrival');
+      if (f.isDep) c.push('is-departure');
+      if (f.inRange) c.push('is-range');
+      return { cls: c.join(' '), selectable: f.avail && !f.past, avail: f.avail, past: f.past };
+    };
+
+    function renderMonth() {
+      const y = state.focus.getFullYear();
+      const m = state.focus.getMonth();
+      titleEl.textContent = state.focus.toLocaleDateString(locale, { month: 'long', year: 'numeric' });
+      let html = '<div class="b-weekdays">' + weekdayNames.map((w) => `<span>${w}</span>`).join('') + '</div>';
+      html += '<div class="b-month">';
+      const offset = (new Date(y, m, 1).getDay() + 6) % 7;
+      for (let i = 0; i < offset; i++) html += '<div class="b-day is-empty"></div>';
+      const dim = daysInMonth(y, m);
+      for (let day = 1; day <= dim; day++) {
+        const d = new Date(y, m, day);
+        const { cls, selectable, avail, past } = dayClasses(d, 'b-day');
+        const tag = selectable ? 'button' : 'div';
+        const attrs = selectable ? `type="button" data-date="${iso(d)}"` : 'aria-disabled="true"';
+        const price = avail && !past ? `<span class="b-price">${money.format(priceForDate(d))}</span>` : '';
+        html += `<${tag} class="${cls}" ${attrs}><span class="b-num">${day}</span>${price}</${tag}>`;
+      }
+      html += '</div>';
+      grid.className = 'booking__grid booking__grid--month';
+      grid.innerHTML = html;
+    }
+
+    function renderWeek() {
+      const ws = startOfWeek(state.focus);
+      titleEl.textContent = `${t.weekOf} ${ws.toLocaleDateString(locale, { day: 'numeric', month: 'short' })}`;
+      let html = '<div class="b-week">';
+      for (let i = 0; i < 7; i++) {
+        const d = addDays(ws, i);
+        const { cls, selectable, avail, past } = dayClasses(d, 'b-wday');
+        const tag = selectable ? 'button' : 'div';
+        const attrs = selectable ? `type="button" data-date="${iso(d)}"` : 'aria-disabled="true"';
+        const price =
+          avail && !past
+            ? `<span class="b-price">${money.format(priceForDate(d))}</span>`
+            : `<span class="b-price b-price--muted">${past ? '' : t.booked}</span>`;
+        html += `<${tag} class="${cls}" ${attrs}><span class="b-wday-name">${weekdayNames[i]}</span><span class="b-num">${d.getDate()}</span>${price}</${tag}>`;
+      }
+      html += '</div>';
+      grid.className = 'booking__grid booking__grid--week';
+      grid.innerHTML = html;
+    }
+
+    function renderYear() {
+      const y = state.focus.getFullYear();
+      titleEl.textContent = String(y);
+      let html = '<div class="b-year">';
+      for (let m = 0; m < 12; m++) {
+        const isPast = y < today.getFullYear() || (y === today.getFullYear() && m < today.getMonth());
+        const from = fromPriceForMonth(y, m);
+        let avail = 0;
+        const dim = daysInMonth(y, m);
+        for (let day = 1; day <= dim; day++) if (isAvailable(new Date(y, m, day), today)) avail++;
+        const name = new Date(y, m, 1).toLocaleDateString(locale, { month: 'long' });
+        const tag = isPast ? 'div' : 'button';
+        const attrs = isPast ? 'aria-disabled="true"' : `type="button" data-month="${m}"`;
+        html += `<${tag} class="b-mcard${isPast ? ' is-past' : ''}" ${attrs}>
+            <span class="b-mname">${name}</span>
+            <span class="b-mfrom">${t.from} <strong>${money.format(from)}</strong> ${t.perNight}</span>
+            <span class="b-mavail">${avail} ${t.nightsAvailable}</span>
+          </${tag}>`;
+      }
+      html += '</div>';
+      grid.className = 'booking__grid booking__grid--year';
+      grid.innerHTML = html;
+    }
+
+    function updateSummary() {
+      if (state.arrival && state.departure) {
+        const n = nightsBetween(state.arrival, state.departure);
+        const a = state.arrival.toLocaleDateString(locale, { day: 'numeric', month: 'short' });
+        const b = state.departure.toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' });
+        summaryText.innerHTML = `<strong>${a} → ${b}</strong> · ${n} ${n === 1 ? t.night : t.nights} · ${t.total} <strong>${money.format(totalPrice(state.arrival, state.departure))}</strong>`;
+        clearBtn.hidden = false;
+        requestBtn.hidden = false;
+      } else if (state.arrival) {
+        const a = state.arrival.toLocaleDateString(locale, { day: 'numeric', month: 'short' });
+        summaryText.innerHTML = `<strong>${a}</strong> · ${t.selectDeparture}`;
+        clearBtn.hidden = false;
+        requestBtn.hidden = true;
+      } else {
+        summaryText.textContent = t.selectArrival;
+        clearBtn.hidden = true;
+        requestBtn.hidden = true;
+      }
+    }
+
+    function render() {
+      viewBtns.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.view === state.view)));
+      if (state.view === 'year') renderYear();
+      else if (state.view === 'week') renderWeek();
+      else renderMonth();
+      updateSummary();
+    }
+
+    function pick(dstr) {
+      const d = parseISO(dstr);
+      if (!state.arrival || (state.arrival && state.departure)) {
+        state.arrival = d;
+        state.departure = null;
+      } else if (+d <= +state.arrival) {
+        state.arrival = d;
+        state.departure = null;
+      } else if (rangeAvailable(state.arrival, d)) {
+        state.departure = d;
+      } else {
+        state.arrival = d;
+        state.departure = null;
+      }
+      render();
+    }
+
+    grid.addEventListener('click', (e) => {
+      const day = e.target.closest('[data-date]');
+      if (day) return pick(day.dataset.date);
+      const mo = e.target.closest('[data-month]');
+      if (mo) {
+        state.view = 'month';
+        state.focus = new Date(state.focus.getFullYear(), Number(mo.dataset.month), 1);
+        render();
+      }
+    });
+
+    viewBtns.forEach((b) =>
+      b.addEventListener('click', () => {
+        state.view = b.dataset.view;
+        if (state.view === 'week' && state.focus < today) state.focus = new Date(today);
+        if (state.view === 'month' && state.focus < monthStart(today)) state.focus = monthStart(today);
+        render();
+      })
+    );
+
+    navBtns.forEach((b) =>
+      b.addEventListener('click', () => {
+        const dir = b.dataset.nav === 'next' ? 1 : -1;
+        if (state.view === 'year') {
+          const ny = state.focus.getFullYear() + dir;
+          if (ny >= today.getFullYear()) state.focus = new Date(ny, 0, 1);
+        } else if (state.view === 'week') {
+          const nf = addDays(startOfWeek(state.focus), dir * 7);
+          if (dir > 0 || nf >= startOfWeek(today)) state.focus = nf;
+        } else {
+          const nm = new Date(state.focus.getFullYear(), state.focus.getMonth() + dir, 1);
+          if (nm >= monthStart(today)) state.focus = nm;
+        }
+        render();
+      })
+    );
+
+    clearBtn.addEventListener('click', () => {
+      state.arrival = null;
+      state.departure = null;
+      render();
+    });
+
+    requestBtn.addEventListener('click', () => {
+      if (state.arrival && state.departure) {
+        const ai = document.getElementById('f-arrival');
+        const di = document.getElementById('f-departure');
+        if (ai) ai.value = iso(state.arrival);
+        if (di) di.value = iso(state.departure);
+      }
+      // href="#enquire" handles the scroll
+    });
+
+    render();
+  }
+</script>

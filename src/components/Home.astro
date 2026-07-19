@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Intro from './Intro.astro';
+import Gallery from './Gallery.astro';
+import Amenities from './Amenities.astro';
+import Area from './Area.astro';
+import Rates from './Rates.astro';
+import Booking from './Booking.astro';
+import Reviews from './Reviews.astro';
+import Faq from './Faq.astro';
+import Enquiry from './Enquiry.astro';
+import Footer from './Footer.astro';
+import WhatsAppFab from './WhatsAppFab.astro';
+import type { Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<Base locale={locale}>
+  <Header locale={locale} />
+  <main id="main">
+    <Hero locale={locale} />
+    <Intro locale={locale} />
+    <Gallery locale={locale} />
+    <Amenities locale={locale} />
+    <Area locale={locale} />
+    <Rates locale={locale} />
+    <Booking locale={locale} />
+    <Reviews locale={locale} />
+    <Faq locale={locale} />
+    <Enquiry locale={locale} />
+  </main>
+  <Footer locale={locale} />
+  <WhatsAppFab locale={locale} />
+</Base>

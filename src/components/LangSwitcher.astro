@@ -1,0 +1,145 @@
+---
+import Icon from './Icon.astro';
+import { localizePath, getDict } from '../i18n';
+import { locales, type Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+const labels: Record<Locale, string> = { en: 'EN', nl: 'NL', de: 'DE', es: 'ES' };
+const options = locales.map((l) => ({
+  code: l,
+  label: labels[l],
+  name: getDict(l).meta.langName,
+  href: localizePath('/', l),
+  active: l === locale,
+}));
+---
+
+<div class="lang" data-lang-switcher>
+  <button
+    type="button"
+    class="lang__btn"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-label="Change language"
+  >
+    <Icon name="globe" size={18} />
+    <span>{labels[locale]}</span>
+    <Icon name="chevron" size={16} class="lang__caret" />
+  </button>
+  <ul class="lang__menu" role="menu">
+    {
+      options.map((o) => (
+        <li role="none">
+          <a role="menuitem" href={o.href} class:list={['lang__item', { 'is-active': o.active }]}>
+            <span class="lang__code">{o.label}</span>
+            <span class="lang__name">{o.name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .lang {
+    position: relative;
+  }
+  .lang__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.7rem;
+    font: inherit;
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--heading);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+  }
+  .lang__btn:hover {
+    border-color: var(--c-stone-400);
+  }
+  .lang__caret {
+    transition: transform 0.2s var(--ease);
+  }
+  .lang[data-open] .lang__caret {
+    transform: rotate(180deg);
+  }
+  .lang__menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    min-width: 168px;
+    background: var(--c-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 0.35rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s var(--ease), transform 0.18s var(--ease), visibility 0.18s;
+    z-index: 60;
+  }
+  .lang[data-open] .lang__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .lang__item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-small);
+    color: var(--text);
+    transition: background-color 0.15s var(--ease);
+  }
+  .lang__item:hover {
+    background: var(--bg-raised);
+  }
+  .lang__item.is-active {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .lang__code {
+    font-weight: 700;
+    width: 1.6rem;
+  }
+  .lang__name {
+    color: var(--text-soft);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-lang-switcher]').forEach((el) => {
+    const btn = el.querySelector('.lang__btn') as HTMLButtonElement;
+    const close = () => {
+      el.removeAttribute('data-open');
+      btn.setAttribute('aria-expanded', 'false');
+    };
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = el.hasAttribute('data-open');
+      if (open) close();
+      else {
+        el.setAttribute('data-open', '');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!el.contains(e.target as Node)) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+  });
+</script>

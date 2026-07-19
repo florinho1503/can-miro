@@ -1,0 +1,268 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations } from '../i18n';
+import { villa, type Locale } from '../data/villa';
+import { config, whatsappLink } from '../config';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="section enquiry" id="enquire">
+  <div class="container enquiry__grid">
+    <div class="enquiry__aside reveal">
+      <p class="eyebrow eyebrow--light">{t('enquiry.eyebrow')}</p>
+      <h2 class="enquiry__title">{t('enquiry.title')}</h2>
+      <p class="enquiry__sub">{t('enquiry.subtitle')}</p>
+
+      <div class="enquiry__contact">
+        <a class="enquiry__wa" href={whatsappLink(t('whatsapp.prefill'))} target="_blank" rel="noopener">
+          <Icon name="whatsapp" size={22} /> {t('enquiry.whatsapp')}
+        </a>
+        <p class="enquiry__email">
+          {t('enquiry.orEmail')}
+          <a href={`mailto:${config.email}`}>{config.email}</a>
+        </p>
+        <p class="enquiry__loc">
+          <Icon name="pin" size={18} /> {villa.location.urbanisation}, {villa.location.town}, {villa.location.region}
+        </p>
+      </div>
+    </div>
+
+    <form
+      class="enquiry__form reveal"
+      data-enquiry-form
+      data-web3key={config.web3formsKey}
+      data-email={config.email}
+      data-msg-success={t('enquiry.success')}
+      data-msg-error={t('enquiry.error')}
+      data-msg-required={t('enquiry.required')}
+      data-sending={t('enquiry.sending')}
+      data-submit={t('enquiry.submit')}
+    >
+      <div class="field field--full">
+        <label for="f-name">{t('enquiry.fields.name')} *</label>
+        <input id="f-name" name="name" type="text" required autocomplete="name" />
+      </div>
+      <div class="field field--full">
+        <label for="f-email">{t('enquiry.fields.email')} *</label>
+        <input id="f-email" name="email" type="email" required autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="f-arrival">{t('enquiry.fields.arrival')}</label>
+        <input id="f-arrival" name="arrival" type="date" />
+      </div>
+      <div class="field">
+        <label for="f-departure">{t('enquiry.fields.departure')}</label>
+        <input id="f-departure" name="departure" type="date" />
+      </div>
+      <div class="field field--full">
+        <label for="f-guests">{t('enquiry.fields.guests')}</label>
+        <select id="f-guests" name="guests">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <option value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+      </div>
+      <div class="field field--full">
+        <label for="f-message">{t('enquiry.fields.message')}</label>
+        <textarea
+          id="f-message"
+          name="message"
+          rows="4"
+          placeholder={t('enquiry.fields.messagePlaceholder')}
+        ></textarea>
+      </div>
+
+      <!-- Honeypot spam trap -->
+      <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+
+      <button type="submit" class="btn enquiry__submit">{t('enquiry.submit')}</button>
+      <p class="enquiry__status" data-status role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .enquiry {
+    background: linear-gradient(160deg, var(--c-sea) 0%, var(--c-sea-dark) 100%);
+    color: #fff;
+  }
+  .enquiry__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+  .eyebrow--light { color: rgba(255, 255, 255, 0.75); }
+  .enquiry__title {
+    color: #fff;
+    font-size: var(--fs-h2);
+    margin-bottom: 1rem;
+  }
+  .enquiry__sub {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    max-width: 42ch;
+    margin-bottom: 2rem;
+  }
+  .enquiry__contact { display: grid; gap: 1rem; }
+  .enquiry__wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.4rem;
+    background: #25d366;
+    color: #fff;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    justify-self: start;
+    transition: transform 0.2s var(--ease);
+  }
+  .enquiry__wa:hover { transform: translateY(-2px); }
+  .enquiry__email { margin: 0; color: rgba(255, 255, 255, 0.85); }
+  .enquiry__email a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+  .enquiry__loc {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: var(--fs-small);
+  }
+
+  .enquiry__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    background: var(--c-white);
+    color: var(--text);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field--full { grid-column: 1 / -1; }
+  label {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--heading);
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+    font-size: 1rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--c-sand-50);
+    color: var(--text);
+    transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    width: 100%;
+  }
+  textarea { resize: vertical; }
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--c-sea);
+    box-shadow: 0 0 0 3px rgba(47, 109, 120, 0.15);
+  }
+  .enquiry__submit {
+    grid-column: 1 / -1;
+    padding: 0.95rem;
+    font-size: 1.05rem;
+  }
+  .enquiry__submit[disabled] { opacity: 0.7; cursor: progress; }
+  .enquiry__status {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 0.95rem;
+    min-height: 1.2em;
+  }
+  .enquiry__status[data-state='success'] { color: var(--c-olive); font-weight: 600; }
+  .enquiry__status[data-state='error'] { color: var(--c-terracotta-dark); font-weight: 600; }
+
+  @media (max-width: 860px) {
+    .enquiry__grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const form = document.querySelector('[data-enquiry-form]') as HTMLFormElement | null;
+  if (form) {
+    const status = form.querySelector('[data-status]') as HTMLElement;
+    const submit = form.querySelector('.enquiry__submit') as HTMLButtonElement;
+    const key = form.dataset.web3key || '';
+    const email = form.dataset.email || '';
+    const labelSubmit = form.dataset.submit || 'Send';
+
+    const setStatus = (msg: string, state: '' | 'success' | 'error') => {
+      status.textContent = msg;
+      if (state) status.dataset.state = state;
+      else delete status.dataset.state;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        setStatus(form.dataset.msgRequired || '', 'error');
+        return;
+      }
+      const data = new FormData(form);
+      if ((data.get('botcheck') as string) === 'on') return; // spam trap
+
+      // Fallback to mailto when no form-service key is configured.
+      if (!key) {
+        const lines = [
+          `Name: ${data.get('name')}`,
+          `Email: ${data.get('email')}`,
+          `Arrival: ${data.get('arrival') || '-'}`,
+          `Departure: ${data.get('departure') || '-'}`,
+          `Guests: ${data.get('guests')}`,
+          '',
+          `${data.get('message') || ''}`,
+        ].join('\n');
+        const href = `mailto:${email}?subject=${encodeURIComponent(
+          'Can Miró enquiry'
+        )}&body=${encodeURIComponent(lines)}`;
+        window.location.href = href;
+        setStatus(form.dataset.msgSuccess || '', 'success');
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = form.dataset.sending || 'Sending…';
+      setStatus('', '');
+
+      try {
+        data.append('access_key', key);
+        data.append('subject', 'New Can Miró enquiry');
+        data.append('from_name', 'Can Miró website');
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: data,
+        });
+        const json = await res.json();
+        if (json.success) {
+          setStatus(form.dataset.msgSuccess || '', 'success');
+          form.reset();
+        } else {
+          setStatus(form.dataset.msgError || '', 'error');
+        }
+      } catch {
+        setStatus(form.dataset.msgError || '', 'error');
+      } finally {
+        submit.disabled = false;
+        submit.textContent = labelSubmit;
+      }
+    });
+  }
+</script>
