@@ -9,7 +9,7 @@ export const config = {
   /** WhatsApp number in international format, digits only (no +, no spaces). */
   whatsappNumber: (env.PUBLIC_WHATSAPP_NUMBER as string) || '31651475439',
   /** Contact email address (also the enquiry destination). */
-  email: (env.PUBLIC_CONTACT_EMAIL as string) || 'michaelabokx@gmail.com',
+  email: (env.PUBLIC_CONTACT_EMAIL as string) || 'florisbokx@gmail.com',
   /** Web3Forms access key (https://web3forms.com). Empty = form uses mailto fallback. */
   web3formsKey: (env.PUBLIC_WEB3FORMS_KEY as string) || '',
 };

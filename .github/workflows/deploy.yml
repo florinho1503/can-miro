@@ -23,7 +23,7 @@ jobs:
       # so the deployed build receives it without committing it to source.
       PUBLIC_WEB3FORMS_KEY: ${{ vars.PUBLIC_WEB3FORMS_KEY }}
       PUBLIC_WHATSAPP_NUMBER: '31651475439'
-      PUBLIC_CONTACT_EMAIL: 'michaelabokx@gmail.com'
+      PUBLIC_CONTACT_EMAIL: 'florisbokx@gmail.com'
     steps:
       - name: Checkout
         uses: actions/checkout@v4

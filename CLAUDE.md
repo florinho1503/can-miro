@@ -118,12 +118,19 @@ get Astro's scoped-style attribute. Their CSS lives in the `<style is:global>` b
 `Enquiry.astro`, client-side. Posts to **Web3Forms** if `PUBLIC_WEB3FORMS_KEY` is set,
 else falls back to a `mailto:` compose. WhatsApp deep-link works regardless. Honeypot
 spam field included. Contact defaults are in `src/config.ts`:
-- WhatsApp **+31 6 51475439** (`31651475439`), email **michaelabokx@gmail.com** (also the
-  enquiry destination). These are committed as defaults (public info).
-- **`PUBLIC_WEB3FORMS_KEY` is not set yet** -> on the live site the form uses the mailto
-  fallback. To receive form enquiries in the Gmail inbox: get a free key at web3forms.com
-  (destination michaelabokx@gmail.com), then set it. For the deployed build, add it to the
-  GitHub Actions build env (a repo variable is fine; the key is public/client-side anyway).
+- WhatsApp **+31 6 51475439** (`31651475439`), displayed contact email
+  **florisbokx@gmail.com**. Committed as defaults (public info); overridable via `.env` /
+  the workflow env.
+- **Web3Forms is wired and tested** (returns `success: true`). The key lives in `.env`
+  locally and in the GitHub Actions repo **variable** `PUBLIC_WEB3FORMS_KEY` (used in the
+  deploy build; the key is public/client-side by design). Web3Forms delivers to the **email
+  of the account the key was created under** — currently **florisbokx@gmail.com** (Floris's
+  login), NOT the `PUBLIC_CONTACT_EMAIL`. So the displayed email is kept the same as the
+  destination to stay consistent.
+- **Planned:** move to a dedicated house inbox like **canmiro@gmail.com**. When that exists:
+  create a Web3Forms account/key under it, swap `PUBLIC_WEB3FORMS_KEY` (repo variable +
+  `.env`), and set `PUBLIC_CONTACT_EMAIL` to it in `config.ts` default + workflow env.
+- Note: Web3Forms free blocks server-side (curl) submissions; test only via a real browser.
 
 ## Map & location privacy
 
@@ -137,16 +144,21 @@ accurate despite the offset. The "open in Google Maps" link points to the neighb
 
 ## Next steps roadmap
 
+Done so far: custom domain **villacanmiro.com** live on GitHub Pages (HTTPS enforced);
+**Web3Forms** wired + tested (enquiries currently arrive at florisbokx@gmail.com).
+
 **A. To turn the family preview into a real launch**
-1. Get the **Web3Forms key** and wire it in (only missing piece for email enquiries).
+1. Create the dedicated house inbox (**canmiro@gmail.com**), make a Web3Forms key under it,
+   and re-point (see Enquiry section). Then enquiries land in the house inbox.
 2. Add the real **tourist rental registration number** in `villa.ts` (`registrationNumber`,
    still `VT-XXXXXX-A`; legally required in the footer for Comunidad Valenciana).
 3. Replace **placeholder rates, reviews and rating** with real ones (`villa.ts` + i18n
    `reviews.*`). Note: placeholder reviews were written before distances were fixed.
 4. Add **interior photography** (+ new `MAP` entries in `process-photos.mjs`).
 5. **Remove the `noindex`** meta in `Base.astro`.
-6. Decide hosting for launch: keep GitHub Pages (consider a **custom domain** -> set `site`
-   to it and drop `base`), or move to Netlify/Cloudflare Pages.
+6. Hosting: fine on GitHub Pages for now. For production (private repo + serverless for the
+   booking sync + commercial-OK), plan a move to **Cloudflare Pages** (same repo, free tier);
+   the static build ports with no code change, just re-point DNS + drop the `CNAME` file.
 
 **B. Bookings / channel management (when live)**
 7. Connect **Booking.com / Airbnb iCal** feeds and replace `isAvailable()` so the calendar
