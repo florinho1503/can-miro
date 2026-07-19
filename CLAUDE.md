@@ -1,4 +1,4 @@
-# CLAUDE.md — Can Miró
+# CLAUDE.md: Can Miró
 
 Guidance for AI coding sessions on this repo. Read this first.
 
@@ -25,7 +25,7 @@ npm run build    # -> dist/  (static)
 ## Live deployment (GitHub Pages)
 
 - **Live URL:** https://florinho1503.github.io/can-miro/  (a *family preview* for now)
-- **Repo:** `florinho1503/can-miro` — **public** (GitHub Pages on a free account requires
+- **Repo:** `florinho1503/can-miro`, **public** (GitHub Pages on a free account requires
   a public repo). Auto-deploys on every push to `main` via `.github/workflows/deploy.yml`
   (withastro/action + actions/deploy-pages). Just `git push` and it is live in ~40s.
 - **Base path:** it is a *project* site served under `/can-miro/`, so `astro.config.mjs`
@@ -155,8 +155,8 @@ accurate despite the offset. The "open in Google Maps" link points to the neighb
    `availability.ts`, and confirm nightly prices.
 
 **C. Nice-to-haves**
-9. A proper **enquiries dashboard / CRM** (beyond email) if volume grows — needs a small
-   backend or a hosted service.
+9. A proper **enquiries dashboard / CRM** (beyond email) if volume grows (needs a small
+   backend or a hosted service).
 10. Analytics (privacy-friendly, e.g. Plausible) once public.
 
 ## Working preferences
@@ -166,5 +166,5 @@ accurate despite the offset. The "open in Google Maps" link points to the neighb
 - **Do not push to git without an explicit request.** This session the user asked to
   deploy, so pushing to `florinho1503/can-miro` is authorized; keep that scope.
 - Iterate locally and verify visually (headless Chrome screenshots; the Chrome extension
-  may be unavailable). Scroll-reveal hides below-fold content in a static shot — temporarily
+  may be unavailable). Scroll-reveal hides below-fold content in a static shot, so temporarily
   neutralize `.reveal { opacity: 1 }` (and cap `.hero` height) while screenshotting, then revert.
