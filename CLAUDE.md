@@ -132,6 +132,31 @@ spam field included. Contact defaults are in `src/config.ts`:
   `.env`), and set `PUBLIC_CONTACT_EMAIL` to it in `config.ts` default + workflow env.
 - Note: Web3Forms free blocks server-side (curl) submissions; test only via a real browser.
 
+## Admin portal & bookings (Supabase)
+
+Private booking management lives at **`/admin`** (`src/pages/admin.astro`): standalone
+page, `noindex`, not linked from the site. Login via **Supabase Auth**; then CRUD on the
+`bookings` table (arrival, departure, guest_name, contact, guests, paid, status, notes),
+incl. a quick paid toggle.
+
+- **Supabase project:** "Javea bookings" (org florisbokxprojects, region eu-central-1).
+  URL `https://lnzzjpzoijobzwdfzmhb.supabase.co`.
+- **Keys:** the **publishable** key (`sb_publishable_...`) is used as
+  `PUBLIC_SUPABASE_ANON_KEY` (public by design; RLS protects data). It lives in `.env`
+  locally and in GitHub Actions repo **variables** `PUBLIC_SUPABASE_URL` /
+  `PUBLIC_SUPABASE_ANON_KEY`. Never commit or use the `service_role`/secret key.
+- **Security model:** RLS on `bookings` = authenticated users get full access, anon gets
+  nothing. The public site never reads the table; it calls the `SECURITY DEFINER` function
+  `public.availability()` (returns only arrival/departure of future bookings, no PII),
+  granted to `anon`. So guest data never reaches the front-end or the repo.
+- **Public calendar** (`Booking.astro`) fetches that RPC at runtime and fills
+  `blockedRanges`; degrades to fully-available if env is unset. Admin uses
+  `@supabase/supabase-js`.
+- **Add a manager:** create a user in Supabase (Authentication -> Users -> Add user,
+  Auto Confirm). Any authenticated user is treated as admin.
+- **Schema/policies** were created via SQL in the Supabase SQL Editor (bookings table, RLS
+  policy, `availability()` function + grant). Re-run that SQL if recreating the project.
+
 ## Map & location privacy
 
 Area map (`Area.astro`) = **Leaflet + OpenStreetMap tiles** (no API key), drawing a
