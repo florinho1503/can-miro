@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Can Miró: Villa met privézwembad in La Lluca, Jávea",
-    "description": "Een zonovergoten villa met 4 slaapkamers en een privézwembad in La Lluca, Jávea. Terrassen op het zuiden, twee keukens en vier buitenloungeplekken aan de Costa Blanca.",
+    "title": "Can Miró: villa met privézwembad in Jávea (Xàbia), Costa Blanca",
+    "description": "Een zonovergoten villa met 4 slaapkamers en een privézwembad in La Lluca, Jávea. Zonnige terrassen, twee keukens en vier zithoeken buiten aan de Costa Blanca.",
     "langName": "Nederlands"
   },
   "nav": {
@@ -19,7 +19,7 @@
   "hero": {
     "kicker": "La Lluca · Jávea · Costa Blanca",
     "title": "Can Miró",
-    "subtitle": "Een lichte villa met privézwembad, op korte rijafstand van de stranden en de oude stad van Jávea.",
+    "subtitle": "Een lichte, ruime villa met privézwembad, op een paar minuten rijden van de stranden en het oude centrum van Jávea.",
     "cta": "Bekijk beschikbaarheid",
     "ctaSecondary": "Bekijk de villa",
     "stats": {
@@ -31,26 +31,26 @@
   },
   "intro": {
     "eyebrow": "Welkom",
-    "title": "Uw ongehaaste plek in de mediterrane zon",
-    "body": "Verscholen in de groene heuvels van La Lluca is Can Miró een ruime familievilla, gemaakt voor trage ochtenden en lange, warme avonden. Word wakker met vogelgezang, zwem voor het ontbijt en dwaal tussen vier buitenloungeplekken terwijl het licht met de dag meebeweegt. De stranden van de Arenal en het geplaveide oude centrum van Jávea liggen allebei op korte rijafstand.",
+    "title": "Onthaasten in de mediterrane zon",
+    "body": "Verscholen in de groene heuvels van La Lluca is Can Miró een ruime familievilla, gemaakt voor luie ochtenden en lange, warme avonden. Word wakker met vogelgezang, duik voor het ontbijt het zwembad in en trek met de zon mee van de ene zithoek naar de andere. Het strand van de Arenal en het oude centrum van Jávea liggen allebei op een paar minuten rijden.",
     "features": {
       "pool": "Verwarmd privézwembad",
-      "seating": "Vier buitenlounges",
+      "seating": "Vier zithoeken buiten",
       "kitchens": "Twee volledige keukens",
-      "beach": "Korte rit naar het strand"
+      "beach": "Strand op een paar minuten"
     }
   },
   "gallery": {
     "eyebrow": "Galerij",
     "title": "Een eerste indruk",
-    "subtitle": "Elke hoek gemaakt voor ontspannen mediterraan leven.",
+    "subtitle": "Elke hoek nodigt uit tot ontspannen buitenleven.",
     "cta": "Open galerij",
     "captions": {
       "poolTerrace": "Zwembad & terras",
       "sunset": "Zonsondergang bij het zwembad",
       "alfresco": "Buiten dineren",
       "outdoorLounge": "Buitenlounge",
-      "poolNight": "Zwembad bij nacht",
+      "poolNight": "Het zwembad in de avond",
       "daybed": "Ligbed aan het zwembad",
       "villa": "De villa",
       "aerial": "Luchtfoto",
@@ -61,23 +61,23 @@
   },
   "amenities": {
     "eyebrow": "De villa",
-    "title": "Ruimte om uit te waaieren, binnen en buiten",
-    "subtitle": "Vier slaapkamers, drie badkamers en twee keukens in een huis dat om het buitenleven is gebouwd.",
+    "title": "Alle ruimte, binnen én buiten",
+    "subtitle": "Vier slaapkamers, drie badkamers en twee keukens in een huis dat helemaal om buitenleven draait.",
     "groups": {
       "space": "Ruimte & slapen",
       "outdoor": "Buiten & ontspanning",
-      "comfort": "Comfort & connectiviteit"
+      "comfort": "Comfort & techniek"
     },
     "items": {
       "bedrooms4": "4 slaapkamers",
       "bathrooms3": "3 badkamers",
-      "sleeps8": "Slaapplaats voor 8",
+      "sleeps8": "Plaats voor 8 personen",
       "twoKitchens": "Twee keukens (boven & beneden)",
       "privatePool": "Verwarmd privézwembad",
-      "fourSeating": "4 buitenzitplekken",
+      "fourSeating": "4 zithoeken buiten",
       "tableTennis": "Tafeltennistafel",
       "bbq": "Barbecue",
-      "airConditioning": "Airconditioning door het hele huis",
+      "airConditioning": "Airconditioning in het hele huis",
       "wifi": "Snel internet",
       "tv": "Smart-tv",
       "parking": "Eigen parkeerplaats"
@@ -86,25 +86,25 @@
   "area": {
     "eyebrow": "De omgeving",
     "title": "Jávea, voor de deur",
-    "subtitle": "Een van de meest geliefde hoekjes van de Costa Blanca: turquoise baaien, een levendige vissershaven en een oude stad van goudkleurige steen vol restaurants en markten.",
+    "subtitle": "Een van de meest geliefde plekjes van de Costa Blanca: turquoise baaien, een levendige vissershaven en een oud centrum van goudkleurige steen, vol restaurants en markten.",
     "distancesTitle": "Hoe ver naar…",
     "mapLabel": "Kaart van La Lluca, Jávea",
     "kmAway": "km",
     "places": {
       "arenalBeach": "Strand & boulevard Arenal",
-      "oldTown": "Oude stad Jávea",
+      "oldTown": "Oude centrum Jávea",
       "port": "Vissershaven & jachthaven",
       "supermarket": "Dichtstbijzijnde supermarkt",
       "golf": "Golf",
-      "alicanteAirport": "Vliegveld Alicante",
-      "valenciaAirport": "Vliegveld Valencia"
+      "alicanteAirport": "Luchthaven Alicante",
+      "valenciaAirport": "Luchthaven Valencia"
     },
-    "doTitle": "Als u er bent",
+    "doTitle": "Tijdens uw verblijf",
     "do": [
-      "Zwemmen in de kristalheldere baaien van Cap de Sant Antoni en het eilandje Portitxol",
-      "Slenter over de donderdagmarkt en dineer op de pleintjes van de oude stad",
-      "Borrelen bij zonsondergang in de haven met verse mediterrane vis",
-      "Kustwandelingen, fietsen en natuurpark Montgó op loopafstand"
+      "Zwemmen in de kristalheldere baaien van Cap de Sant Antoni en bij het eilandje Portitxol",
+      "Slenteren over de donderdagmarkt en dineren op de pleintjes van het oude centrum",
+      "Borrelen bij zonsondergang in de haven, met verse vis uit zee",
+      "Kustwandelingen, fietstochten en natuurpark Montgó om de hoek"
     ]
   },
   "rates": {
@@ -117,7 +117,7 @@
       "low": "Laagseizoen",
       "mid": "Middenseizoen",
       "high": "Hoogseizoen",
-      "peak": "Piek (jul–aug)"
+      "peak": "Topseizoen (jul–aug)"
     },
     "includedTitle": "Bij elk verblijf inbegrepen",
     "included": [
@@ -126,17 +126,17 @@
       "Airconditioning en zwembadonderhoud",
       "Welkomstinformatie en lokale tips"
     ],
-    "note": "Tarieven zijn voorbeelden. Vraag de actuele prijzen op bij uw aanvraag. Een terugbetaalbare borg is van toepassing.",
+    "note": "De tarieven zijn indicatief; de actuele prijzen bevestigen we bij uw aanvraag. Er geldt een terugbetaalbare borg.",
     "cta": "Vraag een offerte aan"
   },
   "reviews": {
     "eyebrow": "Reviews",
     "title": "Geliefd bij onze gasten",
-    "ratingSummary": "{avg} gemiddeld uit {count} verblijven",
+    "ratingSummary": "{avg} gemiddeld over {count} verblijven",
     "items": {
       "r1": "De foto's doen het geen recht. Het zwembad en de terrassen waren het hart van onze week. We wilden nauwelijks weg. Brandschoon, rustig en prachtig onderhouden.",
-      "r2": "Perfect voor ons gezin van zes. Twee keukens maakten alles makkelijk, de kinderen leefden aan de tafeltennistafel en het strand was vijf minuten rijden. We boeken alweer opnieuw.",
-      "r3": "Een echt ontspannen week. Comfortabel, rustig, en elke buitenhoek vangt op een ander moment van de dag de zon. Bovendien fijne gastheren."
+      "r2": "Perfect voor ons gezin van zes. Met twee keukens ging alles moeiteloos, de kinderen waren niet weg te slaan bij de tafeltennistafel en het strand was tien minuten rijden. We hebben alweer geboekt.",
+      "r3": "Een heerlijk ontspannen week. Comfortabel, rustig, en op elke plek buiten schijnt op een ander moment van de dag de zon. En hele gastvrije eigenaren."
     }
   },
   "faq": {
@@ -145,11 +145,11 @@
     "items": {
       "checkin": {
         "q": "Wat zijn de in- en uitchecktijden?",
-        "a": "Inchecken kan vanaf 16:00 uur en uitchecken tot 10:00 uur. Flexibele tijden zijn vaak mogelijk, afhankelijk van de wissel. Vraag het gerust."
+        "a": "Inchecken kan vanaf 16:00 uur, uitchecken tot 10:00 uur. Flexibele tijden zijn vaak mogelijk, afhankelijk van de planning die dag. Vraag het gerust."
       },
       "deposit": {
         "q": "Is er een borg?",
-        "a": "Ja, er wordt vóór aankomst een terugbetaalbare borg gevraagd, die binnen enkele dagen na uitchecken wordt teruggestort, na een normale inspectie."
+        "a": "Ja, vóór aankomst vragen we een terugbetaalbare borg. Die storten we binnen enkele dagen na uitchecken terug, na een gebruikelijke controle."
       },
       "cancellation": {
         "q": "Wat is het annuleringsbeleid?",
@@ -165,22 +165,22 @@
       },
       "kids": {
         "q": "Is de villa geschikt voor kinderen?",
-        "a": "Zeker. Er is volop ruimte, een tafeltennistafel en veilige tuingedeeltes, en we hebben een selectie zwembadspeelgoed voor de jongste gasten. Laat ons hun leeftijden weten, dan adviseren we graag."
+        "a": "Zeker. Er is volop ruimte, een tafeltennistafel en veilige plekken in de tuin, en voor de kleinsten is er zwembadspeelgoed. Laat ons weten hoe oud ze zijn, dan denken we graag mee."
       },
       "cleaning": {
         "q": "Is schoonmaak inbegrepen?",
-        "a": "Een eindschoonmaak en vers linnengoed en handdoeken zijn inbegrepen. Tussentijdse schoonmaak en extra diensten zijn mogelijk."
+        "a": "De eindschoonmaak en vers beddengoed en handdoeken zijn inbegrepen. Tussentijds schoonmaken en extra service regelen we graag op verzoek."
       },
       "parking": {
         "q": "Is er parkeergelegenheid?",
-        "a": "Ja, er is eigen parkeergelegenheid bij de villa. Een auto is aan te raden om de omgeving optimaal te ontdekken."
+        "a": "Ja, er is eigen parkeergelegenheid bij de villa. Een auto is een aanrader om de omgeving goed te ontdekken."
       }
     }
   },
   "enquiry": {
     "eyebrow": "Aanvragen",
-    "title": "Check data & neem contact op",
-    "subtitle": "Vertel ons uw data en we reageren persoonlijk, meestal binnen een dag. Liever even chatten? Stuur ons een bericht op WhatsApp.",
+    "title": "Plan uw verblijf",
+    "subtitle": "Geef uw data door en we reageren persoonlijk, meestal binnen een dag. Liever even appen? Stuur ons een bericht via WhatsApp.",
     "fields": {
       "name": "Uw naam",
       "email": "E-mail",
@@ -192,10 +192,10 @@
     },
     "submit": "Aanvraag versturen",
     "sending": "Versturen…",
-    "whatsapp": "Chat op WhatsApp",
+    "whatsapp": "Chat via WhatsApp",
     "orEmail": "Of mail ons op",
-    "success": "Dank u wel! Uw aanvraag is onderweg. We nemen zeer binnenkort contact op.",
-    "error": "Er ging iets mis. Probeer het opnieuw, of bereik ons via WhatsApp of e-mail.",
+    "success": "Dank u wel! Uw aanvraag is onderweg. We nemen snel contact met u op.",
+    "error": "Er ging iets mis. Probeer het opnieuw of neem contact op via WhatsApp of e-mail.",
     "required": "Vul de verplichte velden in."
   },
   "footer": {
@@ -234,6 +234,6 @@
     "nextMonth": "Volgende",
     "viewMonth": "Bekijk maand",
     "weekOf": "Week van",
-    "note": "De beschikbaarheid is indicatief en wordt bij uw aanvraag bevestigd. We houden de kalender gelijk met onze andere boekingskanalen."
+    "note": "De beschikbaarheid is indicatief en wordt bij uw aanvraag bevestigd. We houden de kalender synchroon met onze andere boekingskanalen."
   }
 }
