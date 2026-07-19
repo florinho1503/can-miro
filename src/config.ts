@@ -7,7 +7,7 @@ const env = import.meta.env;
 
 export const config = {
   /** WhatsApp number in international format, digits only (no +, no spaces). */
-  whatsappNumber: (env.PUBLIC_WHATSAPP_NUMBER as string) || '31614059644',
+  whatsappNumber: (env.PUBLIC_WHATSAPP_NUMBER as string) || '31651475439',
   /** Contact email address (also the enquiry destination). */
   email: (env.PUBLIC_CONTACT_EMAIL as string) || 'michaelabokx@gmail.com',
   /** Web3Forms access key (https://web3forms.com). Empty = form uses mailto fallback. */

@@ -118,7 +118,7 @@ get Astro's scoped-style attribute. Their CSS lives in the `<style is:global>` b
 `Enquiry.astro`, client-side. Posts to **Web3Forms** if `PUBLIC_WEB3FORMS_KEY` is set,
 else falls back to a `mailto:` compose. WhatsApp deep-link works regardless. Honeypot
 spam field included. Contact defaults are in `src/config.ts`:
-- WhatsApp **+31 6 14059644** (`31614059644`), email **michaelabokx@gmail.com** (also the
+- WhatsApp **+31 6 51475439** (`31651475439`), email **michaelabokx@gmail.com** (also the
   enquiry destination). These are committed as defaults (public info).
 - **`PUBLIC_WEB3FORMS_KEY` is not set yet** -> on the live site the form uses the mailto
   fallback. To receive form enquiries in the Gmail inbox: get a free key at web3forms.com
