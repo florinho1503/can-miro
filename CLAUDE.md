@@ -124,7 +124,7 @@ spam field included. Contact defaults are in `src/config.ts`:
 - **Web3Forms is wired and tested** (returns `success: true`). The key lives in `.env`
   locally and in the GitHub Actions repo **variable** `PUBLIC_WEB3FORMS_KEY` (used in the
   deploy build; the key is public/client-side by design). Web3Forms delivers to the **email
-  of the account the key was created under** — currently **florisbokx@gmail.com** (Floris's
+  of the account the key was created under**, currently **florisbokx@gmail.com** (Floris's
   login), NOT the `PUBLIC_CONTACT_EMAIL`. So the displayed email is kept the same as the
   destination to stay consistent.
 - **Planned:** move to a dedicated house inbox like **canmiro@gmail.com**. When that exists:
