@@ -188,7 +188,8 @@
       "departure": "Vertrek",
       "guests": "Gasten",
       "message": "Bericht",
-      "messagePlaceholder": "Vertel ons iets over uw reis…"
+      "messagePlaceholder": "Vertel ons iets over uw reis…",
+      "phone": "Telefoon"
     },
     "submit": "Aanvraag versturen",
     "sending": "Versturen…",
@@ -196,7 +197,8 @@
     "orEmail": "Of mail ons op",
     "success": "Dank u wel! Uw aanvraag is onderweg. We nemen snel contact met u op.",
     "error": "Er ging iets mis. Probeer het opnieuw of neem contact op via WhatsApp of e-mail.",
-    "required": "Vul de verplichte velden in."
+    "required": "Vul de verplichte velden in.",
+    "datesError": "Vertrek moet na aankomst liggen."
   },
   "footer": {
     "tagline": "Een privévilla in La Lluca, Jávea, Costa Blanca, Spanje.",

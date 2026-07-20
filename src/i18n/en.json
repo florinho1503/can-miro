@@ -188,7 +188,8 @@
       "departure": "Departure",
       "guests": "Guests",
       "message": "Message",
-      "messagePlaceholder": "Tell us a little about your trip…"
+      "messagePlaceholder": "Tell us a little about your trip…",
+      "phone": "Phone"
     },
     "submit": "Send enquiry",
     "sending": "Sending…",
@@ -196,7 +197,8 @@
     "orEmail": "Or email us at",
     "success": "Thank you! Your enquiry is on its way. We'll be in touch very soon.",
     "error": "Something went wrong. Please try again, or reach us on WhatsApp or by email.",
-    "required": "Please complete the required fields."
+    "required": "Please complete the required fields.",
+    "datesError": "Departure must be after arrival."
   },
   "footer": {
     "tagline": "A private villa in La Lluca, Jávea, Costa Blanca, Spain.",
