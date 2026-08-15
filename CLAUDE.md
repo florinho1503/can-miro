@@ -194,6 +194,28 @@ availability on the public calendar.
 9. Consider **Cloudflare Pages** if a private repo / serverless is wanted (static build ports
    with no code change; re-point DNS, drop `CNAME`).
 
+## Plain-language git (the family works on this site)
+
+Floris's parents edit this site too and do **not** speak git. Never ask them to run or
+approve git commands, and never answer them with command names. Recognize these phrases in
+normal conversation (Dutch or English) and just do the work:
+
+| They say | You do |
+| --- | --- |
+| "sla het op", "opslaan", "bewaar dit", "zet het live", "publiceer" | `/opslaan`: build check, commit, push, wait for the deploy, confirm it is live |
+| "ververs", "haal op", "update", "wat is er veranderd?" | `/ververs`: pull (rebase), `npm install` if deps changed, summarize the changes in plain language |
+| "start de site", "laat het zien" | `npm run dev` and give them the http://localhost:4321/ link |
+
+The full recipes live in `.claude/commands/opslaan.md` and `.claude/commands/ververs.md`.
+
+- **"Opslaan" means publishing.** A push goes live on villacanmiro.com in ~40s. Always say so
+  in the confirmation, so nobody is surprised.
+- **Never push a broken site:** run `npm run build` first. On failure, explain the problem in
+  plain language and do not push.
+- Reply in the language they wrote in (usually Dutch), and report results without git jargon.
+- On a fresh machine git may error with "Author identity unknown". Set it repo-locally to
+  Floris Bokx <florisbokx@gmail.com> and carry on; do not make them fix it.
+
 ## Working preferences
 
 - **Never use em-dashes** in any output or content. Use periods, commas, colons, parentheses,

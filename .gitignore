@@ -19,3 +19,6 @@ pnpm-debug.log*
 # src/assets/images and are what the site ships. Remove this line if you'd
 # rather keep the originals under version control.
 photos-source/
+
+# local Claude Code settings (machine-specific)
+.claude/settings.local.json
