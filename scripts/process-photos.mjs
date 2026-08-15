@@ -29,19 +29,27 @@ const D = (n) => join(droneDir, n);
 // Curated selection. `dest` is relative to src/assets/images.
 // mode: 'wide' hero, 'portrait' 4:5 intro, 'gallery' 1600w landscape.
 const MAP = [
-  { src: G('WhatsApp Image 2026-07-19 at 12.42.34.jpeg'), dest: 'hero.jpg', mode: 'wide' },
-  { src: D('Screenshot_2026-07-10_16-04-58.jpg'), dest: 'intro.jpg', mode: 'feature' },
+  { src: G('20250726_213948~2.jpg'), dest: 'hero.jpg', mode: 'wide' },
+  { src: G('PXL_20260720_111113097.jpg'), dest: 'intro.jpg', mode: 'feature' },
 
-  { src: G('WhatsApp Image 2026-07-19 at 12.40.12 (1).jpeg'), dest: 'gallery/01-pool-terrace.jpg', mode: 'gallery' },
-  { src: G('WhatsApp Image 2026-07-19 at 12.40.12 (2).jpeg'), dest: 'gallery/02-dining.jpg', mode: 'gallery' },
-  { src: G('WhatsApp Image 2026-07-19 at 12.40.12.jpeg'), dest: 'gallery/03-lounge.jpg', mode: 'gallery' },
-  { src: G('WhatsApp Image 2026-07-19 at 12.41.47.jpeg'), dest: 'gallery/04-villa.jpg', mode: 'gallery' },
-  { src: G('WhatsApp Image 2026-07-19 at 12.41.47 (2).jpeg'), dest: 'gallery/05-daybed.jpg', mode: 'gallery' },
-  { src: G('WhatsApp Image 2026-07-19 at 12.40.12 (3).jpeg'), dest: 'gallery/06-pool-night.jpg', mode: 'gallery' },
-  { src: D('DJI_0432.jpg'), dest: 'gallery/07-aerial-pool.jpg', mode: 'gallery' },
-  { src: D('DJI_0430.jpg'), dest: 'gallery/08-gardens.jpg', mode: 'gallery' },
-  { src: D('Screenshot_2026-07-10_16-29-00.jpg'), dest: 'gallery/09-setting.jpg', mode: 'gallery' },
-  { src: D('DJI_0421.jpg'), dest: 'gallery/10-overview.jpg', mode: 'gallery' },
+  { src: G('PXL_20260719_154528611.jpg'), dest: 'gallery/01-pool-terrace.jpg', mode: 'gallery' },
+  { src: G('PXL_20260715_143008563.jpg'), dest: 'gallery/02-outdoor-lounge.jpg', mode: 'gallery' },
+  { src: G('PXL_20260720_123902822.jpg'), dest: 'gallery/03-dining.jpg', mode: 'gallery' },
+  { src: G('PXL_20260720_112642869~2.jpg'), dest: 'gallery/04-living.jpg', mode: 'gallery' },
+  { src: G('PXL_20260720_112545437~3.jpg'), dest: 'gallery/05-sitting.jpg', mode: 'gallery' },
+  { src: G('PXL_20260720_120241450.jpg'), dest: 'gallery/06-kitchen.jpg', mode: 'gallery' },
+  { src: G('PXL_20260726_201345273.jpg'), dest: 'gallery/07-pool-night.jpg', mode: 'gallery' },
+  { src: G('PXL_20260721_120921157~2.jpg'), dest: 'gallery/08-bedroom.jpg', mode: 'gallery' },
+  { src: G('PXL_20260721_121218929.jpg'), dest: 'gallery/09-bathroom.jpg', mode: 'gallery' },
+  { src: G('PXL_20260720_123724545.jpg'), dest: 'gallery/10-snug.jpg', mode: 'gallery' },
+  { src: G('PXL_20260720_111959439.jpg'), dest: 'gallery/11-terrace.jpg', mode: 'gallery' },
+  { src: D('07-aerial-pool.jpg'), dest: 'gallery/12-aerial-pool.jpg', mode: 'gallery' },
+  { src: G('PXL_20260726_180559019.jpg'), dest: 'gallery/13-garden-lounge.jpg', mode: 'gallery' },
+  { src: G('PXL_20260720_111530559.jpg'), dest: 'gallery/14-gardens.jpg', mode: 'gallery' },
+  { src: D('09-setting.jpg'), dest: 'gallery/15-setting.jpg', mode: 'gallery' },
+  { src: D('10-overview.jpg'), dest: 'gallery/16-overview.jpg', mode: 'gallery' },
+  { src: G('PXL_20260720_111902445.jpg'), dest: 'gallery/17-villa.jpg', mode: 'gallery' },
+  { src: G('PXL_20260726_180545423.jpg'), dest: 'gallery/18-sunset.jpg', mode: 'gallery' },
 ];
 
 async function processItem(item) {

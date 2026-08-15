@@ -56,7 +56,15 @@
       "aerial": "Luchtfoto",
       "gardens": "Mediterrane tuinen",
       "setting": "De omgeving",
-      "overview": "Van bovenaf"
+      "overview": "Van bovenaf",
+      "living": "De woonkamer",
+      "sitting": "De tweede zitkamer",
+      "kitchen": "De keuken",
+      "bedroom": "Een slaapkamer",
+      "bathroom": "Een badkamer",
+      "snug": "Chill-outlounge in de schaduw",
+      "terrace": "Overdekt terras",
+      "gardenLounge": "Loungehoek in de tuin"
     }
   },
   "amenities": {

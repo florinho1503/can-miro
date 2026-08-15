@@ -56,7 +56,15 @@
       "aerial": "Aerial view",
       "gardens": "Mediterranean gardens",
       "setting": "The setting",
-      "overview": "From above"
+      "overview": "From above",
+      "living": "The living room",
+      "sitting": "Second sitting room",
+      "kitchen": "The kitchen",
+      "bedroom": "A bedroom",
+      "bathroom": "A bathroom",
+      "snug": "Shaded chill-out lounge",
+      "terrace": "Covered terrace",
+      "gardenLounge": "Garden lounge"
     }
   },
   "amenities": {

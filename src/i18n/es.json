@@ -56,7 +56,15 @@
       "aerial": "Vista aérea",
       "gardens": "Jardines mediterráneos",
       "setting": "El entorno",
-      "overview": "Desde el aire"
+      "overview": "Desde el aire",
+      "living": "El salón",
+      "sitting": "El segundo salón",
+      "kitchen": "La cocina",
+      "bedroom": "Un dormitorio",
+      "bathroom": "Un baño",
+      "snug": "Zona chill-out a la sombra",
+      "terrace": "Terraza cubierta",
+      "gardenLounge": "Rincón de estar en el jardín"
     }
   },
   "amenities": {

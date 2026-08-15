@@ -56,7 +56,15 @@
       "aerial": "Luftaufnahme",
       "gardens": "Mediterrane Gärten",
       "setting": "Die Lage",
-      "overview": "Von oben"
+      "overview": "Von oben",
+      "living": "Das Wohnzimmer",
+      "sitting": "Das zweite Wohnzimmer",
+      "kitchen": "Die Küche",
+      "bedroom": "Ein Schlafzimmer",
+      "bathroom": "Ein Badezimmer",
+      "snug": "Chill-out-Lounge im Schatten",
+      "terrace": "Überdachte Terrasse",
+      "gardenLounge": "Loungeecke im Garten"
     }
   },
   "amenities": {
