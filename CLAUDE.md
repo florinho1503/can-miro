@@ -204,9 +204,10 @@ normal conversation (Dutch or English) and just do the work:
 | --- | --- |
 | "sla het op", "opslaan", "bewaar dit", "zet het live", "publiceer" | `/opslaan`: build check, commit, push, wait for the deploy, confirm it is live |
 | "ververs", "haal op", "update", "wat is er veranderd?" | `/ververs`: pull (rebase), `npm install` if deps changed, summarize the changes in plain language |
-| "start de site", "laat het zien" | `npm run dev` and give them the http://localhost:4321/ link |
+| "start de site", "laat het zien", "/start" | `/start`: `npm install` if needed, `npm run dev` in the background, give them the http://localhost:4321/ link |
 
-The full recipes live in `.claude/commands/opslaan.md` and `.claude/commands/ververs.md`.
+The full recipes live in `.claude/commands/opslaan.md`, `.claude/commands/ververs.md`
+and `.claude/commands/start.md`.
 
 - **"Opslaan" means publishing.** A push goes live on villacanmiro.com in ~40s. Always say so
   in the confirmation, so nobody is surprised.
