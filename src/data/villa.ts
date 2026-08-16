@@ -66,31 +66,36 @@ export const villa = {
   ],
 
   /** Distances for the Area section. `id` maps to `area.places.<id>`. */
-  // Distances by road from the actual address (rounded km), nearest first.
+  // Distances by road from the actual address, in km. Owner-supplied figures
+  // take precedence over the OSRM measurements.
+  // Order is nearest-first EXCEPT the Arenal beach row, deliberately pinned to
+  // the top by the owner because it is the main draw. Decimals are rendered
+  // per language in Area.astro (nl/de/es use a comma).
   // Rough drive times: golf ~3 min, supermarket ~7, old town ~9, port ~10,
   // Arenal beach ~11, Alicante airport ~1h35, Valencia airport ~1h30.
   distances: [
-    { id: 'golf', icon: 'flag', km: 2 },
-    { id: 'supermarket', icon: 'cart', km: 4 },
+    { id: 'arenalBeach', icon: 'beach', km: 6 },
+    { id: 'golf', icon: 'flag', km: 1.5 },
+    { id: 'supermarket', icon: 'cart', km: 3 },
     { id: 'oldTown', icon: 'town', km: 6 },
     { id: 'port', icon: 'boat', km: 7 },
-    { id: 'arenalBeach', icon: 'beach', km: 8 },
     { id: 'alicanteAirport', icon: 'plane', km: 100 },
     { id: 'valenciaAirport', icon: 'plane', km: 125 },
   ],
 
   /**
-   * Seasonal rates, PLACEHOLDER figures (price per week, EUR). Season labels
-   * come from `rates.seasons.<id>`.
+   * Seasonal rates (price per week, EUR), supplied by the owner. Season labels
+   * come from `rates.seasons.<id>`. Keep the nightly figures in
+   * `availability.ts` in sync (weekly / 7, rounded to the nearest 5).
    */
   rates: {
     currency: '€',
     unit: 'week',
     rows: [
-      { id: 'low', pricePerWeek: 1750, minNights: 5 },
-      { id: 'mid', pricePerWeek: 2450, minNights: 7 },
-      { id: 'high', pricePerWeek: 3600, minNights: 7 },
-      { id: 'peak', pricePerWeek: 4500, minNights: 7 },
+      { id: 'low', pricePerWeek: 2500, minNights: 5 },
+      { id: 'mid', pricePerWeek: 3300, minNights: 7 },
+      { id: 'high', pricePerWeek: 4650, minNights: 7 },
+      { id: 'peak', pricePerWeek: 5850, minNights: 7 },
     ],
   },
 

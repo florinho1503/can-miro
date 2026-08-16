@@ -16,6 +16,10 @@ const areaQuery = encodeURIComponent(
   `${villa.location.urbanisation}, ${villa.location.town}`
 );
 const mapLink = `https://www.google.com/maps/search/?api=1&query=${areaQuery}`;
+
+// Distances may carry one decimal (e.g. 1.5 km); nl/de/es write that with a
+// comma, so format per language instead of printing the raw number.
+const kmFormat = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
 ---
 
 <section class="section area" id="area">
@@ -51,7 +55,7 @@ const mapLink = `https://www.google.com/maps/search/?api=1&query=${areaQuery}`;
                 <Icon name={place.icon} size={20} />
                 {t(`area.places.${place.id}`)}
               </span>
-              <span class="area__km">{place.km} {t('area.kmAway')}</span>
+              <span class="area__km">{kmFormat.format(place.km)} {t('area.kmAway')}</span>
             </li>
           ))}
         </ul>

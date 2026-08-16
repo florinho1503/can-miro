@@ -83,7 +83,9 @@ npm run build    # -> dist/  (static)
 - **Pool is private AND heated.** **Pets: not allowed. Children: welcome, pool toys provided.**
 - **Copy tone:** all four languages hand-polished to read naturally, NOT literal machine
   translation. Avoid word-for-word calques; keep the warm, unhurried, editorial voice.
-- **Distances are real** (road distance from the actual address via OSRM), nearest-first.
+- **Distances are real** (road distance from the actual address via OSRM); owner-supplied
+  figures win over the measured ones. Nearest-first, except **Arenal beach is pinned to the
+  top** (main draw). Decimals render per language (`1,5` in nl/de/es) via `Intl` in `Area.astro`.
 - **Map shows a radius circle, no pin** (see Map section).
 
 ## Photos

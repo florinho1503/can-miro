@@ -118,7 +118,7 @@
   "rates": {
     "eyebrow": "Rates",
     "title": "Seasons & pricing",
-    "subtitle": "Indicative weekly rates. Get in touch for exact dates, shorter stays and long-stay offers.",
+    "subtitle": "Weekly rates. Get in touch for exact dates, shorter stays and long-stay offers.",
     "perWeek": "per week",
     "minNights": "min. nights",
     "seasons": {
@@ -134,7 +134,7 @@
       "Air conditioning and pool maintenance",
       "Welcome guidance and local tips"
     ],
-    "note": "Rates are placeholders. Confirm current pricing on enquiry. A refundable damage deposit applies.",
+    "note": "A refundable damage deposit applies.",
     "cta": "Request a quote"
   },
   "reviews": {

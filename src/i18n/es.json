@@ -118,7 +118,7 @@
   "rates": {
     "eyebrow": "Tarifas",
     "title": "Temporadas y precios",
-    "subtitle": "Tarifas semanales orientativas. Escríbanos para fechas concretas, estancias más cortas y ofertas de larga estancia.",
+    "subtitle": "Tarifas semanales. Escríbanos para fechas concretas, estancias más cortas y ofertas de larga estancia.",
     "perWeek": "por semana",
     "minNights": "noches mín.",
     "seasons": {
@@ -134,7 +134,7 @@
       "Aire acondicionado y mantenimiento de la piscina",
       "Guía de bienvenida y consejos locales"
     ],
-    "note": "Las tarifas son orientativas. Confirme el precio actual al hacer su consulta. Se aplica una fianza reembolsable.",
+    "note": "Se aplica una fianza reembolsable.",
     "cta": "Solicitar presupuesto"
   },
   "reviews": {

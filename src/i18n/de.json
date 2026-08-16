@@ -118,7 +118,7 @@
   "rates": {
     "eyebrow": "Preise",
     "title": "Saisons & Preise",
-    "subtitle": "Richtwerte pro Woche. Kontaktieren Sie uns für genaue Daten, kürzere Aufenthalte und Angebote für Langzeitaufenthalte.",
+    "subtitle": "Wochenpreise. Kontaktieren Sie uns für genaue Daten, kürzere Aufenthalte und Angebote für Langzeitaufenthalte.",
     "perWeek": "pro Woche",
     "minNights": "Min. Nächte",
     "seasons": {
@@ -134,7 +134,7 @@
       "Klimaanlage und Poolpflege",
       "Willkommensinfos und lokale Tipps"
     ],
-    "note": "Die Preise sind Richtwerte; die aktuellen Preise bestätigen wir bei Ihrer Anfrage. Es gilt eine erstattbare Kaution.",
+    "note": "Es gilt eine erstattbare Kaution.",
     "cta": "Angebot anfragen"
   },
   "reviews": {

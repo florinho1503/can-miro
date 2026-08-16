@@ -12,10 +12,10 @@ export type Season = 'low' | 'mid' | 'high' | 'peak';
 
 /** Nightly price (EUR) per season, aligned with the weekly rates in villa.ts. */
 export const nightly: Record<Season, number> = {
-  low: 250,
-  mid: 350,
-  high: 515,
-  peak: 645,
+  low: 355,
+  mid: 470,
+  high: 665,
+  peak: 835,
 };
 
 /** Month (0=Jan … 11=Dec) → season, tuned for the Costa Blanca calendar. */

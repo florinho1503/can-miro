@@ -118,7 +118,7 @@
   "rates": {
     "eyebrow": "Tarieven",
     "title": "Seizoenen & prijzen",
-    "subtitle": "Indicatieve weektarieven. Neem contact op voor exacte data, kortere verblijven en aanbiedingen voor langer verblijf.",
+    "subtitle": "Weektarieven. Neem contact op voor exacte data, kortere verblijven en aanbiedingen voor langer verblijf.",
     "perWeek": "per week",
     "minNights": "min. nachten",
     "seasons": {
@@ -134,7 +134,7 @@
       "Airconditioning en zwembadonderhoud",
       "Welkomstinformatie en lokale tips"
     ],
-    "note": "De tarieven zijn indicatief; de actuele prijzen bevestigen we bij uw aanvraag. Er geldt een terugbetaalbare borg.",
+    "note": "Er geldt een terugbetaalbare borg.",
     "cta": "Vraag een offerte aan"
   },
   "reviews": {
