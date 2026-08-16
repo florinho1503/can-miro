@@ -26,7 +26,10 @@ const captionByToken: Record<string, string> = {
   dining: 'alfresco',
   lounge: 'outdoorLounge',
   living: 'living',
-  sitting: 'sitting',
+  // 04-living and 05-sitting are two views of the SAME room, so both get the
+  // "living room" caption. Point this at a `sitting` caption of its own only
+  // if a genuinely separate second sitting room is photographed later.
+  sitting: 'living',
   kitchen: 'kitchen',
   bedroom: 'bedroom',
   bathroom: 'bathroom',
