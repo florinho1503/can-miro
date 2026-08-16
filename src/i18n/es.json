@@ -58,9 +58,12 @@
       "setting": "El entorno",
       "overview": "Desde el aire",
       "living": "El salón",
+      "kitchenOne": "Cocina 1",
+      "kitchenTwo": "Cocina 2",
       "kitchen": "La cocina",
       "bedroom": "Un dormitorio",
       "bathroom": "Un baño",
+      "bathroomEnsuite": "Baño en suite del dormitorio principal",
       "snug": "Zona chill-out a la sombra",
       "terrace": "Terraza cubierta",
       "gardenLounge": "Rincón de estar en el jardín"

@@ -30,8 +30,13 @@ const captionByToken: Record<string, string> = {
   // "living room" caption. Point this at a `sitting` caption of its own only
   // if a genuinely separate second sitting room is photographed later.
   sitting: 'living',
+  // Two separate kitchens, so the numbered tokens must come before the plain
+  // `kitchen` fallback. Same for the en-suite bathroom before `bathroom`.
+  kitchen1: 'kitchenOne',
+  kitchen2: 'kitchenTwo',
   kitchen: 'kitchen',
   bedroom: 'bedroom',
+  'bathroom-ensuite': 'bathroomEnsuite',
   bathroom: 'bathroom',
   snug: 'snug',
   terrace: 'terrace',

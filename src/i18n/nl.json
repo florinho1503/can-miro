@@ -58,9 +58,12 @@
       "setting": "De omgeving",
       "overview": "Van bovenaf",
       "living": "De woonkamer",
+      "kitchenOne": "Keuken 1",
+      "kitchenTwo": "Keuken 2",
       "kitchen": "De keuken",
       "bedroom": "Een slaapkamer",
       "bathroom": "Een badkamer",
+      "bathroomEnsuite": "En-suite badkamer bij de hoofdslaapkamer",
       "snug": "Chill-outlounge in de schaduw",
       "terrace": "Overdekt terras",
       "gardenLounge": "Loungehoek in de tuin"

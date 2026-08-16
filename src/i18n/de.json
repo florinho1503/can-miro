@@ -58,9 +58,12 @@
       "setting": "Die Lage",
       "overview": "Von oben",
       "living": "Das Wohnzimmer",
+      "kitchenOne": "Küche 1",
+      "kitchenTwo": "Küche 2",
       "kitchen": "Die Küche",
       "bedroom": "Ein Schlafzimmer",
       "bathroom": "Ein Badezimmer",
+      "bathroomEnsuite": "En-suite-Bad am Hauptschlafzimmer",
       "snug": "Chill-out-Lounge im Schatten",
       "terrace": "Überdachte Terrasse",
       "gardenLounge": "Loungeecke im Garten"

@@ -58,9 +58,12 @@
       "setting": "The setting",
       "overview": "From above",
       "living": "The living room",
+      "kitchenOne": "Kitchen 1",
+      "kitchenTwo": "Kitchen 2",
       "kitchen": "The kitchen",
       "bedroom": "A bedroom",
       "bathroom": "A bathroom",
+      "bathroomEnsuite": "En-suite bathroom, master bedroom",
       "snug": "Shaded chill-out lounge",
       "terrace": "Covered terrace",
       "gardenLounge": "Garden lounge"
