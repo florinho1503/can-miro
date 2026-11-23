@@ -52,14 +52,17 @@ npm run build    # -> dist/  (static)
 - `src/pages/index.astro` (en) + `src/pages/[lang]/index.astro` (nl/de/es) render
   `src/components/Home.astro`, which assembles the public sections in order.
 - `src/pages/admin.astro` = standalone private booking portal (not part of Home).
-- Sections in `src/components/`: `Header`, `Hero`, `Intro`, `Gallery`, `Amenities`, `Area`,
-  `Rates`, `Booking`, `Reviews`, `Faq`, `Enquiry`, `Footer`, `WhatsAppFab`, plus `Icon.astro`
-  (inline SVG set) and `LangSwitcher.astro`.
+- Sections in `src/components/`: `Header`, `Hero`, `Intro`, `Gallery`, `Amenities`, `Layout`,
+  `Area`, `Rates`, `Booking`, `HouseRules`, `Reviews`, `Faq`, `Enquiry`, `Footer`,
+  `WhatsAppFab`, plus `Icon.astro` (inline SVG set) and `LangSwitcher.astro`.
 - `src/layouts/Base.astro`: html shell, head meta/OG/hreflang, fonts, scroll-reveal, noindex.
 - `src/styles/tokens.css` = design tokens; `global.css` = base + helpers.
-- `src/data/villa.ts` = language-neutral facts (stats, amenity/distance ids + icons, rate
-  figures, review meta, FAQ ids, registration number, map centre/radius).
-- `src/data/availability.ts` = nightly pricing per season + `blockedRanges` + `isAvailable`.
+- `src/data/villa.ts` = language-neutral facts (stats, amenity/distance/facility/room ids +
+  icons, `season`, rate periods + extras, house-rule ids and times, review meta, FAQ ids,
+  registration number, map centre/radius).
+- `src/data/availability.ts` = season window + nightly price + `blockedRanges` +
+  `isAvailable`. `priceForDate()` and `fromPriceForMonth()` return **null** outside the
+  season, so callers must not format the result as a number without checking.
 - `src/i18n/{en,nl,de,es}.json` = all copy, same nested shape; missing keys fall back to
   English. `src/config.ts` = contact config (Supabase env is read directly via
   `import.meta.env` in `Booking`/`Enquiry`/`admin`).
@@ -114,6 +117,28 @@ npm run build    # -> dist/  (static)
 - Resolution: most of the set is ~4000px wide, but `04, 13, 21, 29-33` came back at
   ~1400-1670px (the four bedrooms among them). Fine at the 1600px gallery target, slightly
   soft in the lightbox. Re-export from the photographer's originals if they ever turn up.
+
+## Season, rates & terms
+
+Source of truth is the owner's own Micazu listing (read Nov 2026):
+`micazu.nl/vakantiehuis/spanje/costa-blanca/javea/villa-met-privezwembad-en-2000m-tuin-55143/`.
+
+- **Let in JULY AND AUGUST ONLY**, minimum 7 nights. The window lives in `villa.season`;
+  `availability.ts` reads it, so the calendar greys out the rest of the year and `Booking`
+  opens on the season's first month instead of today when today is before it.
+- **Rates per stay** in `villa.rates.periods` (dated, `to` exclusive): 1-17 Jul €5,000,
+  17-24 Jul €5,100, 24 Jul-1 Sep €5,200; €750 a night throughout. Micazu lists the first two
+  weeks separately at the same price; they are merged here. Period labels are generated from
+  the dates per locale, so there is no hand-written label to translate.
+- **Extras are NOT included** (`villa.rates.extras`): bed linen €30pp, final cleaning €350,
+  deposit €750, late-arrival surcharge €50 (after 20:00), cot €45, high chair €45. Only
+  water/electricity/Wi-Fi, air conditioning, pool and garden maintenance are in the price.
+- Payment (30% deposit, balance per confirmation, full amount within 60 days) and the
+  cancellation terms are the owner's own wording, reused with permission.
+- **Known conflict with Micazu: the pool.** Micazu says "niet verwarmd"; the owner confirmed
+  (Nov 2026) the site is right and the pool IS heated. Micazu is the one to correct.
+- The lower floor is a **self-contained apartment** (own entrance, bedroom, bathroom,
+  kitchen). That is why there are two kitchens. It is a selling point: say so.
 
 ## Booking calendar + availability
 
@@ -186,7 +211,9 @@ despite the offset. "Open in Google Maps" links to the neighbourhood, never the 
 
 ## Next steps roadmap
 
-**Done:** full photo set incl. interiors (Nov 2026 shoot); real seasonal rates; custom domain
+**Done:** full photo set incl. interiors (Nov 2026 shoot); real rates, extras, house rules,
+room-by-room layout and full facilities list (from the Micazu listing); real registration
+number VT-510483-A; custom domain
 villacanmiro.com (HTTPS); Web3Forms enquiry email (-> florisbokx@gmail.com); Supabase
 `/admin` booking portal; enquiry -> calendar sync as tentative options; live availability on
 the public calendar.
@@ -194,10 +221,8 @@ the public calendar.
 **A. To a real public launch**
 1. Dedicated house inbox **canmiro@gmail.com** -> new Web3Forms key + repoint
    `PUBLIC_CONTACT_EMAIL` (variable + `.env` + workflow).
-2. Real **tourist registration number** in `villa.ts` (still `VT-XXXXXX-A`; legally required
-   in the footer for Comunidad Valenciana).
-3. Real **reviews** (still placeholders, and they predate the distance fix).
-4. **Remove `noindex`** from `Base.astro` (keep it on `admin.astro`).
+2. Real **reviews** (still placeholders, and they predate the distance fix).
+3. **Remove `noindex`** from `Base.astro` (keep it on `admin.astro`).
 
 **B. Channels / bookings (later)**
 5. Airbnb/Booking **iCal** sync: export our confirmed bookings as an iCal feed for the

@@ -98,7 +98,7 @@
       "bedrooms4": "4 slaapkamers",
       "bathrooms3": "3 badkamers",
       "sleeps8": "Plaats voor 8 personen",
-      "twoKitchens": "Twee keukens (boven & beneden)",
+      "twoKitchens": "Twee keukens (villa & appartement)",
       "privatePool": "Verwarmd privézwembad",
       "fourSeating": "4 zithoeken buiten",
       "tableTennis": "Tafeltennistafel",
@@ -107,6 +107,65 @@
       "wifi": "Snel internet",
       "tv": "Smart-tv",
       "parking": "Eigen parkeerplaats"
+    },
+    "allTitle": "Alle voorzieningen op een rij",
+    "facilityGroups": {
+      "property": "Het huis",
+      "climate": "Klimaat & techniek",
+      "outside": "Buiten",
+      "kitchenLaundry": "Keuken & huishouden",
+      "linen": "Linnengoed",
+      "children": "Kinderen & spel"
+    },
+    "facilities": {
+      "villaType": "Vrijstaande villa",
+      "livingArea": "211 m² woonoppervlak",
+      "gardenArea": "Ruim 2.000 m² tuin",
+      "energyLabel": "Energielabel B",
+      "renovated": "In 2025 volledig gerenoveerd",
+      "airConditioning": "Airconditioning",
+      "centralHeating": "Centrale verwarming",
+      "wifi": "Wifi",
+      "television": "Televisie",
+      "privatePool": "Verwarmd privézwembad",
+      "poolSize": "Zwembad 10,60 x 4,70 m",
+      "outdoorKitchen": "Buitenkeuken",
+      "barbecue": "Barbecue",
+      "sixTerraces": "Zes terrassen, twee overdekt",
+      "roofTerrace": "Dakterras",
+      "veranda": "Veranda",
+      "balcony": "Balkon",
+      "loungeSet": "Loungeset",
+      "gardenFurniture": "Tuintafels en -stoelen",
+      "sunLoungers": "Ligbedden",
+      "parasols": "Parasols",
+      "outdoorShower": "Buitendouche",
+      "outdoorToilet": "Buitentoilet bij het zwembad",
+      "outdoorLighting": "Buitenverlichting",
+      "fencedGarden": "Volledig omheinde tuin",
+      "privateDriveway": "Eigen oprit",
+      "parking": "Parkeren op eigen terrein",
+      "twoKitchens": "Twee keukens",
+      "oven": "Oven",
+      "microwave": "Combimagnetron",
+      "dishwasher": "Vaatwasser",
+      "fridgeFreezer": "Koelkast en vriezer",
+      "coffeeMachine": "Koffiezetapparaat",
+      "kettle": "Waterkoker",
+      "cutleryCrockery": "Bestek en servies",
+      "washingMachine": "Wasmachine",
+      "tumbleDryer": "Wasdroger",
+      "iron": "Strijkijzer en strijkplank",
+      "vacuum": "Stofzuiger",
+      "bedLinen": "Bedlinnen",
+      "towels": "Handdoeken",
+      "beachTowels": "Strandlakens",
+      "kitchenLinen": "Keukenlinnen",
+      "hairdryer": "Föhn",
+      "cot": "Kinderbed",
+      "highChair": "Kinderstoel",
+      "tableTennis": "Tafeltennistafel",
+      "poolToys": "Zwembadspeelgoed"
     }
   },
   "area": {
@@ -135,24 +194,42 @@
   },
   "rates": {
     "eyebrow": "Tarieven",
-    "title": "Seizoenen & prijzen",
-    "subtitle": "Weektarieven. Neem contact op voor exacte data, kortere verblijven en aanbiedingen voor langer verblijf.",
+    "title": "Prijzen & voorwaarden",
+    "subtitle": "Can Miró verhuren we in juli en augustus, met een minimaal verblijf van 7 nachten. Hieronder staan de weekprijzen, de bijkomende kosten en onze voorwaarden.",
     "perWeek": "per week",
-    "minNights": "min. nachten",
-    "seasons": {
-      "low": "Laagseizoen",
-      "mid": "Middenseizoen",
-      "high": "Hoogseizoen",
-      "peak": "Topseizoen (jul–aug)"
+    "minNights": "nachten minimaal",
+    "perNightNote": "De prijs per nacht binnen het seizoen is",
+    "extrasTitle": "Bijkomende kosten",
+    "optionalTitle": "Optioneel",
+    "extrasNote": "De verplichte kosten betaalt u bij de boeking. De toeslag voor late aankomst en de kinderstoel rekent u ter plaatse af.",
+    "per": {
+      "stay": "per verblijf",
+      "person": "per persoon"
+    },
+    "extras": {
+      "linen": "Bedlinnen en handdoeken (inclusief badlaken)",
+      "cleaning": "Eindschoonmaak",
+      "deposit": "Borg",
+      "lateArrival": "Toeslag aankomst na 20:00 uur",
+      "cot": "Kinderbed",
+      "highChair": "Kinderstoel"
     },
     "includedTitle": "Bij elk verblijf inbegrepen",
     "included": [
-      "Eindschoonmaak & vers linnengoed en handdoeken",
       "Water, elektriciteit en snelle wifi",
-      "Airconditioning en zwembadonderhoud",
+      "Airconditioning in het hele huis",
+      "Zwembad- en tuinonderhoud",
       "Welkomstinformatie en lokale tips"
     ],
-    "note": "Er geldt een terugbetaalbare borg.",
+    "paymentTitle": "Betaling",
+    "payment": "Na uw boeking betaalt u een aanbetaling van 30% van de huurprijs. Het restbedrag betaalt u uiterlijk op de datum die in uw boekingsbevestiging staat. Boekt u binnen 60 dagen voor aankomst, dan betaalt u het volledige bedrag in één keer bij het boeken.",
+    "cancellationTitle": "Annuleren",
+    "cancellation60plus": "Annuleert u meer dan 60 dagen voor aankomst, dan betaalt u 30% van de huurprijs, oftewel de aanbetaling.",
+    "cancellation60minus": "Annuleert u 60 dagen of minder voor aankomst, dan betaalt u de volledige huurprijs.",
+    "cancellationNoShow": "Komt u niet opdagen of vertrekt u eerder dan gepland, dan blijft de volledige huurprijs verschuldigd.",
+    "cancellationForce": "Moeten wij de boeking annuleren door overmacht, dan krijgt u alle betaalde bedragen terug.",
+    "cancellationTip": "Annuleren doet u altijd schriftelijk. We raden u aan een annuleringsverzekering af te sluiten.",
+    "depositNote": "De borg ontvangt u uiterlijk 14 dagen na uw vertrek terug, nadat de villa is gecontroleerd.",
     "cta": "Vraag een offerte aan"
   },
   "reviews": {
@@ -169,37 +246,45 @@
     "eyebrow": "Goed om te weten",
     "title": "Veelgestelde vragen",
     "items": {
+      "season": {
+        "q": "Wanneer is Can Miró te huur?",
+        "a": "We verhuren Can Miró in juli en augustus, met een minimaal verblijf van 7 nachten. Heeft u andere data in gedachten? Vraag het gerust, dan kijken we wat mogelijk is."
+      },
+      "apartment": {
+        "q": "Wat is dat aparte appartement beneden?",
+        "a": "Op de benedenverdieping ligt een compleet appartement met een eigen ingang, slaapkamer, badkamer en keuken. Ideaal als u met twee gezinnen reist, of met opa en oma of oudere kinderen erbij: samen op vakantie, en toch ieder een eigen plek."
+      },
       "checkin": {
         "q": "Wat zijn de in- en uitchecktijden?",
-        "a": "Inchecken kan vanaf 16:00 uur, uitchecken tot 10:00 uur. Flexibele tijden zijn vaak mogelijk, afhankelijk van de planning die dag. Vraag het gerust."
+        "a": "Inchecken kan tussen 16:00 en 20:00 uur, uitchecken tot 10:00 uur. Komt u later dan 20:00 uur aan, dan geldt een toeslag van € 50, ter plaatse te betalen. Laat het ons weten, dan zorgen we dat er iemand voor u klaarstaat."
       },
       "deposit": {
         "q": "Is er een borg?",
-        "a": "Ja, vóór aankomst vragen we een terugbetaalbare borg. Die storten we binnen enkele dagen na uitchecken terug, na een gebruikelijke controle."
+        "a": "Ja, een borg van € 750 per verblijf, te betalen bij de boeking. U ontvangt die uiterlijk 14 dagen na vertrek terug, nadat de villa is gecontroleerd."
       },
       "cancellation": {
         "q": "Wat is het annuleringsbeleid?",
-        "a": "Wij hanteren een eerlijk en duidelijk annuleringsbeleid dat we bij uw boeking bevestigen. Neem contact op voor de actuele voorwaarden voor uw data."
+        "a": "Annuleert u meer dan 60 dagen voor aankomst, dan betaalt u 30% van de huurprijs, oftewel de aanbetaling. Binnen 60 dagen voor aankomst is de volledige huurprijs verschuldigd. Annuleren doet u altijd schriftelijk, en we raden u aan een annuleringsverzekering af te sluiten."
+      },
+      "cleaning": {
+        "q": "Is schoonmaak inbegrepen?",
+        "a": "De eindschoonmaak kost € 350 per verblijf en betaalt u bij de boeking. Bedlinnen en handdoeken, inclusief badlaken, kosten € 30 per persoon. Tussentijds schoonmaken regelen we graag op verzoek."
+      },
+      "pool": {
+        "q": "Is het zwembad privé en verwarmd?",
+        "a": "Ja. Het zwembad is privé en exclusief voor uw gezelschap, en verwarmd. Het is 10,60 bij 4,70 meter en loopt af van 1,10 tot 2,00 meter diep, dus ruim genoeg om echt baantjes te trekken."
+      },
+      "kids": {
+        "q": "Is de villa geschikt voor kinderen?",
+        "a": "Zeker. Er is volop ruimte, een tafeltennistafel en veilige plekken in de tuin, en voor de kleinsten is er zwembadspeelgoed. Een kinderbed en kinderstoel zijn er ook, elk € 45 per verblijf. Houd er rekening mee dat kinderen bij het zwembad altijd onder toezicht van een volwassene moeten zijn."
       },
       "pets": {
         "q": "Zijn huisdieren toegestaan?",
         "a": "Helaas zijn huisdieren niet toegestaan in de villa."
       },
-      "pool": {
-        "q": "Is het zwembad privé en verwarmd?",
-        "a": "Ja. Het zwembad is privé en exclusief voor uw gezelschap, en verwarmd, zodat u ook ruim buiten de zomermaanden comfortabel kunt zwemmen."
-      },
-      "kids": {
-        "q": "Is de villa geschikt voor kinderen?",
-        "a": "Zeker. Er is volop ruimte, een tafeltennistafel en veilige plekken in de tuin, en voor de kleinsten is er zwembadspeelgoed. Laat ons weten hoe oud ze zijn, dan denken we graag mee."
-      },
-      "cleaning": {
-        "q": "Is schoonmaak inbegrepen?",
-        "a": "De eindschoonmaak en vers beddengoed en handdoeken zijn inbegrepen. Tussentijds schoonmaken en extra service regelen we graag op verzoek."
-      },
       "parking": {
         "q": "Is er parkeergelegenheid?",
-        "a": "Ja, er is eigen parkeergelegenheid bij de villa. Een auto is een aanrader om de omgeving goed te ontdekken."
+        "a": "Ja, er is een eigen oprit en parkeergelegenheid op het terrein. Een auto is een aanrader om de omgeving goed te ontdekken."
       }
     }
   },
@@ -262,6 +347,145 @@
     "nextMonth": "Volgende",
     "viewMonth": "Bekijk maand",
     "weekOf": "Week van",
-    "note": "De beschikbaarheid is indicatief en wordt bij uw aanvraag bevestigd. We houden de kalender synchroon met onze andere boekingskanalen."
+    "note": "De beschikbaarheid is indicatief en wordt bij uw aanvraag bevestigd. We houden de kalender synchroon met onze andere boekingskanalen.",
+    "closed": "Niet verhuurd"
+  },
+  "layout": {
+    "eyebrow": "Indeling",
+    "title": "Kamer voor kamer",
+    "subtitle": "Vier slaapkamers en drie badkamers, verdeeld over de villa en een apart appartement op de benedenverdieping met een eigen ingang.",
+    "floors": {
+      "ground": "Begane grond",
+      "lower": "Het appartement, benedenverdieping",
+      "outside": "Buiten"
+    },
+    "rooms": {
+      "living": {
+        "name": "Woonkamer",
+        "body": "Lichte, sfeervolle woonkamer in Spaanse stijl, met houten balken aan het plafond en een open haard. Op de grote, comfortabele bank komt u heerlijk tot rust na een dag zon en zee. Via de openslaande deuren loopt u zo het terras op, waardoor binnen en buiten mooi in elkaar overlopen. Onder de karakteristieke boog ligt de eethoek met een lange houten tafel, met genoeg plek om met z'n allen aan te schuiven.",
+        "specs": [
+          "Open haard",
+          "Eettafel met 6 stoelen",
+          "Twee 3-zitsbanken",
+          "Airconditioning",
+          "Tegelvloer"
+        ]
+      },
+      "kitchen": {
+        "name": "Keuken",
+        "body": "Lichte, open keuken met houten kastjes en een frisse, moderne uitstraling. U kookt op een elektrisch fornuis met vier kookzones, en er zijn een combimagnetron, afzuigkap en volop bestek en servies. Via de openslaande deuren loopt u zo naar het terras en de buitenkeuken met barbecue. Zo kookt u binnen, grilt u buiten en schuift u daarna samen aan tafel in de zon.",
+        "specs": [
+          "Elektrisch fornuis, 4 kookzones",
+          "Oven en combimagnetron",
+          "Vaatwasser",
+          "Koelkast en vriezer",
+          "Koffiezetapparaat en waterkoker"
+        ]
+      },
+      "bedroom1": {
+        "name": "Slaapkamer 1",
+        "body": "Ruime slaapkamer met een tweepersoonsbed en een prachtig bewerkt houten hoofdbord in Spaanse stijl. De ladekast biedt genoeg ruimte voor uw kleding, en door het raam kijkt u uit op het groen van de tuin. Dankzij de airconditioning slaapt u ook op warme zomernachten heerlijk koel.",
+        "specs": [
+          "Tweepersoonsbed 180 x 200 cm",
+          "Kledingkast",
+          "Airconditioning",
+          "Tegelvloer"
+        ]
+      },
+      "bedroom2": {
+        "name": "Slaapkamer 2",
+        "body": "Lichte slaapkamer met twee eenpersoonsbedden, ideaal voor kinderen, vrienden of reisgenoten. De frisse witte inrichting en het kleurrijke schilderij van de kust geven de kamer een vrolijke vakantiesfeer. Elk bed heeft een eigen nachtkastje met leeslampje.",
+        "specs": [
+          "Twee eenpersoonsbedden 90 x 200 cm",
+          "Kledingkast",
+          "Airconditioning",
+          "Tegelvloer"
+        ]
+      },
+      "bedroom3": {
+        "name": "Slaapkamer 3",
+        "body": "Rustige slaapkamer aan de tuinzijde met twee eenpersoonsbedden, een kledingkast en airconditioning. Een fijne kamer voor kinderen of voor wie graag vroeg naar bed gaat.",
+        "specs": [
+          "Twee eenpersoonsbedden 90 x 190 cm",
+          "Kledingkast",
+          "Airconditioning",
+          "Tegelvloer"
+        ]
+      },
+      "bathroom1": {
+        "name": "Badkamer 1",
+        "body": "Badkamer en-suite met douche, ligbad, wastafel en toilet. Na een dag aan het zwembad of op het strand stapt u zo vanuit uw slaapkamer onder de douche, of neemt u 's avonds een ontspannend bad.",
+        "specs": [
+          "En-suite",
+          "Ligbad",
+          "Douche",
+          "Wastafel en toilet",
+          "Föhn"
+        ]
+      },
+      "bathroom2": {
+        "name": "Badkamer 2",
+        "body": "Gedeelde badkamer voor slaapkamer 2 en 3, met douche, wastafel en toilet. Praktisch als u met kinderen of vrienden reist: na een dag zon en zwemmen frist u zich hier snel op. Een föhn is aanwezig, zodat iedereen vlot klaar is voor een avondje uit.",
+        "specs": [
+          "Douche",
+          "Wastafel en toilet",
+          "Föhn"
+        ]
+      },
+      "bedroom4": {
+        "name": "Slaapkamer 4",
+        "body": "De slaapkamer van het aparte appartement, met een tweepersoonsbed. Het appartement heeft een eigen ingang, badkamer en keuken, zodat u hier helemaal uw eigen plek heeft. Ideaal voor opa en oma, oudere kinderen of een bevriend stel dat graag wat privacy heeft. Samen op vakantie, en toch ieder zijn eigen ritme.",
+        "specs": [
+          "Tweepersoonsbed 180 x 200 cm",
+          "Eigen ingang",
+          "Eigen keuken",
+          "Kledingkast",
+          "Airconditioning"
+        ]
+      },
+      "bathroom3": {
+        "name": "Badkamer 3",
+        "body": "Badkamer en-suite bij de slaapkamer van het appartement, met douche, wastafel en toilet. Zo heeft u beneden alles bij de hand en uw eigen privacy. Handig om te weten: bij het zwembad is ook een apart buitentoilet, achter de barbecue. Zo hoeft u na een duik niet met natte voeten het huis in.",
+        "specs": [
+          "En-suite",
+          "Douche",
+          "Wastafel en toilet"
+        ]
+      },
+      "pool": {
+        "name": "Zwembad en tuin",
+        "body": "Privézwembad van 4,70 bij 10,60 meter, aflopend van 1,10 naar 2,00 meter diep, middenin een mediterrane tuin van ruim 2.000 m² met palmen, olijfbomen en cipressen. Ruim genoeg om baantjes te trekken, en u heeft het helemaal voor uzelf. Rondom staan ligbedden en parasols, en na een duik spoelt u af onder de buitendouche. 's Avonds is het zwembad sfeervol verlicht.",
+        "specs": [
+          "10,60 x 4,70 m",
+          "Diepte 1,10 tot 2,00 m",
+          "Privé en verwarmd",
+          "Buitendouche",
+          "Ligbedden en parasols",
+          "Sfeerverlichting"
+        ]
+      }
+    }
+  },
+  "houseRules": {
+    "eyebrow": "Huisregels",
+    "title": "Hoe we het hier graag houden",
+    "subtitle": "Can Miró ligt in een rustige woonwijk. Met een paar eenvoudige afspraken blijft het voor u, voor de buren en voor de gasten na u een fijne plek.",
+    "checkIn": "Inchecken",
+    "checkOut": "Uitchecken",
+    "quietHours": "Stiltetijden",
+    "minAge": "Hoofdboeker vanaf",
+    "items": {
+      "mainBooker": "De hoofdboeker is minimaal 28 jaar en is tijdens het hele verblijf zelf aanwezig.",
+      "pets": "Huisdieren zijn niet toegestaan.",
+      "smoking": "Roken is niet toegestaan in huis.",
+      "events": "Feesten en evenementen zijn niet mogelijk.",
+      "photography": "Commerciële fotografie is niet toegestaan.",
+      "children": "Kinderen zijn van harte welkom.",
+      "poolSupervision": "Kinderen in en rond het zwembad altijd onder toezicht van een volwassene. Zo blijft het zwemplezier voor iedereen veilig.",
+      "visitors": "Bezoek is mogelijk in overleg.",
+      "maintenance": "De zwembad- en tuininstallaties worden door onze onderhoudsmensen bediend. Zij komen regelmatig langs, dus fijn als u ze even toegang geeft.",
+      "leaveTidy": "Laat de villa bij vertrek netjes achter: afwas gedaan en opgeborgen, en alles terug op zijn plek.",
+      "report": "Is er iets kapot of werkt iets niet? Meld het ons direct, dan lossen we het zo snel mogelijk op."
+    }
   }
 }

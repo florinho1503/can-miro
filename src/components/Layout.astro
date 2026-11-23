@@ -1,0 +1,129 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations, getDict } from '../i18n';
+import { villa, type Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const rooms = getDict(locale).layout.rooms as Record<
+  string,
+  { name: string; body: string; specs: string[] }
+>;
+
+// Group the rooms by floor, keeping the order declared in villa.ts.
+const floors: { id: string; rooms: typeof villa.rooms[number][] }[] = [];
+for (const room of villa.rooms) {
+  const last = floors[floors.length - 1];
+  if (last && last.id === room.floor) last.rooms.push(room);
+  else floors.push({ id: room.floor, rooms: [room] });
+}
+---
+
+<section class="section layout" id="layout">
+  <div class="container">
+    <div class="layout__head reveal">
+      <p class="eyebrow">{t('layout.eyebrow')}</p>
+      <h2 class="section-title">{t('layout.title')}</h2>
+      <p class="lead">{t('layout.subtitle')}</p>
+    </div>
+
+    {floors.map((floor) => (
+      <div class="layout__floor reveal">
+        <h3 class="layout__floor-title">
+          <span>{t(`layout.floors.${floor.id}`)}</span>
+        </h3>
+        <div class="layout__rooms">
+          {floor.rooms.map((room) => (
+            <article class="layout__room">
+              <span class="layout__icon"><Icon name={room.icon} size={22} /></span>
+              <div class="layout__room-body">
+                <h4 class="layout__room-name">{rooms[room.id].name}</h4>
+                <p class="layout__room-text">{rooms[room.id].body}</p>
+                <ul class="layout__specs">
+                  {rooms[room.id].specs.map((spec) => <li>{spec}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .layout__head {
+    max-width: var(--container-narrow);
+    margin-bottom: 3rem;
+  }
+  .layout__floor + .layout__floor { margin-top: 3rem; }
+  .layout__floor-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.82rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 1.5rem;
+  }
+  .layout__floor-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .layout__rooms {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .layout__room {
+    display: flex;
+    gap: 1rem;
+    background: var(--bg-raised);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+  .layout__icon {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--c-white);
+    color: var(--accent);
+  }
+  .layout__room-name {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  .layout__room-text {
+    line-height: 1.6;
+    margin-bottom: 0.9rem;
+  }
+  .layout__specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .layout__specs li {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    padding: 0.32rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-soft);
+    background: var(--c-white);
+  }
+
+  @media (max-width: 860px) {
+    .layout__rooms { grid-template-columns: 1fr; }
+  }
+</style>

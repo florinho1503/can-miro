@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { useTranslations } from '../i18n';
-import type { Locale } from '../data/villa';
+import { villa, type Locale } from '../data/villa';
 
 interface Props {
   locale: Locale;
@@ -12,6 +12,7 @@ const t = useTranslations(locale);
 // Strings the client script needs, handed over as inline JSON.
 const bi = {
   from: t('booking.from'),
+  closed: t('booking.closed'),
   perNight: t('booking.perNight'),
   night: t('booking.night'),
   nights: t('booking.nights'),
@@ -32,7 +33,7 @@ const bi = {
       <p class="lead">{t('booking.subtitle')}</p>
     </div>
 
-    <div class="booking__card reveal" data-booking data-locale={locale}>
+    <div class="booking__card reveal" data-booking data-locale={locale} data-season-from={villa.season.from}>
       <script type="application/json" data-booking-i18n is:inline set:html={JSON.stringify(bi)}
       ></script>
 
@@ -416,6 +417,7 @@ const bi = {
   .booking .b-mname { font-family: var(--font-display); font-size: 1.35rem; text-transform: capitalize; }
   .booking .b-mfrom { font-size: 0.9rem; color: var(--text-soft); }
   .booking .b-mfrom strong { color: var(--accent); font-size: 1.05rem; }
+  .booking .b-mfrom--closed { font-style: italic; opacity: 0.75; }
   .booking .b-mavail { font-size: 0.8rem; color: var(--c-olive); font-weight: 600; }
 
   @media (max-width: 560px) {
@@ -449,7 +451,12 @@ const bi = {
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const monthStart = (d) => new Date(d.getFullYear(), d.getMonth(), 1);
 
-    const state = { view: 'month', focus: monthStart(today), arrival: null, departure: null };
+    // The villa is let in a short season (see villa.season). Opening the
+    // calendar on today's month would show an empty year, so when today is
+    // before the season we focus its first month instead.
+    const seasonStart = new Date(`${root.getAttribute('data-season-from')}T12:00:00`);
+    const initialFocus = monthStart(today < seasonStart ? seasonStart : today);
+    const state = { view: 'month', focus: initialFocus, arrival: null, departure: null };
 
     const iso = (d) =>
       `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -471,7 +478,7 @@ const bi = {
     };
     const totalPrice = (a, b) => {
       let s = 0;
-      for (let d = new Date(a); d < b; d = addDays(d, 1)) s += priceForDate(d);
+      for (let d = new Date(a); d < b; d = addDays(d, 1)) s += priceForDate(d) ?? 0;
       return s;
     };
     const dayFlags = (d) => ({
@@ -507,7 +514,7 @@ const bi = {
         const { cls, selectable, avail, past } = dayClasses(d, 'b-day');
         const tag = selectable ? 'button' : 'div';
         const attrs = selectable ? `type="button" data-date="${iso(d)}"` : 'aria-disabled="true"';
-        const price = avail && !past ? `<span class="b-price">${money.format(priceForDate(d))}</span>` : '';
+        const price = avail && !past ? `<span class="b-price">${money.format(priceForDate(d) ?? 0)}</span>` : '';
         html += `<${tag} class="${cls}" ${attrs}><span class="b-num">${day}</span>${price}</${tag}>`;
       }
       html += '</div>';
@@ -526,7 +533,7 @@ const bi = {
         const attrs = selectable ? `type="button" data-date="${iso(d)}"` : 'aria-disabled="true"';
         const price =
           avail && !past
-            ? `<span class="b-price">${money.format(priceForDate(d))}</span>`
+            ? `<span class="b-price">${money.format(priceForDate(d) ?? 0)}</span>`
             : `<span class="b-price b-price--muted">${past ? '' : t.booked}</span>`;
         html += `<${tag} class="${cls}" ${attrs}><span class="b-wday-name">${weekdayNames[i]}</span><span class="b-num">${d.getDate()}</span>${price}</${tag}>`;
       }
@@ -546,12 +553,19 @@ const bi = {
         const dim = daysInMonth(y, m);
         for (let day = 1; day <= dim; day++) if (isAvailable(new Date(y, m, day), today)) avail++;
         const name = new Date(y, m, 1).toLocaleDateString(locale, { month: 'long' });
-        const tag = isPast ? 'div' : 'button';
-        const attrs = isPast ? 'aria-disabled="true"' : `type="button" data-month="${m}"`;
-        html += `<${tag} class="b-mcard${isPast ? ' is-past' : ''}" ${attrs}>
+        // Outside the July/August letting season there is no price and nothing
+        // to click: `from` is null there, and formatting null would print 0.
+        const closed = from === null;
+        const isPast2 = isPast || closed;
+        const tag = isPast2 ? 'div' : 'button';
+        const attrs = isPast2 ? 'aria-disabled="true"' : `type="button" data-month="${m}"`;
+        const lines = closed
+          ? `<span class="b-mfrom b-mfrom--closed">${t.closed}</span>`
+          : `<span class="b-mfrom">${t.from} <strong>${money.format(from)}</strong> ${t.perNight}</span>
+            <span class="b-mavail">${avail} ${t.nightsAvailable}</span>`;
+        html += `<${tag} class="b-mcard${isPast2 ? ' is-past' : ''}" ${attrs}>
             <span class="b-mname">${name}</span>
-            <span class="b-mfrom">${t.from} <strong>${money.format(from)}</strong> ${t.perNight}</span>
-            <span class="b-mavail">${avail} ${t.nightsAvailable}</span>
+            ${lines}
           </${tag}>`;
       }
       html += '</div>';

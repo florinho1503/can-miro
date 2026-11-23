@@ -1,0 +1,115 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations, getDict } from '../i18n';
+import { villa, type Locale } from '../data/villa';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const items = getDict(locale).houseRules.items as Record<string, string>;
+const { checkIn, checkOut, quietHours, minBookerAge } = villa.houseRules;
+
+const chips = [
+  { icon: 'clock', label: t('houseRules.checkIn'), value: `${checkIn.from} – ${checkIn.to}` },
+  { icon: 'clock', label: t('houseRules.checkOut'), value: checkOut },
+  { icon: 'moon', label: t('houseRules.quietHours'), value: `${quietHours.from} – ${quietHours.to}` },
+  { icon: 'guests', label: t('houseRules.minAge'), value: String(minBookerAge) },
+];
+---
+
+<section class="section rules" id="house-rules">
+  <div class="container">
+    <div class="rules__head reveal">
+      <p class="eyebrow">{t('houseRules.eyebrow')}</p>
+      <h2 class="section-title">{t('houseRules.title')}</h2>
+      <p class="lead">{t('houseRules.subtitle')}</p>
+    </div>
+
+    <div class="rules__chips reveal">
+      {chips.map((chip) => (
+        <div class="rules__chip">
+          <span class="rules__chip-icon"><Icon name={chip.icon} size={20} /></span>
+          <span class="rules__chip-text">
+            <span class="rules__chip-label">{chip.label}</span>
+            <strong class="rules__chip-value">{chip.value}</strong>
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <ul class="rules__list reveal">
+      {villa.houseRules.items.map((id) => (
+        <li class="rules__item">
+          <Icon name="check" size={18} />
+          <span>{items[id]}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .rules { background: var(--bg-raised); }
+  .rules__head {
+    max-width: var(--container-narrow);
+    margin-bottom: 2.5rem;
+  }
+  .rules__chips {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .rules__chip {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    background: var(--c-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.25rem;
+  }
+  .rules__chip-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--bg-raised);
+    color: var(--accent);
+  }
+  .rules__chip-text { display: grid; gap: 0.1rem; }
+  .rules__chip-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+  .rules__chip-value { font-size: 1.05rem; }
+
+  .rules__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem 2.5rem;
+  }
+  .rules__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    line-height: 1.55;
+  }
+  .rules__item :global(svg) { color: var(--c-olive); flex-shrink: 0; margin-top: 4px; }
+
+  @media (max-width: 960px) {
+    .rules__chips { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    .rules__list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 460px) {
+    .rules__chips { grid-template-columns: 1fr; }
+  }
+</style>

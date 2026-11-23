@@ -8,9 +8,30 @@ interface Props {
 }
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const included = getDict(locale).rates.included;
-const { currency, rows } = villa.rates;
-const fmt = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
+const dict = getDict(locale);
+const included = dict.rates.included;
+const { currency, periods, extras, pricePerNight } = villa.rates;
+
+const money = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
+const dayMonth = new Intl.DateTimeFormat(locale === 'en' ? 'en-GB' : locale, {
+  day: 'numeric',
+  month: 'long',
+});
+
+/**
+ * Period labels are built from the dates in villa.ts, so they stay correct in
+ * every language without a hand-written label per period. `to` is exclusive:
+ * the row runs up to the day before.
+ */
+function periodLabel(from: string, to: string): string {
+  const start = new Date(`${from}T12:00:00`);
+  const endExclusive = new Date(`${to}T12:00:00`);
+  const end = new Date(endExclusive.getTime() - 86400000);
+  return `${dayMonth.format(start)} – ${dayMonth.format(end)}`;
+}
+
+const required = extras.filter((e) => e.required);
+const optional = extras.filter((e) => !e.required);
 ---
 
 <section class="section rates" id="rates">
@@ -22,11 +43,11 @@ const fmt = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
     </div>
 
     <div class="rates__cards reveal">
-      {rows.map((row, i) => (
-        <div class:list={['rates__card', { 'rates__card--featured': i === 2 }]}>
-          <h3 class="rates__season">{t(`rates.seasons.${row.id}`)}</h3>
+      {periods.map((row, i) => (
+        <div class:list={['rates__card', { 'rates__card--featured': i === periods.length - 1 }]}>
+          <h3 class="rates__season">{periodLabel(row.from, row.to)}</h3>
           <p class="rates__price">
-            <span class="rates__currency">{currency}</span>{fmt.format(row.pricePerWeek)}
+            <span class="rates__currency">{currency}</span>{money.format(row.pricePerWeek)}
           </p>
           <p class="rates__per">{t('rates.perWeek')}</p>
           <p class="rates__min">{row.minNights} {t('rates.minNights')}</p>
@@ -34,18 +55,62 @@ const fmt = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
       ))}
     </div>
 
-    <div class="rates__footer reveal">
-      <div class="rates__included">
-        <h3 class="rates__included-title">{t('rates.includedTitle')}</h3>
-        <ul>
+    <p class="rates__nightly reveal">
+      {t('rates.perNightNote')} <strong>{currency}{money.format(pricePerNight)}</strong>
+    </p>
+
+    <div class="rates__panels reveal">
+      <div class="rates__panel">
+        <h3 class="rates__panel-title">{t('rates.extrasTitle')}</h3>
+        <ul class="rates__extras">
+          {required.map((e) => (
+            <li>
+              <span class="rates__extra-name">{t(`rates.extras.${e.id}`)}</span>
+              <span class="rates__extra-amount">
+                {currency}{money.format(e.amount)}
+                <small>{t(`rates.per.${e.per}`)}</small>
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <h4 class="rates__extras-sub">{t('rates.optionalTitle')}</h4>
+        <ul class="rates__extras">
+          {optional.map((e) => (
+            <li>
+              <span class="rates__extra-name">{t(`rates.extras.${e.id}`)}</span>
+              <span class="rates__extra-amount">
+                {currency}{money.format(e.amount)}
+                <small>{t(`rates.per.${e.per}`)}</small>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p class="rates__extras-note">{t('rates.extrasNote')}</p>
+      </div>
+
+      <div class="rates__panel">
+        <h3 class="rates__panel-title">{t('rates.includedTitle')}</h3>
+        <ul class="rates__included">
           {included.map((item) => (
             <li><Icon name="check" size={18} /> <span>{item}</span></li>
           ))}
         </ul>
-      </div>
-      <div class="rates__cta-box">
-        <p class="rates__note">{t('rates.note')}</p>
-        <a href="#enquire" class="btn">{t('rates.cta')} <Icon name="arrow" size={18} /></a>
+
+        <h3 class="rates__panel-title rates__panel-title--spaced">{t('rates.paymentTitle')}</h3>
+        <p class="rates__body">{t('rates.payment')}</p>
+
+        <h3 class="rates__panel-title rates__panel-title--spaced">{t('rates.cancellationTitle')}</h3>
+        <ul class="rates__terms">
+          <li>{t('rates.cancellation60plus')}</li>
+          <li>{t('rates.cancellation60minus')}</li>
+          <li>{t('rates.cancellationNoShow')}</li>
+          <li>{t('rates.cancellationForce')}</li>
+        </ul>
+        <p class="rates__body rates__body--soft">{t('rates.cancellationTip')}</p>
+        <p class="rates__body rates__body--soft">{t('rates.depositNote')}</p>
+
+        <a href="#enquire" class="btn rates__cta">{t('rates.cta')} <Icon name="arrow" size={18} /></a>
       </div>
     </div>
   </div>
@@ -58,9 +123,9 @@ const fmt = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
   }
   .rates__cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.25rem;
   }
   .rates__card {
     border: 1px solid var(--border);
@@ -84,10 +149,10 @@ const fmt = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
   .rates__card--featured .rates__min { color: rgba(255, 255, 255, 0.85); }
 
   .rates__season {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-family: var(--font-body);
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     margin-bottom: 1rem;
     color: inherit;
@@ -115,24 +180,65 @@ const fmt = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
   }
   .rates__card--featured .rates__min { border-top-color: rgba(255, 255, 255, 0.25); }
 
-  .rates__footer {
+  .rates__nightly {
+    font-size: var(--fs-small);
+    color: var(--text-soft);
+    margin: 0 0 2.5rem;
+  }
+  .rates__nightly strong { color: var(--text); }
+
+  .rates__panels {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 2.5rem;
-    align-items: center;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  .rates__panel {
     background: var(--bg-raised);
     border-radius: var(--radius-lg);
-    padding: clamp(1.75rem, 4vw, 2.75rem);
+    padding: clamp(1.5rem, 3.5vw, 2.25rem);
   }
-  .rates__included-title {
+  .rates__panel-title {
     font-size: var(--fs-h3);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.1rem;
   }
-  .rates__included ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem 1.5rem;
+  .rates__panel-title--spaced { margin-top: 2rem; }
+
+  .rates__extras { display: grid; gap: 0.1rem; }
+  .rates__extras li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
   }
+  .rates__extras li:last-child { border-bottom: 0; }
+  .rates__extra-name { line-height: 1.4; }
+  .rates__extra-amount { white-space: nowrap; font-weight: 600; }
+  .rates__extra-amount small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    text-align: right;
+  }
+  .rates__extras-sub {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 1.6rem 0 0.4rem;
+  }
+  .rates__extras-note {
+    font-size: var(--fs-small);
+    color: var(--text-soft);
+    margin-top: 1.1rem;
+  }
+
+  .rates__included { display: grid; gap: 0.7rem; }
   .rates__included li {
     display: flex;
     align-items: flex-start;
@@ -140,19 +246,29 @@ const fmt = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : locale);
     line-height: 1.45;
   }
   .rates__included :global(svg) { color: var(--c-olive); flex-shrink: 0; margin-top: 3px; }
-  .rates__note {
-    font-size: var(--fs-small);
-    color: var(--text-soft);
-    margin-bottom: 1.25rem;
+
+  .rates__body { line-height: 1.65; }
+  .rates__body--soft { font-size: var(--fs-small); color: var(--text-soft); margin-top: 0.9rem; }
+  .rates__terms { display: grid; gap: 0.55rem; }
+  .rates__terms li {
+    position: relative;
+    padding-left: 1.1rem;
+    line-height: 1.55;
   }
-  .rates__cta-box .btn { width: 100%; }
+  .rates__terms li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--c-olive);
+  }
+  .rates__cta { margin-top: 1.75rem; }
 
   @media (max-width: 860px) {
-    .rates__cards { grid-template-columns: 1fr 1fr; }
-    .rates__footer { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 460px) {
     .rates__cards { grid-template-columns: 1fr; }
-    .rates__included ul { grid-template-columns: 1fr; }
+    .rates__panels { grid-template-columns: 1fr; }
   }
 </style>

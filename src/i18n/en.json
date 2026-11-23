@@ -98,7 +98,7 @@
       "bedrooms4": "4 bedrooms",
       "bathrooms3": "3 bathrooms",
       "sleeps8": "Sleeps up to 8",
-      "twoKitchens": "Two kitchens (upstairs & down)",
+      "twoKitchens": "Two kitchens (villa & apartment)",
       "privatePool": "Private heated pool",
       "fourSeating": "4 outdoor seating areas",
       "tableTennis": "Table-tennis table",
@@ -107,6 +107,65 @@
       "wifi": "High-speed internet",
       "tv": "Smart TV",
       "parking": "Private parking"
+    },
+    "allTitle": "Everything at the villa",
+    "facilityGroups": {
+      "property": "The house",
+      "climate": "Climate & tech",
+      "outside": "Outside",
+      "kitchenLaundry": "Kitchen & housekeeping",
+      "linen": "Linen",
+      "children": "Children & play"
+    },
+    "facilities": {
+      "villaType": "Detached villa",
+      "livingArea": "211 m² of living space",
+      "gardenArea": "Over 2,000 m² of garden",
+      "energyLabel": "Energy label B",
+      "renovated": "Fully renovated in 2025",
+      "airConditioning": "Air conditioning",
+      "centralHeating": "Central heating",
+      "wifi": "Wi-Fi",
+      "television": "Television",
+      "privatePool": "Private heated pool",
+      "poolSize": "Pool 10.60 x 4.70 m",
+      "outdoorKitchen": "Outdoor kitchen",
+      "barbecue": "Barbecue",
+      "sixTerraces": "Six terraces, two covered",
+      "roofTerrace": "Roof terrace",
+      "veranda": "Veranda",
+      "balcony": "Balcony",
+      "loungeSet": "Lounge set",
+      "gardenFurniture": "Garden tables and chairs",
+      "sunLoungers": "Sun loungers",
+      "parasols": "Parasols",
+      "outdoorShower": "Outdoor shower",
+      "outdoorToilet": "Outdoor toilet by the pool",
+      "outdoorLighting": "Outdoor lighting",
+      "fencedGarden": "Fully enclosed garden",
+      "privateDriveway": "Private driveway",
+      "parking": "Parking on the property",
+      "twoKitchens": "Two kitchens",
+      "oven": "Oven",
+      "microwave": "Combination microwave",
+      "dishwasher": "Dishwasher",
+      "fridgeFreezer": "Fridge and freezer",
+      "coffeeMachine": "Coffee machine",
+      "kettle": "Kettle",
+      "cutleryCrockery": "Cutlery and crockery",
+      "washingMachine": "Washing machine",
+      "tumbleDryer": "Tumble dryer",
+      "iron": "Iron and ironing board",
+      "vacuum": "Vacuum cleaner",
+      "bedLinen": "Bed linen",
+      "towels": "Towels",
+      "beachTowels": "Beach towels",
+      "kitchenLinen": "Kitchen linen",
+      "hairdryer": "Hairdryer",
+      "cot": "Travel cot",
+      "highChair": "High chair",
+      "tableTennis": "Table tennis table",
+      "poolToys": "Pool toys"
     }
   },
   "area": {
@@ -135,24 +194,42 @@
   },
   "rates": {
     "eyebrow": "Rates",
-    "title": "Seasons & pricing",
-    "subtitle": "Weekly rates. Get in touch for exact dates, shorter stays and long-stay offers.",
+    "title": "Prices & terms",
+    "subtitle": "Can Miró is let in July and August, with a minimum stay of 7 nights. Below are the weekly rates, the extra costs and our terms.",
     "perWeek": "per week",
-    "minNights": "min. nights",
-    "seasons": {
-      "low": "Low season",
-      "mid": "Mid season",
-      "high": "High season",
-      "peak": "Peak (Jul–Aug)"
+    "minNights": "nights minimum",
+    "perNightNote": "The nightly rate within the season is",
+    "extrasTitle": "Extra costs",
+    "optionalTitle": "Optional",
+    "extrasNote": "The required costs are paid when you book. The late-arrival surcharge and the high chair are settled on arrival.",
+    "per": {
+      "stay": "per stay",
+      "person": "per person"
+    },
+    "extras": {
+      "linen": "Bed linen and towels (beach towel included)",
+      "cleaning": "Final cleaning",
+      "deposit": "Damage deposit",
+      "lateArrival": "Surcharge for arrival after 20:00",
+      "cot": "Travel cot",
+      "highChair": "High chair"
     },
     "includedTitle": "Included in every stay",
     "included": [
-      "Final cleaning & fresh linens and towels",
       "Water, electricity and high-speed Wi-Fi",
-      "Air conditioning and pool maintenance",
+      "Air conditioning throughout the house",
+      "Pool and garden maintenance",
       "Welcome guidance and local tips"
     ],
-    "note": "A refundable damage deposit applies.",
+    "paymentTitle": "Payment",
+    "payment": "After booking you pay a deposit of 30% of the rental price. The balance is due on the date given in your booking confirmation. If you book within 60 days of arrival, you pay the full amount in one go at the time of booking.",
+    "cancellationTitle": "Cancellation",
+    "cancellation60plus": "Cancel more than 60 days before arrival and you pay 30% of the rental price, that is the deposit.",
+    "cancellation60minus": "Cancel 60 days or less before arrival and the full rental price is due.",
+    "cancellationNoShow": "If you do not arrive, or leave earlier than planned, the full rental price remains due.",
+    "cancellationForce": "If we have to cancel through circumstances beyond our control, everything you have paid is refunded.",
+    "cancellationTip": "Cancellations are always made in writing. We recommend taking out cancellation insurance.",
+    "depositNote": "The damage deposit comes back to you within 14 days of departure, once the villa has been checked.",
     "cta": "Request a quote"
   },
   "reviews": {
@@ -169,37 +246,45 @@
     "eyebrow": "Good to know",
     "title": "Frequently asked questions",
     "items": {
+      "season": {
+        "q": "When is Can Miró available?",
+        "a": "We let Can Miró in July and August, with a minimum stay of 7 nights. Have other dates in mind? Do ask, and we will see what is possible."
+      },
+      "apartment": {
+        "q": "What is the separate apartment downstairs?",
+        "a": "The lower floor holds a complete apartment with its own entrance, bedroom, bathroom and kitchen. Ideal if you travel as two families, or with grandparents or older children along: on holiday together, and still a place of your own."
+      },
       "checkin": {
         "q": "What are the check-in and check-out times?",
-        "a": "Check-in is from 4:00 pm and check-out is by 10:00 am. Flexible timing is often possible depending on the changeover, just ask."
+        "a": "Check-in is between 16:00 and 20:00, check-out by 10:00. Arriving after 20:00 carries a € 50 surcharge, paid on site. Let us know and we will make sure someone is there for you."
       },
       "deposit": {
-        "q": "Is there a security deposit?",
-        "a": "Yes, a refundable damage deposit is held before arrival and returned within a few days of check-out, subject to a normal inspection."
+        "q": "Is there a deposit?",
+        "a": "Yes, a damage deposit of € 750 per stay, paid when you book. It comes back to you within 14 days of departure, once the villa has been checked."
       },
       "cancellation": {
         "q": "What is the cancellation policy?",
-        "a": "We offer a fair, clearly stated cancellation policy that we'll confirm with your booking. Contact us for the current terms for your dates."
-      },
-      "pets": {
-        "q": "Are pets allowed?",
-        "a": "We're sorry, but pets are not permitted at the villa."
-      },
-      "pool": {
-        "q": "Is the pool private and heated?",
-        "a": "Yes. The pool is private, for your group's exclusive use, and heated, so it's comfortable to swim in well beyond the summer months."
-      },
-      "kids": {
-        "q": "Is the villa suitable for children?",
-        "a": "Very much so. There's plenty of space, a table-tennis table and safe garden areas, and we keep a selection of pool toys for younger guests. Just tell us their ages and we'll be glad to advise."
+        "a": "Cancel more than 60 days before arrival and you pay 30% of the rental price, that is the deposit. Within 60 days of arrival the full rental price is due. Cancellations are always made in writing, and we recommend taking out cancellation insurance."
       },
       "cleaning": {
         "q": "Is cleaning included?",
-        "a": "A final clean and fresh linens and towels are included. Mid-stay cleaning and extra services can be arranged."
+        "a": "The final cleaning is € 350 per stay, paid when you book. Bed linen and towels, beach towel included, are € 30 per person. We are happy to arrange cleaning during your stay on request."
+      },
+      "pool": {
+        "q": "Is the pool private and heated?",
+        "a": "Yes. The pool is private, for your party alone, and heated. It is 10.60 by 4.70 metres and slopes from 1.10 to 2.00 metres deep, so there is room for proper lengths."
+      },
+      "kids": {
+        "q": "Is the villa suitable for children?",
+        "a": "Certainly. There is space to spare, a table tennis table and safe corners in the garden, and pool toys for the little ones. A travel cot and a high chair are available too, € 45 each per stay. Do note that children must always be supervised by an adult at the pool."
+      },
+      "pets": {
+        "q": "Are pets allowed?",
+        "a": "Unfortunately pets are not allowed at the villa."
       },
       "parking": {
         "q": "Is there parking?",
-        "a": "Yes, there is private parking at the villa. A car is recommended to make the most of the area."
+        "a": "Yes, there is a private driveway and parking on the property. A car is worth having to explore the area properly."
       }
     }
   },
@@ -262,6 +347,145 @@
     "nextMonth": "Next",
     "viewMonth": "View month",
     "weekOf": "Week of",
-    "note": "Availability is indicative and will be confirmed on enquiry. We keep the calendar in sync with our other booking channels."
+    "note": "Availability is indicative and will be confirmed on enquiry. We keep the calendar in sync with our other booking channels.",
+    "closed": "Not let"
+  },
+  "layout": {
+    "eyebrow": "Layout",
+    "title": "Room by room",
+    "subtitle": "Four bedrooms and three bathrooms, spread across the villa and a self-contained apartment on the lower floor with its own entrance.",
+    "floors": {
+      "ground": "Ground floor",
+      "lower": "The apartment, lower floor",
+      "outside": "Outside"
+    },
+    "rooms": {
+      "living": {
+        "name": "Living room",
+        "body": "A light, characterful living room in Spanish style, with wooden beams across the ceiling and an open fireplace. The big, comfortable sofa is where you unwind after a day of sun and sea. The doors fold back onto the terrace, so inside and outside run into one another. Under the archway sits the dining area with a long wooden table, with room for everyone to pull up a chair.",
+        "specs": [
+          "Open fireplace",
+          "Dining table seating 6",
+          "Two three-seater sofas",
+          "Air conditioning",
+          "Tiled floor"
+        ]
+      },
+      "kitchen": {
+        "name": "Kitchen",
+        "body": "A light, open kitchen with wooden cabinets and a fresh, modern feel. You cook on an electric hob with four zones, and there is a combination microwave, an extractor hood and plenty of cutlery and crockery. The doors open straight onto the terrace and the outdoor kitchen with its barbecue, so you cook inside, grill outside and then sit down together in the sun.",
+        "specs": [
+          "Electric hob, 4 zones",
+          "Oven and combination microwave",
+          "Dishwasher",
+          "Fridge and freezer",
+          "Coffee machine and kettle"
+        ]
+      },
+      "bedroom1": {
+        "name": "Bedroom 1",
+        "body": "A generous bedroom with a double bed and a beautifully carved wooden headboard in Spanish style. The chest of drawers holds everything you have brought, and the window looks out over the green of the garden. The air conditioning keeps it cool even on the warmest summer nights.",
+        "specs": [
+          "Double bed 180 x 200 cm",
+          "Wardrobe",
+          "Air conditioning",
+          "Tiled floor"
+        ]
+      },
+      "bedroom2": {
+        "name": "Bedroom 2",
+        "body": "A light bedroom with two single beds, ideal for children, friends or travelling companions. The crisp white furnishings and the colourful painting of the coast give the room a cheerful holiday feel. Each bed has its own bedside table and reading lamp.",
+        "specs": [
+          "Two single beds 90 x 200 cm",
+          "Wardrobe",
+          "Air conditioning",
+          "Tiled floor"
+        ]
+      },
+      "bedroom3": {
+        "name": "Bedroom 3",
+        "body": "A quiet bedroom on the garden side with two single beds, a wardrobe and air conditioning. A good room for children, or for anyone who likes an early night.",
+        "specs": [
+          "Two single beds 90 x 190 cm",
+          "Wardrobe",
+          "Air conditioning",
+          "Tiled floor"
+        ]
+      },
+      "bathroom1": {
+        "name": "Bathroom 1",
+        "body": "An en-suite bathroom with a shower, a bath, a washbasin and a toilet. After a day at the pool or on the beach you step straight from your room into the shower, or run a long bath in the evening.",
+        "specs": [
+          "En-suite",
+          "Bath",
+          "Shower",
+          "Washbasin and toilet",
+          "Hairdryer"
+        ]
+      },
+      "bathroom2": {
+        "name": "Bathroom 2",
+        "body": "A shared bathroom for bedrooms 2 and 3, with a shower, a washbasin and a toilet. Practical when you travel with children or friends: after a day of sun and swimming everyone freshens up here. A hairdryer is provided, so nobody is held up before an evening out.",
+        "specs": [
+          "Shower",
+          "Washbasin and toilet",
+          "Hairdryer"
+        ]
+      },
+      "bedroom4": {
+        "name": "Bedroom 4",
+        "body": "The bedroom of the self-contained apartment, with a double bed. The apartment has its own entrance, bathroom and kitchen, so you have a place entirely of your own down here. Ideal for grandparents, older children, or friends who like a little privacy. On holiday together, and still at your own pace.",
+        "specs": [
+          "Double bed 180 x 200 cm",
+          "Own entrance",
+          "Own kitchen",
+          "Wardrobe",
+          "Air conditioning"
+        ]
+      },
+      "bathroom3": {
+        "name": "Bathroom 3",
+        "body": "An en-suite bathroom off the apartment bedroom, with a shower, a washbasin and a toilet. Everything is to hand downstairs, in your own privacy. Worth knowing: there is also a separate outdoor toilet by the pool, behind the barbecue, so nobody walks through the house with wet feet.",
+        "specs": [
+          "En-suite",
+          "Shower",
+          "Washbasin and toilet"
+        ]
+      },
+      "pool": {
+        "name": "Pool and garden",
+        "body": "A private pool of 4.70 by 10.60 metres, sloping from 1.10 to 2.00 metres deep, set in the middle of a Mediterranean garden of more than 2,000 m² with palms, olive trees and cypresses. Long enough for proper lengths, and entirely your own. Sun loungers and parasols stand all around, and after a swim you rinse off under the outdoor shower. In the evening the pool is softly lit.",
+        "specs": [
+          "10.60 x 4.70 m",
+          "Depth 1.10 to 2.00 m",
+          "Private and heated",
+          "Outdoor shower",
+          "Loungers and parasols",
+          "Evening lighting"
+        ]
+      }
+    }
+  },
+  "houseRules": {
+    "eyebrow": "House rules",
+    "title": "How we like to keep things",
+    "subtitle": "Can Miró sits in a quiet residential area. A few simple agreements keep it a good place for you, for the neighbours and for the guests after you.",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "quietHours": "Quiet hours",
+    "minAge": "Lead guest from",
+    "items": {
+      "mainBooker": "The lead guest is at least 28 and stays at the villa throughout.",
+      "pets": "Pets are not allowed.",
+      "smoking": "Smoking indoors is not allowed.",
+      "events": "Parties and events are not possible.",
+      "photography": "Commercial photography is not allowed.",
+      "children": "Children are very welcome.",
+      "poolSupervision": "Children in and around the pool are always supervised by an adult, so swimming stays safe for everyone.",
+      "visitors": "Visitors are welcome by arrangement.",
+      "maintenance": "The pool and garden systems are operated by our maintenance people. They come by regularly, so please let them in.",
+      "leaveTidy": "Please leave the villa tidy: washing-up done and put away, and everything back in its place.",
+      "report": "Is something broken or not working? Tell us straight away and we will sort it out as quickly as we can."
+    }
   }
 }

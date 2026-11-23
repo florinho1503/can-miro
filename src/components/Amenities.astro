@@ -33,6 +33,20 @@ const t = useTranslations(locale);
         </div>
       ))}
     </div>
+
+    <div class="amenities__all reveal">
+      <h3 class="amenities__all-title">{t('amenities.allTitle')}</h3>
+      <div class="amenities__all-groups">
+        {villa.facilityGroups.map((group) => (
+          <div class="amenities__all-group">
+            <h4 class="amenities__all-group-title">{t(`amenities.facilityGroups.${group.id}`)}</h4>
+            <ul>
+              {group.items.map((id) => <li>{t(`amenities.facilities.${id}`)}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
 
@@ -81,5 +95,59 @@ const t = useTranslations(locale);
   }
   @media (max-width: 560px) {
     .amenities__groups { grid-template-columns: 1fr; }
+  }
+  .amenities__all {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .amenities__all-title {
+    font-size: var(--fs-h3);
+    margin-bottom: 1.75rem;
+  }
+  /*
+   * CSS columns, not a grid: the groups differ wildly in length (18 outdoor
+   * items against 4 for the children), and a grid would align them in rows and
+   * leave a large hole under the short ones.
+   */
+  .amenities__all-groups {
+    column-count: 3;
+    column-gap: 2.5rem;
+  }
+  .amenities__all-group {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+  .amenities__all-group-title {
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 0.7rem;
+  }
+  .amenities__all-group ul { display: grid; gap: 0.3rem; }
+  .amenities__all-group li {
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    position: relative;
+    padding-left: 0.95rem;
+  }
+  .amenities__all-group li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--c-olive);
+  }
+  @media (max-width: 860px) {
+    .amenities__all-groups { column-count: 2; }
+  }
+  @media (max-width: 560px) {
+    .amenities__all-groups { column-count: 1; }
   }
 </style>

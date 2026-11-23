@@ -98,7 +98,7 @@
       "bedrooms4": "4 Schlafzimmer",
       "bathrooms3": "3 Badezimmer",
       "sleeps8": "Platz für bis zu 8 Gäste",
-      "twoKitchens": "Zwei Küchen (oben & unten)",
+      "twoKitchens": "Zwei Küchen (Villa & Wohnung)",
       "privatePool": "Beheizter Privatpool",
       "fourSeating": "4 Sitzbereiche im Freien",
       "tableTennis": "Tischtennisplatte",
@@ -107,6 +107,65 @@
       "wifi": "Schnelles Internet",
       "tv": "Smart-TV",
       "parking": "Privatparkplatz"
+    },
+    "allTitle": "Alle Ausstattung auf einen Blick",
+    "facilityGroups": {
+      "property": "Das Haus",
+      "climate": "Klima & Technik",
+      "outside": "Draußen",
+      "kitchenLaundry": "Küche & Haushalt",
+      "linen": "Wäsche",
+      "children": "Kinder & Spiel"
+    },
+    "facilities": {
+      "villaType": "Freistehende Villa",
+      "livingArea": "211 m² Wohnfläche",
+      "gardenArea": "Über 2.000 m² Garten",
+      "energyLabel": "Energielabel B",
+      "renovated": "2025 komplett renoviert",
+      "airConditioning": "Klimaanlage",
+      "centralHeating": "Zentralheizung",
+      "wifi": "WLAN",
+      "television": "Fernseher",
+      "privatePool": "Beheizter Privatpool",
+      "poolSize": "Pool 10,60 x 4,70 m",
+      "outdoorKitchen": "Außenküche",
+      "barbecue": "Grill",
+      "sixTerraces": "Sechs Terrassen, zwei überdacht",
+      "roofTerrace": "Dachterrasse",
+      "veranda": "Veranda",
+      "balcony": "Balkon",
+      "loungeSet": "Loungeset",
+      "gardenFurniture": "Gartentische und -stühle",
+      "sunLoungers": "Liegen",
+      "parasols": "Sonnenschirme",
+      "outdoorShower": "Außendusche",
+      "outdoorToilet": "Außen-WC am Pool",
+      "outdoorLighting": "Außenbeleuchtung",
+      "fencedGarden": "Vollständig eingezäunter Garten",
+      "privateDriveway": "Eigene Zufahrt",
+      "parking": "Parken auf dem Grundstück",
+      "twoKitchens": "Zwei Küchen",
+      "oven": "Backofen",
+      "microwave": "Kombi-Mikrowelle",
+      "dishwasher": "Spülmaschine",
+      "fridgeFreezer": "Kühl- und Gefrierschrank",
+      "coffeeMachine": "Kaffeemaschine",
+      "kettle": "Wasserkocher",
+      "cutleryCrockery": "Besteck und Geschirr",
+      "washingMachine": "Waschmaschine",
+      "tumbleDryer": "Wäschetrockner",
+      "iron": "Bügeleisen und Bügelbrett",
+      "vacuum": "Staubsauger",
+      "bedLinen": "Bettwäsche",
+      "towels": "Handtücher",
+      "beachTowels": "Badetücher",
+      "kitchenLinen": "Küchenwäsche",
+      "hairdryer": "Föhn",
+      "cot": "Kinderbett",
+      "highChair": "Kinderstuhl",
+      "tableTennis": "Tischtennisplatte",
+      "poolToys": "Poolspielzeug"
     }
   },
   "area": {
@@ -135,24 +194,42 @@
   },
   "rates": {
     "eyebrow": "Preise",
-    "title": "Saisons & Preise",
-    "subtitle": "Wochenpreise. Kontaktieren Sie uns für genaue Daten, kürzere Aufenthalte und Angebote für Langzeitaufenthalte.",
+    "title": "Preise & Bedingungen",
+    "subtitle": "Can Miró vermieten wir im Juli und August, mit einem Mindestaufenthalt von 7 Nächten. Hier finden Sie die Wochenpreise, die Nebenkosten und unsere Bedingungen.",
     "perWeek": "pro Woche",
-    "minNights": "Min. Nächte",
-    "seasons": {
-      "low": "Nebensaison",
-      "mid": "Zwischensaison",
-      "high": "Hauptsaison",
-      "peak": "Hochsaison (Jul–Aug)"
+    "minNights": "Nächte mindestens",
+    "perNightNote": "Der Preis pro Nacht innerhalb der Saison beträgt",
+    "extrasTitle": "Nebenkosten",
+    "optionalTitle": "Optional",
+    "extrasNote": "Die verpflichtenden Kosten zahlen Sie bei der Buchung. Den Zuschlag für späte Ankunft und den Kinderstuhl begleichen Sie vor Ort.",
+    "per": {
+      "stay": "pro Aufenthalt",
+      "person": "pro Person"
+    },
+    "extras": {
+      "linen": "Bettwäsche und Handtücher (inkl. Badetuch)",
+      "cleaning": "Endreinigung",
+      "deposit": "Kaution",
+      "lateArrival": "Zuschlag bei Ankunft nach 20:00 Uhr",
+      "cot": "Kinderbett",
+      "highChair": "Kinderstuhl"
     },
     "includedTitle": "In jedem Aufenthalt enthalten",
     "included": [
-      "Endreinigung & frische Bettwäsche und Handtücher",
       "Wasser, Strom und schnelles WLAN",
-      "Klimaanlage und Poolpflege",
-      "Willkommensinfos und lokale Tipps"
+      "Klimaanlage im ganzen Haus",
+      "Pool- und Gartenpflege",
+      "Willkommensinfos und Tipps aus der Gegend"
     ],
-    "note": "Es gilt eine erstattbare Kaution.",
+    "paymentTitle": "Zahlung",
+    "payment": "Nach Ihrer Buchung zahlen Sie eine Anzahlung von 30% des Mietpreises. Den Restbetrag zahlen Sie spätestens zu dem Datum, das in Ihrer Buchungsbestätigung steht. Buchen Sie innerhalb von 60 Tagen vor der Anreise, zahlen Sie den gesamten Betrag auf einmal bei der Buchung.",
+    "cancellationTitle": "Stornierung",
+    "cancellation60plus": "Bei einer Stornierung mehr als 60 Tage vor der Anreise zahlen Sie 30% des Mietpreises, also die Anzahlung.",
+    "cancellation60minus": "Bei einer Stornierung 60 Tage oder weniger vor der Anreise wird der volle Mietpreis fällig.",
+    "cancellationNoShow": "Erscheinen Sie nicht oder reisen Sie früher ab als geplant, bleibt der volle Mietpreis geschuldet.",
+    "cancellationForce": "Müssen wir die Buchung wegen höherer Gewalt stornieren, erhalten Sie alle gezahlten Beträge zurück.",
+    "cancellationTip": "Eine Stornierung erfolgt immer schriftlich. Wir empfehlen Ihnen, eine Reiserücktrittsversicherung abzuschließen.",
+    "depositNote": "Die Kaution erhalten Sie spätestens 14 Tage nach Ihrer Abreise zurück, nachdem die Villa kontrolliert wurde.",
     "cta": "Angebot anfragen"
   },
   "reviews": {
@@ -169,37 +246,45 @@
     "eyebrow": "Gut zu wissen",
     "title": "Häufig gestellte Fragen",
     "items": {
+      "season": {
+        "q": "Wann ist Can Miró zu mieten?",
+        "a": "Wir vermieten Can Miró im Juli und August, mit einem Mindestaufenthalt von 7 Nächten. Sie haben andere Daten im Sinn? Fragen Sie gern, dann schauen wir, was möglich ist."
+      },
+      "apartment": {
+        "q": "Was hat es mit der separaten Wohnung unten auf sich?",
+        "a": "Im Untergeschoss liegt eine komplette Wohnung mit eigenem Eingang, Schlafzimmer, Bad und Küche. Ideal, wenn Sie mit zwei Familien reisen oder die Großeltern und größere Kinder dabei sind: gemeinsam im Urlaub und trotzdem ein eigener Bereich."
+      },
       "checkin": {
-        "q": "Wann sind Check-in und Check-out?",
-        "a": "Check-in ab 16:00 Uhr, Check-out bis 10:00 Uhr. Flexible Zeiten sind je nach Belegung oft möglich, fragen Sie einfach."
+        "q": "Wie sind die Check-in- und Check-out-Zeiten?",
+        "a": "Check-in ist zwischen 16:00 und 20:00 Uhr, Check-out bis 10:00 Uhr. Bei Ankunft nach 20:00 Uhr fällt ein Zuschlag von 50 € an, vor Ort zu zahlen. Sagen Sie uns Bescheid, dann ist jemand für Sie da."
       },
       "deposit": {
         "q": "Gibt es eine Kaution?",
-        "a": "Ja, vor der Anreise wird eine erstattbare Kaution hinterlegt, die nach der üblichen Kontrolle innerhalb weniger Tage nach dem Check-out zurückerstattet wird."
+        "a": "Ja, eine Kaution von 750 € pro Aufenthalt, zahlbar bei der Buchung. Sie erhalten sie spätestens 14 Tage nach Ihrer Abreise zurück, nachdem die Villa kontrolliert wurde."
       },
       "cancellation": {
         "q": "Wie sind die Stornobedingungen?",
-        "a": "Wir bieten faire, klar formulierte Stornobedingungen, die wir mit Ihrer Buchung bestätigen. Kontaktieren Sie uns für die aktuellen Konditionen für Ihre Daten."
-      },
-      "pets": {
-        "q": "Sind Haustiere erlaubt?",
-        "a": "Leider sind Haustiere in der Villa nicht gestattet."
-      },
-      "pool": {
-        "q": "Ist der Pool privat und beheizt?",
-        "a": "Ja. Der Pool ist privat und ausschließlich für Ihre Gruppe, und er ist beheizt, sodass Sie auch weit über die Sommermonate hinaus angenehm schwimmen können."
-      },
-      "kids": {
-        "q": "Ist die Villa für Kinder geeignet?",
-        "a": "Sehr gern. Es gibt viel Platz, eine Tischtennisplatte und sichere Gartenbereiche, und wir halten eine Auswahl an Pool-Spielzeug für jüngere Gäste bereit. Sagen Sie uns einfach ihr Alter, wir beraten Sie gern."
+        "a": "Bei einer Stornierung mehr als 60 Tage vor der Anreise zahlen Sie 30% des Mietpreises, also die Anzahlung. Innerhalb von 60 Tagen vor der Anreise wird der volle Mietpreis fällig. Eine Stornierung erfolgt immer schriftlich, und wir empfehlen eine Reiserücktrittsversicherung."
       },
       "cleaning": {
         "q": "Ist die Reinigung inbegriffen?",
-        "a": "Eine Endreinigung sowie frische Bettwäsche und Handtücher sind inbegriffen. Zwischenreinigung und Zusatzleistungen sind möglich."
+        "a": "Die Endreinigung kostet 350 € pro Aufenthalt und wird bei der Buchung bezahlt. Bettwäsche und Handtücher, inklusive Badetuch, kosten 30 € pro Person. Eine Zwischenreinigung organisieren wir gern auf Wunsch."
+      },
+      "pool": {
+        "q": "Ist der Pool privat und beheizt?",
+        "a": "Ja. Der Pool ist privat und ausschließlich für Ihre Gruppe, und er ist beheizt. Er misst 10,60 mal 4,70 Meter und fällt von 1,10 auf 2,00 Meter ab, also genug Platz für richtige Bahnen."
+      },
+      "kids": {
+        "q": "Ist die Villa für Kinder geeignet?",
+        "a": "Auf jeden Fall. Es gibt viel Platz, eine Tischtennisplatte und sichere Ecken im Garten, und für die Kleinsten Poolspielzeug. Kinderbett und Kinderstuhl sind ebenfalls vorhanden, je 45 € pro Aufenthalt. Bitte beachten Sie, dass Kinder am Pool immer von einem Erwachsenen beaufsichtigt werden müssen."
+      },
+      "pets": {
+        "q": "Sind Haustiere erlaubt?",
+        "a": "Haustiere sind in der Villa leider nicht erlaubt."
       },
       "parking": {
-        "q": "Gibt es Parkplätze?",
-        "a": "Ja, an der Villa gibt es private Parkplätze. Ein Auto empfiehlt sich, um die Umgebung optimal zu genießen."
+        "q": "Gibt es Parkmöglichkeiten?",
+        "a": "Ja, es gibt eine eigene Zufahrt und Parkplätze auf dem Grundstück. Ein Auto lohnt sich, um die Gegend richtig zu entdecken."
       }
     }
   },
@@ -262,6 +347,145 @@
     "nextMonth": "Weiter",
     "viewMonth": "Monat ansehen",
     "weekOf": "Woche vom",
-    "note": "Die Verfügbarkeit ist unverbindlich und wird bei Ihrer Anfrage bestätigt. Wir halten den Kalender mit unseren anderen Buchungskanälen synchron."
+    "note": "Die Verfügbarkeit ist unverbindlich und wird bei Ihrer Anfrage bestätigt. Wir halten den Kalender mit unseren anderen Buchungskanälen synchron.",
+    "closed": "Nicht vermietet"
+  },
+  "layout": {
+    "eyebrow": "Aufteilung",
+    "title": "Zimmer für Zimmer",
+    "subtitle": "Vier Schlafzimmer und drei Badezimmer, verteilt auf die Villa und eine eigenständige Wohnung im Untergeschoss mit separatem Eingang.",
+    "floors": {
+      "ground": "Erdgeschoss",
+      "lower": "Die Wohnung, Untergeschoss",
+      "outside": "Draußen"
+    },
+    "rooms": {
+      "living": {
+        "name": "Wohnzimmer",
+        "body": "Helles, stimmungsvolles Wohnzimmer im spanischen Stil, mit Holzbalken an der Decke und einem offenen Kamin. Auf dem großen, bequemen Sofa kommen Sie nach einem Tag voller Sonne und Meer zur Ruhe. Durch die Flügeltüren treten Sie direkt auf die Terrasse, so gehen drinnen und draußen ineinander über. Unter dem charakteristischen Bogen steht der Esstisch aus Holz, lang genug für die ganze Runde.",
+        "specs": [
+          "Offener Kamin",
+          "Esstisch mit 6 Stühlen",
+          "Zwei Dreisitzer-Sofas",
+          "Klimaanlage",
+          "Fliesenboden"
+        ]
+      },
+      "kitchen": {
+        "name": "Küche",
+        "body": "Helle, offene Küche mit Holzschränken und einer frischen, modernen Ausstrahlung. Sie kochen auf einem Elektroherd mit vier Kochzonen, dazu kommen eine Kombi-Mikrowelle, eine Dunstabzugshaube und reichlich Besteck und Geschirr. Durch die Flügeltüren gelangen Sie direkt auf die Terrasse und zur Außenküche mit Grill: drinnen kochen, draußen grillen und danach gemeinsam in der Sonne essen.",
+        "specs": [
+          "Elektroherd, 4 Kochzonen",
+          "Backofen und Kombi-Mikrowelle",
+          "Spülmaschine",
+          "Kühl- und Gefrierschrank",
+          "Kaffeemaschine und Wasserkocher"
+        ]
+      },
+      "bedroom1": {
+        "name": "Schlafzimmer 1",
+        "body": "Großzügiges Schlafzimmer mit Doppelbett und einem kunstvoll geschnitzten Kopfteil aus Holz im spanischen Stil. Die Kommode bietet genug Platz für Ihre Kleidung, und durch das Fenster blicken Sie ins Grüne. Dank der Klimaanlage schlafen Sie auch in warmen Sommernächten angenehm kühl.",
+        "specs": [
+          "Doppelbett 180 x 200 cm",
+          "Kleiderschrank",
+          "Klimaanlage",
+          "Fliesenboden"
+        ]
+      },
+      "bedroom2": {
+        "name": "Schlafzimmer 2",
+        "body": "Helles Schlafzimmer mit zwei Einzelbetten, ideal für Kinder, Freunde oder Mitreisende. Die frische weiße Einrichtung und das farbenfrohe Bild der Küste geben dem Raum eine fröhliche Urlaubsstimmung. Jedes Bett hat einen eigenen Nachttisch mit Leselampe.",
+        "specs": [
+          "Zwei Einzelbetten 90 x 200 cm",
+          "Kleiderschrank",
+          "Klimaanlage",
+          "Fliesenboden"
+        ]
+      },
+      "bedroom3": {
+        "name": "Schlafzimmer 3",
+        "body": "Ruhiges Schlafzimmer zur Gartenseite mit zwei Einzelbetten, Kleiderschrank und Klimaanlage. Ein schöner Raum für Kinder oder für alle, die gerne früh zu Bett gehen.",
+        "specs": [
+          "Zwei Einzelbetten 90 x 190 cm",
+          "Kleiderschrank",
+          "Klimaanlage",
+          "Fliesenboden"
+        ]
+      },
+      "bathroom1": {
+        "name": "Badezimmer 1",
+        "body": "En-suite-Bad mit Dusche, Badewanne, Waschbecken und WC. Nach einem Tag am Pool oder am Strand gehen Sie direkt aus Ihrem Zimmer unter die Dusche, oder lassen sich abends ein entspanntes Bad ein.",
+        "specs": [
+          "En suite",
+          "Badewanne",
+          "Dusche",
+          "Waschbecken und WC",
+          "Föhn"
+        ]
+      },
+      "bathroom2": {
+        "name": "Badezimmer 2",
+        "body": "Gemeinsames Bad für Schlafzimmer 2 und 3, mit Dusche, Waschbecken und WC. Praktisch, wenn Sie mit Kindern oder Freunden reisen: nach einem Tag Sonne und Schwimmen frischt sich hier jeder schnell auf. Ein Föhn ist vorhanden, damit alle zügig bereit sind für den Abend.",
+        "specs": [
+          "Dusche",
+          "Waschbecken und WC",
+          "Föhn"
+        ]
+      },
+      "bedroom4": {
+        "name": "Schlafzimmer 4",
+        "body": "Das Schlafzimmer der separaten Wohnung, mit Doppelbett. Die Wohnung hat einen eigenen Eingang, ein eigenes Bad und eine eigene Küche, sodass Sie hier ganz für sich sind. Ideal für die Großeltern, ältere Kinder oder ein befreundetes Paar, das etwas Privatsphäre schätzt. Gemeinsam im Urlaub und trotzdem im eigenen Rhythmus.",
+        "specs": [
+          "Doppelbett 180 x 200 cm",
+          "Eigener Eingang",
+          "Eigene Küche",
+          "Kleiderschrank",
+          "Klimaanlage"
+        ]
+      },
+      "bathroom3": {
+        "name": "Badezimmer 3",
+        "body": "En-suite-Bad am Schlafzimmer der Wohnung, mit Dusche, Waschbecken und WC. So haben Sie unten alles zur Hand und Ihre eigene Privatsphäre. Gut zu wissen: Am Pool gibt es hinter dem Grill noch ein separates Außen-WC, damit niemand mit nassen Füßen durchs Haus muss.",
+        "specs": [
+          "En suite",
+          "Dusche",
+          "Waschbecken und WC"
+        ]
+      },
+      "pool": {
+        "name": "Pool und Garten",
+        "body": "Privatpool von 4,70 mal 10,60 Metern, von 1,10 auf 2,00 Meter abfallend, mitten in einem mediterranen Garten von über 2.000 m² mit Palmen, Olivenbäumen und Zypressen. Lang genug für echte Bahnen, und ganz für Sie allein. Ringsum stehen Liegen und Sonnenschirme, und nach dem Schwimmen duschen Sie draußen ab. Abends ist der Pool stimmungsvoll beleuchtet.",
+        "specs": [
+          "10,60 x 4,70 m",
+          "Tiefe 1,10 bis 2,00 m",
+          "Privat und beheizt",
+          "Außendusche",
+          "Liegen und Sonnenschirme",
+          "Abendbeleuchtung"
+        ]
+      }
+    }
+  },
+  "houseRules": {
+    "eyebrow": "Hausregeln",
+    "title": "Wie wir es hier gerne halten",
+    "subtitle": "Can Miró liegt in einem ruhigen Wohnviertel. Ein paar einfache Absprachen halten es für Sie, für die Nachbarn und für die Gäste nach Ihnen zu einem schönen Ort.",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "quietHours": "Ruhezeiten",
+    "minAge": "Hauptbucher ab",
+    "items": {
+      "mainBooker": "Der Hauptbucher ist mindestens 28 Jahre alt und während des gesamten Aufenthalts selbst anwesend.",
+      "pets": "Haustiere sind nicht erlaubt.",
+      "smoking": "Rauchen im Haus ist nicht erlaubt.",
+      "events": "Feiern und Veranstaltungen sind nicht möglich.",
+      "photography": "Kommerzielle Fotografie ist nicht erlaubt.",
+      "children": "Kinder sind herzlich willkommen.",
+      "poolSupervision": "Kinder im und am Pool stehen immer unter Aufsicht eines Erwachsenen, damit das Badevergnügen für alle sicher bleibt.",
+      "visitors": "Besuch ist nach Absprache möglich.",
+      "maintenance": "Die Pool- und Gartenanlagen werden von unseren Mitarbeitern bedient. Sie kommen regelmäßig vorbei, lassen Sie sie bitte herein.",
+      "leaveTidy": "Bitte hinterlassen Sie die Villa ordentlich: Geschirr gespült und weggeräumt, alles wieder an seinem Platz.",
+      "report": "Ist etwas kaputt oder funktioniert etwas nicht? Sagen Sie uns sofort Bescheid, dann lösen wir es schnellstmöglich."
+    }
   }
 }

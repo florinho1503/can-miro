@@ -98,7 +98,7 @@
       "bedrooms4": "4 dormitorios",
       "bathrooms3": "3 baños",
       "sleeps8": "Capacidad para 8 personas",
-      "twoKitchens": "Dos cocinas (arriba y abajo)",
+      "twoKitchens": "Dos cocinas (villa y apartamento)",
       "privatePool": "Piscina privada climatizada",
       "fourSeating": "4 zonas de estar exteriores",
       "tableTennis": "Mesa de ping-pong",
@@ -107,6 +107,65 @@
       "wifi": "Internet de alta velocidad",
       "tv": "Smart TV",
       "parking": "Aparcamiento privado"
+    },
+    "allTitle": "Todo lo que encontrará",
+    "facilityGroups": {
+      "property": "La casa",
+      "climate": "Clima y tecnología",
+      "outside": "Exterior",
+      "kitchenLaundry": "Cocina y hogar",
+      "linen": "Ropa de casa",
+      "children": "Niños y juego"
+    },
+    "facilities": {
+      "villaType": "Villa independiente",
+      "livingArea": "211 m² de superficie habitable",
+      "gardenArea": "Más de 2.000 m² de jardín",
+      "energyLabel": "Certificado energético B",
+      "renovated": "Reformada por completo en 2025",
+      "airConditioning": "Aire acondicionado",
+      "centralHeating": "Calefacción central",
+      "wifi": "Wifi",
+      "television": "Televisión",
+      "privatePool": "Piscina privada climatizada",
+      "poolSize": "Piscina de 10,60 x 4,70 m",
+      "outdoorKitchen": "Cocina exterior",
+      "barbecue": "Barbacoa",
+      "sixTerraces": "Seis terrazas, dos cubiertas",
+      "roofTerrace": "Azotea",
+      "veranda": "Porche",
+      "balcony": "Balcón",
+      "loungeSet": "Conjunto de salón exterior",
+      "gardenFurniture": "Mesas y sillas de jardín",
+      "sunLoungers": "Tumbonas",
+      "parasols": "Sombrillas",
+      "outdoorShower": "Ducha exterior",
+      "outdoorToilet": "Aseo exterior junto a la piscina",
+      "outdoorLighting": "Iluminación exterior",
+      "fencedGarden": "Jardín totalmente vallado",
+      "privateDriveway": "Entrada privada",
+      "parking": "Aparcamiento en la parcela",
+      "twoKitchens": "Dos cocinas",
+      "oven": "Horno",
+      "microwave": "Microondas combinado",
+      "dishwasher": "Lavavajillas",
+      "fridgeFreezer": "Nevera y congelador",
+      "coffeeMachine": "Cafetera",
+      "kettle": "Hervidor",
+      "cutleryCrockery": "Cubertería y vajilla",
+      "washingMachine": "Lavadora",
+      "tumbleDryer": "Secadora",
+      "iron": "Plancha y tabla",
+      "vacuum": "Aspiradora",
+      "bedLinen": "Ropa de cama",
+      "towels": "Toallas",
+      "beachTowels": "Toallas de playa",
+      "kitchenLinen": "Paños de cocina",
+      "hairdryer": "Secador",
+      "cot": "Cuna de viaje",
+      "highChair": "Trona",
+      "tableTennis": "Mesa de ping-pong",
+      "poolToys": "Juguetes de piscina"
     }
   },
   "area": {
@@ -135,24 +194,42 @@
   },
   "rates": {
     "eyebrow": "Tarifas",
-    "title": "Temporadas y precios",
-    "subtitle": "Tarifas semanales. Escríbanos para fechas concretas, estancias más cortas y ofertas de larga estancia.",
+    "title": "Precios y condiciones",
+    "subtitle": "Can Miró se alquila en julio y agosto, con una estancia mínima de 7 noches. Aquí encontrará los precios por semana, los gastos adicionales y nuestras condiciones.",
     "perWeek": "por semana",
-    "minNights": "noches mín.",
-    "seasons": {
-      "low": "Temporada baja",
-      "mid": "Temporada media",
-      "high": "Temporada alta",
-      "peak": "Máxima (jul–ago)"
+    "minNights": "noches mínimo",
+    "perNightNote": "El precio por noche dentro de la temporada es de",
+    "extrasTitle": "Gastos adicionales",
+    "optionalTitle": "Opcional",
+    "extrasNote": "Los gastos obligatorios se abonan al reservar. El suplemento por llegada tardía y la trona se pagan a la llegada.",
+    "per": {
+      "stay": "por estancia",
+      "person": "por persona"
+    },
+    "extras": {
+      "linen": "Ropa de cama y toallas (toalla de playa incluida)",
+      "cleaning": "Limpieza final",
+      "deposit": "Fianza",
+      "lateArrival": "Suplemento por llegada después de las 20:00",
+      "cot": "Cuna de viaje",
+      "highChair": "Trona"
     },
     "includedTitle": "Incluido en cada estancia",
     "included": [
-      "Limpieza final y ropa de cama y toallas limpias",
-      "Agua, electricidad y wifi de alta velocidad",
-      "Aire acondicionado y mantenimiento de la piscina",
-      "Guía de bienvenida y consejos locales"
+      "Agua, electricidad y wifi rápido",
+      "Aire acondicionado en toda la casa",
+      "Mantenimiento de la piscina y el jardín",
+      "Información de bienvenida y consejos locales"
     ],
-    "note": "Se aplica una fianza reembolsable.",
+    "paymentTitle": "Pago",
+    "payment": "Tras la reserva abona un anticipo del 30% del precio del alquiler. El resto se paga como muy tarde en la fecha indicada en su confirmación de reserva. Si reserva dentro de los 60 días previos a la llegada, abona el importe completo de una vez al reservar.",
+    "cancellationTitle": "Cancelación",
+    "cancellation60plus": "Si cancela con más de 60 días de antelación, paga el 30% del precio del alquiler, es decir, el anticipo.",
+    "cancellation60minus": "Si cancela 60 días antes de la llegada o menos, se debe el precio completo del alquiler.",
+    "cancellationNoShow": "Si no se presenta o se marcha antes de lo previsto, el precio completo sigue siendo exigible.",
+    "cancellationForce": "Si somos nosotros quienes tenemos que cancelar por causa de fuerza mayor, se le devuelve todo lo abonado.",
+    "cancellationTip": "La cancelación se comunica siempre por escrito. Le recomendamos contratar un seguro de cancelación.",
+    "depositNote": "La fianza se devuelve como máximo 14 días después de su salida, una vez revisada la villa.",
     "cta": "Solicitar presupuesto"
   },
   "reviews": {
@@ -169,37 +246,45 @@
     "eyebrow": "Conviene saber",
     "title": "Preguntas frecuentes",
     "items": {
+      "season": {
+        "q": "¿Cuándo se puede alquilar Can Miró?",
+        "a": "Alquilamos Can Miró en julio y agosto, con una estancia mínima de 7 noches. ¿Tiene otras fechas en mente? Pregúntenos y vemos qué es posible."
+      },
+      "apartment": {
+        "q": "¿Qué es el apartamento independiente de abajo?",
+        "a": "En la planta inferior hay un apartamento completo con entrada, dormitorio, baño y cocina propios. Ideal si viajan dos familias, o si vienen los abuelos o hijos mayores: de vacaciones juntos y, aun así, cada uno con su espacio."
+      },
       "checkin": {
         "q": "¿Cuáles son los horarios de entrada y salida?",
-        "a": "La entrada es a partir de las 16:00 y la salida hasta las 10:00. A menudo podemos flexibilizar los horarios según la ocupación de ese día; solo tiene que pedirlo."
+        "a": "La entrada es entre las 16:00 y las 20:00, y la salida hasta las 10:00. Si llega después de las 20:00 se aplica un suplemento de 50 €, a pagar a la llegada. Avísenos y nos aseguramos de que haya alguien esperándole."
       },
       "deposit": {
         "q": "¿Hay fianza?",
-        "a": "Sí, antes de la llegada se retiene una fianza reembolsable, que se devuelve pocos días después de la salida, tras la revisión habitual."
+        "a": "Sí, una fianza de 750 € por estancia, que se abona al reservar. Se devuelve como máximo 14 días después de su salida, una vez revisada la villa."
       },
       "cancellation": {
         "q": "¿Cuál es la política de cancelación?",
-        "a": "Ofrecemos una política de cancelación justa y clara que confirmamos con su reserva. Contáctenos para conocer las condiciones vigentes para sus fechas."
-      },
-      "pets": {
-        "q": "¿Se admiten mascotas?",
-        "a": "Lo sentimos, pero no se admiten mascotas en la villa."
-      },
-      "pool": {
-        "q": "¿La piscina es privada y climatizada?",
-        "a": "Sí. La piscina es privada y de uso exclusivo de su grupo, y está climatizada, por lo que resulta agradable nadar mucho más allá de los meses de verano."
-      },
-      "kids": {
-        "q": "¿Es adecuada para niños?",
-        "a": "Por supuesto. Hay mucho espacio, una mesa de ping-pong y zonas de jardín seguras, y disponemos de una selección de juguetes de piscina para los más pequeños. Díganos sus edades y le asesoraremos con mucho gusto."
+        "a": "Si cancela con más de 60 días de antelación, paga el 30% del precio del alquiler, es decir, el anticipo. Dentro de los 60 días previos a la llegada se debe el precio completo. La cancelación se comunica siempre por escrito, y le recomendamos contratar un seguro de cancelación."
       },
       "cleaning": {
         "q": "¿Está incluida la limpieza?",
-        "a": "La limpieza final y la ropa de cama y toallas limpias están incluidas. La limpieza durante la estancia y otros servicios pueden organizarse."
+        "a": "La limpieza final cuesta 350 € por estancia y se abona al reservar. La ropa de cama y las toallas, con toalla de playa incluida, cuestan 30 € por persona. Si lo desea, organizamos limpiezas durante la estancia."
+      },
+      "pool": {
+        "q": "¿La piscina es privada y climatizada?",
+        "a": "Sí. La piscina es privada, de uso exclusivo para su grupo, y está climatizada. Mide 10,60 por 4,70 metros y va de 1,10 a 2,00 metros de profundidad, así que hay sitio para nadar de verdad."
+      },
+      "kids": {
+        "q": "¿La villa es adecuada para niños?",
+        "a": "Desde luego. Hay espacio de sobra, una mesa de ping-pong y rincones seguros en el jardín, y juguetes de piscina para los más pequeños. También hay cuna de viaje y trona, 45 € cada una por estancia. Tenga en cuenta que los niños deben estar siempre vigilados por un adulto en la piscina."
+      },
+      "pets": {
+        "q": "¿Se admiten mascotas?",
+        "a": "Lamentablemente no se admiten mascotas en la villa."
       },
       "parking": {
         "q": "¿Hay aparcamiento?",
-        "a": "Sí, la villa cuenta con aparcamiento privado. Se recomienda coche para aprovechar al máximo la zona."
+        "a": "Sí, hay entrada privada y aparcamiento en la parcela. Vale la pena tener coche para descubrir bien la zona."
       }
     }
   },
@@ -262,6 +347,145 @@
     "nextMonth": "Siguiente",
     "viewMonth": "Ver mes",
     "weekOf": "Semana del",
-    "note": "La disponibilidad es orientativa y se confirmará al hacer su consulta. Mantenemos el calendario sincronizado con nuestros otros canales de reserva."
+    "note": "La disponibilidad es orientativa y se confirmará al hacer su consulta. Mantenemos el calendario sincronizado con nuestros otros canales de reserva.",
+    "closed": "No se alquila"
+  },
+  "layout": {
+    "eyebrow": "Distribución",
+    "title": "Habitación por habitación",
+    "subtitle": "Cuatro dormitorios y tres baños, repartidos entre la villa y un apartamento independiente en la planta inferior con entrada propia.",
+    "floors": {
+      "ground": "Planta baja",
+      "lower": "El apartamento, planta inferior",
+      "outside": "Exterior"
+    },
+    "rooms": {
+      "living": {
+        "name": "Salón",
+        "body": "Salón luminoso y acogedor de estilo español, con vigas de madera en el techo y chimenea. En el sofá, amplio y cómodo, se descansa después de un día de sol y mar. Las puertas se abren de par en par a la terraza, de modo que el interior y el exterior se funden. Bajo el arco característico está el comedor, con una larga mesa de madera donde cabe todo el grupo.",
+        "specs": [
+          "Chimenea",
+          "Mesa de comedor para 6",
+          "Dos sofás de tres plazas",
+          "Aire acondicionado",
+          "Suelo de baldosa"
+        ]
+      },
+      "kitchen": {
+        "name": "Cocina",
+        "body": "Cocina abierta y luminosa, con armarios de madera y un aire fresco y moderno. Se cocina en una placa eléctrica de cuatro zonas, y hay microondas combinado, campana extractora y cubertería y vajilla de sobra. Las puertas dan directamente a la terraza y a la cocina exterior con barbacoa: se cocina dentro, se asa fuera y después todos a la mesa al sol.",
+        "specs": [
+          "Placa eléctrica, 4 zonas",
+          "Horno y microondas combinado",
+          "Lavavajillas",
+          "Nevera y congelador",
+          "Cafetera y hervidor"
+        ]
+      },
+      "bedroom1": {
+        "name": "Dormitorio 1",
+        "body": "Dormitorio amplio con cama de matrimonio y un precioso cabecero de madera tallada al estilo español. La cómoda ofrece sitio de sobra para su ropa, y por la ventana se ve el verde del jardín. Gracias al aire acondicionado se duerme fresco incluso en las noches más cálidas.",
+        "specs": [
+          "Cama de matrimonio 180 x 200 cm",
+          "Armario",
+          "Aire acondicionado",
+          "Suelo de baldosa"
+        ]
+      },
+      "bedroom2": {
+        "name": "Dormitorio 2",
+        "body": "Dormitorio luminoso con dos camas individuales, ideal para niños, amigos o compañeros de viaje. La decoración en blanco y el colorido cuadro de la costa dan a la habitación un aire alegre de vacaciones. Cada cama tiene su mesilla con lámpara de lectura.",
+        "specs": [
+          "Dos camas individuales 90 x 200 cm",
+          "Armario",
+          "Aire acondicionado",
+          "Suelo de baldosa"
+        ]
+      },
+      "bedroom3": {
+        "name": "Dormitorio 3",
+        "body": "Dormitorio tranquilo del lado del jardín, con dos camas individuales, armario y aire acondicionado. Una buena habitación para los niños o para quien prefiera acostarse pronto.",
+        "specs": [
+          "Dos camas individuales 90 x 190 cm",
+          "Armario",
+          "Aire acondicionado",
+          "Suelo de baldosa"
+        ]
+      },
+      "bathroom1": {
+        "name": "Baño 1",
+        "body": "Baño en suite con ducha, bañera, lavabo y inodoro. Después de un día en la piscina o en la playa se pasa directamente del dormitorio a la ducha, o se toma un baño tranquilo al caer la tarde.",
+        "specs": [
+          "En suite",
+          "Bañera",
+          "Ducha",
+          "Lavabo e inodoro",
+          "Secador"
+        ]
+      },
+      "bathroom2": {
+        "name": "Baño 2",
+        "body": "Baño compartido para los dormitorios 2 y 3, con ducha, lavabo e inodoro. Muy práctico cuando se viaja con niños o amigos: tras un día de sol y piscina, aquí se refresca todo el mundo. Hay secador, así nadie se retrasa antes de salir por la noche.",
+        "specs": [
+          "Ducha",
+          "Lavabo e inodoro",
+          "Secador"
+        ]
+      },
+      "bedroom4": {
+        "name": "Dormitorio 4",
+        "body": "El dormitorio del apartamento independiente, con cama de matrimonio. El apartamento tiene entrada, baño y cocina propios, de manera que aquí abajo se dispone de un espacio enteramente propio. Ideal para los abuelos, para hijos mayores o para una pareja amiga que agradezca algo de intimidad. De vacaciones juntos y, aun así, cada uno a su ritmo.",
+        "specs": [
+          "Cama de matrimonio 180 x 200 cm",
+          "Entrada propia",
+          "Cocina propia",
+          "Armario",
+          "Aire acondicionado"
+        ]
+      },
+      "bathroom3": {
+        "name": "Baño 3",
+        "body": "Baño en suite junto al dormitorio del apartamento, con ducha, lavabo e inodoro. Abajo se tiene todo a mano y con intimidad. Conviene saberlo: junto a la piscina, detrás de la barbacoa, hay además un aseo exterior, así nadie entra en casa con los pies mojados.",
+        "specs": [
+          "En suite",
+          "Ducha",
+          "Lavabo e inodoro"
+        ]
+      },
+      "pool": {
+        "name": "Piscina y jardín",
+        "body": "Piscina privada de 4,70 por 10,60 metros, con una profundidad que va de 1,10 a 2,00 metros, en medio de un jardín mediterráneo de más de 2.000 m² con palmeras, olivos y cipreses. Lo bastante larga para nadar de verdad, y enteramente para usted. Alrededor hay tumbonas y sombrillas, y después del baño uno se aclara en la ducha exterior. Al anochecer la piscina queda suavemente iluminada.",
+        "specs": [
+          "10,60 x 4,70 m",
+          "Profundidad de 1,10 a 2,00 m",
+          "Privada y climatizada",
+          "Ducha exterior",
+          "Tumbonas y sombrillas",
+          "Iluminación nocturna"
+        ]
+      }
+    }
+  },
+  "houseRules": {
+    "eyebrow": "Normas de la casa",
+    "title": "Cómo nos gusta cuidarla",
+    "subtitle": "Can Miró está en una zona residencial tranquila. Con unos pocos acuerdos sencillos sigue siendo un buen sitio para usted, para los vecinos y para quienes vengan después.",
+    "checkIn": "Entrada",
+    "checkOut": "Salida",
+    "quietHours": "Horas de silencio",
+    "minAge": "Titular desde",
+    "items": {
+      "mainBooker": "El titular de la reserva tiene al menos 28 años y se aloja en la villa durante toda la estancia.",
+      "pets": "No se admiten mascotas.",
+      "smoking": "No se puede fumar dentro de la casa.",
+      "events": "No se permiten fiestas ni eventos.",
+      "photography": "No se permite la fotografía comercial.",
+      "children": "Los niños son muy bienvenidos.",
+      "poolSupervision": "Los niños, dentro y alrededor de la piscina, siempre bajo la vigilancia de un adulto, para que el baño sea seguro para todos.",
+      "visitors": "Las visitas son posibles previo acuerdo.",
+      "maintenance": "Las instalaciones de la piscina y el jardín las maneja nuestro personal de mantenimiento. Pasan con regularidad, así que les agradecemos que les dé acceso.",
+      "leaveTidy": "Al marcharse, deje la villa recogida: la vajilla limpia y guardada, y todo en su sitio.",
+      "report": "¿Algo se ha roto o no funciona? Avísenos enseguida y lo resolvemos lo antes posible."
+    }
   }
 }

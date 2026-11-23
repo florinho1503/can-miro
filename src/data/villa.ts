@@ -84,20 +84,142 @@ export const villa = {
   ],
 
   /**
-   * Seasonal rates (price per week, EUR), supplied by the owner. Season labels
-   * come from `rates.seasons.<id>`. Keep the nightly figures in
-   * `availability.ts` in sync (weekly / 7, rounded to the nearest 5).
+   * Letting season. Can Miró is let in JULY AND AUGUST ONLY, minimum 7 nights.
+   * `availability.ts` uses this window, so the booking calendar shows the rest
+   * of the year as not available. Widen the window here to open more months.
+   */
+  season: {
+    year: 2027,
+    from: '2027-07-01',
+    /** Last night that can be booked (checkout is the next morning). */
+    to: '2027-08-31',
+    minNights: 7,
+  },
+
+  /**
+   * Rates per stay, EUR, as published on the owner's Micazu listing (Nov 2026).
+   * `from`/`to` are arrival dates; `to` is exclusive. The first two Micazu
+   * periods (1-10 and 10-17 July) carry the same price and are merged here.
+   * `perNight` is the same across the season and drives the booking calendar
+   * via `availability.ts` — keep the two in sync.
    */
   rates: {
     currency: '€',
     unit: 'week',
-    rows: [
-      { id: 'low', pricePerWeek: 2500, minNights: 5 },
-      { id: 'mid', pricePerWeek: 3300, minNights: 7 },
-      { id: 'high', pricePerWeek: 4650, minNights: 7 },
-      { id: 'peak', pricePerWeek: 5850, minNights: 7 },
+    periods: [
+      { id: 'early', from: '2027-07-01', to: '2027-07-17', pricePerWeek: 5000, minNights: 7 },
+      { id: 'mid', from: '2027-07-17', to: '2027-07-24', pricePerWeek: 5100, minNights: 7 },
+      { id: 'high', from: '2027-07-24', to: '2027-09-01', pricePerWeek: 5200, minNights: 7 },
+    ],
+    pricePerNight: 750,
+    /**
+     * Mandatory and optional extras. `per`: 'stay' | 'person'.
+     * `when`: 'booking' (paid when booking) | 'arrival' (paid on site).
+     * Labels come from `rates.extras.<id>`.
+     */
+    extras: [
+      { id: 'linen', amount: 30, per: 'person', required: true, when: 'booking' },
+      { id: 'cleaning', amount: 350, per: 'stay', required: true, when: 'booking' },
+      { id: 'deposit', amount: 750, per: 'stay', required: true, when: 'booking' },
+      { id: 'lateArrival', amount: 50, per: 'stay', required: true, when: 'arrival' },
+      { id: 'cot', amount: 45, per: 'stay', required: false, when: 'booking' },
+      { id: 'highChair', amount: 45, per: 'stay', required: false, when: 'arrival' },
     ],
   },
+
+  /**
+   * Room-by-room layout. `floor` maps to `layout.floors.<floor>`, the rest of
+   * the text to `layout.rooms.<id>` (name, body, specs[]). The lower floor is
+   * a SELF-CONTAINED APARTMENT (own entrance, bedroom, bathroom, kitchen),
+   * which is also why the villa has two kitchens.
+   */
+  rooms: [
+    { id: 'living', icon: 'sofa', floor: 'ground' },
+    { id: 'kitchen', icon: 'kitchen', floor: 'ground' },
+    { id: 'bedroom1', icon: 'bed', floor: 'ground' },
+    { id: 'bedroom2', icon: 'bed', floor: 'ground' },
+    { id: 'bedroom3', icon: 'bed', floor: 'ground' },
+    { id: 'bathroom1', icon: 'bath', floor: 'ground' },
+    { id: 'bathroom2', icon: 'bath', floor: 'ground' },
+    { id: 'bedroom4', icon: 'bed', floor: 'lower' },
+    { id: 'bathroom3', icon: 'bath', floor: 'lower' },
+    { id: 'pool', icon: 'pool', floor: 'outside' },
+  ],
+
+  /**
+   * House rules. The four figures are shown as chips; `items` are the written
+   * rules, text in `houseRules.items.<id>`.
+   */
+  houseRules: {
+    checkIn: { from: '16:00', to: '20:00' },
+    checkOut: '10:00',
+    quietHours: { from: '22:00', to: '08:00' },
+    minBookerAge: 28,
+    items: [
+      'mainBooker',
+      'pets',
+      'smoking',
+      'events',
+      'photography',
+      'children',
+      'poolSupervision',
+      'visitors',
+      'maintenance',
+      'leaveTidy',
+      'report',
+    ],
+  },
+
+  /**
+   * Full facilities list, shown under the icon grid. Group titles come from
+   * `amenities.facilityGroups.<id>`, item labels from `amenities.facilities.<id>`.
+   */
+  facilityGroups: [
+    { id: 'property', items: ['villaType', 'livingArea', 'gardenArea', 'energyLabel', 'renovated'] },
+    { id: 'climate', items: ['airConditioning', 'centralHeating', 'wifi', 'television'] },
+    {
+      id: 'outside',
+      items: [
+        'privatePool',
+        'poolSize',
+        'outdoorKitchen',
+        'barbecue',
+        'sixTerraces',
+        'roofTerrace',
+        'veranda',
+        'balcony',
+        'loungeSet',
+        'gardenFurniture',
+        'sunLoungers',
+        'parasols',
+        'outdoorShower',
+        'outdoorToilet',
+        'outdoorLighting',
+        'fencedGarden',
+        'privateDriveway',
+        'parking',
+      ],
+    },
+    {
+      id: 'kitchenLaundry',
+      items: [
+        'twoKitchens',
+        'oven',
+        'microwave',
+        'dishwasher',
+        'fridgeFreezer',
+        'coffeeMachine',
+        'kettle',
+        'cutleryCrockery',
+        'washingMachine',
+        'tumbleDryer',
+        'iron',
+        'vacuum',
+      ],
+    },
+    { id: 'linen', items: ['bedLinen', 'towels', 'beachTowels', 'kitchenLinen', 'hairdryer'] },
+    { id: 'children', items: ['cot', 'highChair', 'tableTennis', 'poolToys'] },
+  ],
 
   /**
    * Guest reviews, PLACEHOLDER. `quoteId` maps to `reviews.items.<quoteId>`.
@@ -112,10 +234,13 @@ export const villa = {
   ratingCount: 37,
 
   /** FAQ, `id` maps to `faq.items.<id>.q` and `.a`. */
-  faq: ['checkin', 'deposit', 'cancellation', 'pets', 'pool', 'kids', 'cleaning', 'parking'],
+  faq: ['season', 'apartment', 'checkin', 'deposit', 'cancellation', 'cleaning', 'pool', 'kids', 'pets', 'parking'],
 
-  /** Tourist rental registration number, REQUIRED in the footer. Placeholder. */
-  registrationNumber: 'VT-XXXXXX-A',
+  /**
+   * Tourist rental registration number, REQUIRED in the footer by Comunidad
+   * Valenciana. Taken from the owner's own Micazu listing (Nov 2026).
+   */
+  registrationNumber: 'VT-510483-A',
 } as const;
 
 export type Locale = 'en' | 'nl' | 'de' | 'es';
