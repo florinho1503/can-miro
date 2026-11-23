@@ -1,7 +1,7 @@
 /**
  * Curates and optimizes the real villa photos into src/assets/images.
- * Source originals live in photos-source/{ground,drone}. Re-run after adding
- * or swapping originals. Selection is defined in MAP below, edit to re-curate.
+ * Source originals live in photos-source/. Re-run after adding or swapping
+ * originals. Selection is defined in MAP below, edit to re-curate.
  *
  *   node scripts/process-photos.mjs
  */
@@ -22,38 +22,71 @@ const groundDir = existsSync(join(root, 'photos-source/ground'))
 const droneDir = existsSync(join(root, 'photos-source/drone'))
   ? join(root, 'photos-source/drone')
   : join(root, 'drone_photos/Photos-1-001');
+// Nov 2026 shoot: 38 numbered photos, the first coherent full set (interiors
+// included). This is what the site ships. The older ground/drone phone shots
+// stay on disk as a fallback but are no longer selected.
+const wendyDir = join(root, 'photos-source/wendy-20261123');
 
 const G = (n) => join(groundDir, n);
 const D = (n) => join(droneDir, n);
+const W = (n) => join(wendyDir, n);
 
-// Curated selection. `dest` is relative to src/assets/images.
+// Full selection: every photo from the Nov 2026 shoot is used.
+// `dest` is relative to src/assets/images.
 // mode: 'wide' hero, 'portrait' 4:5 intro, 'gallery' 1600w landscape.
+//
+// 02 and 05 carry the hero and the intro, so they are not repeated in the
+// grid; the other 36 make up the gallery. Order is a walk-through: pool,
+// outdoor living, indoor living, kitchens, bedrooms, bathrooms, arrival,
+// gardens, evening. Tiles 0, 3 and 6 render big (see Gallery.astro), so those
+// three are deliberately strong AND full resolution.
+//
+// Filenames carry the caption token, matched as a SUBSTRING in key order by
+// Gallery.astro, so watch the overlaps: `pool-loungers` must be listed there
+// before `pool-lounge`, `living-doors` before `living`, `dusk-olive` before
+// `dusk`.
 const MAP = [
-  { src: G('20250726_213948~2.jpg'), dest: 'hero.jpg', mode: 'wide' },
-  { src: G('PXL_20260720_111113097.jpg'), dest: 'intro.jpg', mode: 'feature' },
+  { src: W('02.jpg'), dest: 'hero.jpg', mode: 'wide' },
+  { src: W('05.jpg'), dest: 'intro.jpg', mode: 'feature' },
 
-  { src: G('PXL_20260719_154528611.jpg'), dest: 'gallery/01-pool-terrace.jpg', mode: 'gallery' },
-  { src: G('PXL_20260715_143008563.jpg'), dest: 'gallery/02-outdoor-lounge.jpg', mode: 'gallery' },
-  { src: G('PXL_20260720_123902822.jpg'), dest: 'gallery/03-dining.jpg', mode: 'gallery' },
-  { src: G('PXL_20260720_112642869~2.jpg'), dest: 'gallery/04-living.jpg', mode: 'gallery' },
-  { src: G('PXL_20260720_112545437~3.jpg'), dest: 'gallery/05-sitting.jpg', mode: 'gallery' },
-  // Two separate kitchens. The white/marble one is kitchen 1, the oak one is
-  // kitchen 2 (owner's numbering).
-  { src: G('IMG-20231220-WA0006.jpg'), dest: 'gallery/06-kitchen1.jpg', mode: 'gallery' },
-  { src: G('PXL_20260720_120241450.jpg'), dest: 'gallery/07-kitchen2.jpg', mode: 'gallery' },
-  { src: G('PXL_20260726_201345273.jpg'), dest: 'gallery/08-pool-night.jpg', mode: 'gallery' },
-  { src: G('PXL_20260721_120921157~2.jpg'), dest: 'gallery/09-bedroom.jpg', mode: 'gallery' },
-  { src: G('PXL_20260721_121218929.jpg'), dest: 'gallery/10-bathroom.jpg', mode: 'gallery' },
-  { src: G('IMG-20231220-WA0015.jpg'), dest: 'gallery/11-bathroom-ensuite.jpg', mode: 'gallery' },
-  { src: G('PXL_20260720_123724545.jpg'), dest: 'gallery/12-snug.jpg', mode: 'gallery' },
-  { src: G('PXL_20260720_111959439.jpg'), dest: 'gallery/13-terrace.jpg', mode: 'gallery' },
-  { src: D('07-aerial-pool.jpg'), dest: 'gallery/14-aerial-pool.jpg', mode: 'gallery' },
-  { src: G('PXL_20260726_180559019.jpg'), dest: 'gallery/15-garden-lounge.jpg', mode: 'gallery' },
-  { src: G('PXL_20260720_111530559.jpg'), dest: 'gallery/16-gardens.jpg', mode: 'gallery' },
-  { src: D('09-setting.jpg'), dest: 'gallery/17-setting.jpg', mode: 'gallery' },
-  { src: D('10-overview.jpg'), dest: 'gallery/18-overview.jpg', mode: 'gallery' },
-  { src: G('PXL_20260720_111902445.jpg'), dest: 'gallery/19-villa.jpg', mode: 'gallery' },
-  { src: G('PXL_20260726_180545423.jpg'), dest: 'gallery/20-sunset.jpg', mode: 'gallery' },
+  { src: W('10.jpg'), dest: 'gallery/01-pool-villa.jpg', mode: 'gallery' },
+  { src: W('01.jpg'), dest: 'gallery/02-pool-garden.jpg', mode: 'gallery' },
+  { src: W('03.jpg'), dest: 'gallery/03-pool-montgo.jpg', mode: 'gallery' },
+  { src: W('14.jpg'), dest: 'gallery/04-pool-pergola.jpg', mode: 'gallery' },
+  { src: W('12.jpg'), dest: 'gallery/05-pool-loungers.jpg', mode: 'gallery' },
+  { src: W('11.jpg'), dest: 'gallery/06-pool-planting.jpg', mode: 'gallery' },
+  { src: W('09.jpg'), dest: 'gallery/07-pergola-dining.jpg', mode: 'gallery' },
+  { src: W('08.jpg'), dest: 'gallery/08-pool-lounge.jpg', mode: 'gallery' },
+  { src: W('13.jpg'), dest: 'gallery/09-pool-terrace.jpg', mode: 'gallery' },
+  { src: W('16.jpg'), dest: 'gallery/10-garden-sofa.jpg', mode: 'gallery' },
+  { src: W('23.jpg'), dest: 'gallery/11-terrace-bbq.jpg', mode: 'gallery' },
+  { src: W('24.jpg'), dest: 'gallery/12-terrace-table.jpg', mode: 'gallery' },
+  { src: W('25.jpg'), dest: 'gallery/13-snug.jpg', mode: 'gallery' },
+  { src: W('18.jpg'), dest: 'gallery/14-living.jpg', mode: 'gallery' },
+  { src: W('19.jpg'), dest: 'gallery/15-living-dining.jpg', mode: 'gallery' },
+  { src: W('20.jpg'), dest: 'gallery/16-dining.jpg', mode: 'gallery' },
+  { src: W('04.jpg'), dest: 'gallery/17-living-doors.jpg', mode: 'gallery' },
+  { src: W('21.jpg'), dest: 'gallery/18-kitchen1.jpg', mode: 'gallery' },
+  { src: W('22.jpg'), dest: 'gallery/19-kitchen2.jpg', mode: 'gallery' },
+  { src: W('29.jpg'), dest: 'gallery/20-bedroom1.jpg', mode: 'gallery' },
+  { src: W('30.jpg'), dest: 'gallery/21-bedroom2.jpg', mode: 'gallery' },
+  { src: W('31.jpg'), dest: 'gallery/22-bedroom3.jpg', mode: 'gallery' },
+  { src: W('32.jpg'), dest: 'gallery/23-bedroom4.jpg', mode: 'gallery' },
+  { src: W('33.jpg'), dest: 'gallery/24-bathroom1.jpg', mode: 'gallery' },
+  { src: W('34.jpg'), dest: 'gallery/25-bathroom2.jpg', mode: 'gallery' },
+  // The only portrait shot in the set, so it renders as a tall tile.
+  { src: W('35.jpg'), dest: 'gallery/26-bathroom3.jpg', mode: 'gallery' },
+  { src: W('36.jpg'), dest: 'gallery/27-facade.jpg', mode: 'gallery' },
+  { src: W('37.jpg'), dest: 'gallery/28-courtyard.jpg', mode: 'gallery' },
+  // 38 had the house number on the gate post retouched out by the owner.
+  { src: W('38.jpg'), dest: 'gallery/29-gate.jpg', mode: 'gallery' },
+  { src: W('06.jpg'), dest: 'gallery/30-view.jpg', mode: 'gallery' },
+  { src: W('17.jpg'), dest: 'gallery/31-gardens.jpg', mode: 'gallery' },
+  { src: W('15.jpg'), dest: 'gallery/32-garden-palms.jpg', mode: 'gallery' },
+  { src: W('07.jpg'), dest: 'gallery/33-aerial.jpg', mode: 'gallery' },
+  { src: W('26.jpg'), dest: 'gallery/34-pool-night.jpg', mode: 'gallery' },
+  { src: W('28.jpg'), dest: 'gallery/35-dusk-olive.jpg', mode: 'gallery' },
+  { src: W('27.jpg'), dest: 'gallery/36-dusk.jpg', mode: 'gallery' },
 ];
 
 async function processItem(item) {
@@ -94,12 +127,10 @@ await sharp(join(imagesDir, 'hero.jpg'))
   .toFile(join(root, 'public/og-image.jpg'));
 console.log('✓ public/og-image.jpg 1200x630');
 
-// Report anything in the source folders that went unused.
+// Report anything in the current shoot that went unused.
 try {
   const used = new Set(MAP.map((i) => i.src));
-  for (const [dir, label] of [[groundDir, 'ground'], [droneDir, 'drone']]) {
-    const files = (await readdir(dir)).filter((f) => /\.(jpe?g|png)$/i.test(f));
-    const unused = files.filter((f) => !used.has(join(dir, f)));
-    if (unused.length) console.log(`\nUnused ${label}:`, unused.join(', '));
-  }
+  const files = (await readdir(wendyDir)).filter((f) => /\.(jpe?g|png)$/i.test(f));
+  const unused = files.filter((f) => !used.has(join(wendyDir, f)));
+  if (unused.length) console.log('\nUnused (wendy-20261123):', unused.join(', '));
 } catch {}

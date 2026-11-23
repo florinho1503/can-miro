@@ -90,15 +90,30 @@ npm run build    # -> dist/  (static)
 
 ## Photos
 
-- Originals: `photos-source/{ground,drone}` (git-ignored, large). Shipped/optimized copies in
+- Originals: `photos-source/` (git-ignored, large). The shipped set is
+  **`photos-source/wendy-20261123/`**: 38 numbered photos from the Nov 2026 shoot, the first
+  coherent full set (interiors included). The older `ground/` + `drone/` phone shots stay on
+  disk as a fallback but nothing selects them any more. Optimized copies in
   `src/assets/images/` are committed and are what the site uses.
 - Pipeline: edit the `MAP` in `scripts/process-photos.mjs`, then
   `node scripts/process-photos.mjs` (rebuilds gallery + hero + intro + `public/og-image.jpg`;
   prints unused sources). Gallery caption comes from the filename token (`…-dining.jpg` ->
-  `alfresco`), mapped in `Gallery.astro` (`captionByToken`); grid features tiles 0, 3, 6.
-- **Interior photos still missing** (living rooms, the two kitchens, bedrooms, bathrooms).
-  Gallery is exterior/grounds only. Intro image is a natural landscape crop (avoid hard
-  portrait crops, one looked stretched).
+  `dining`), mapped in `Gallery.astro` (`captionByToken`); that is a **substring match in key
+  order**, so compound tokens must be listed before the shorter tokens they contain
+  (`living-dining` before `living`). Grid features tiles 0, 3, 6, so keep three strong photos
+  at those positions.
+- **Every photo in the shoot is used.** Hero = `02.jpg` (dusk), intro = `05.jpg` (laid
+  table), and the other 36 are the gallery, ordered as a walk-through: pool, outdoor living,
+  indoor living, kitchens, the four bedrooms, the three bathrooms, arrival, gardens, evening.
+- Every gallery tile is a fixed `4/3` crop with `object-fit: cover` (the big ones span two
+  rows), so source aspect ratio barely matters: `35.jpg` is the one portrait shot and crops
+  cleanly. The intro renders at `4/3` too, so it is a centre crop of a 16:9 source.
+- **Address privacy:** the shoot's `38.jpg` originally showed the house number on the gate
+  post. The owner retouched it out; the name "Can Miró" stays. Check any new arrival/gate
+  photo for the number before shipping it.
+- Resolution: most of the set is ~4000px wide, but `04, 13, 21, 29-33` came back at
+  ~1400-1670px (the four bedrooms among them). Fine at the 1600px gallery target, slightly
+  soft in the lightbox. Re-export from the photographer's originals if they ever turn up.
 
 ## Booking calendar + availability
 
@@ -171,29 +186,29 @@ despite the offset. "Open in Google Maps" links to the neighbourhood, never the 
 
 ## Next steps roadmap
 
-**Done:** custom domain villacanmiro.com (HTTPS); Web3Forms enquiry email (-> florisbokx@gmail.com);
-Supabase `/admin` booking portal; enquiry -> calendar sync as tentative options; live
-availability on the public calendar.
+**Done:** full photo set incl. interiors (Nov 2026 shoot); real seasonal rates; custom domain
+villacanmiro.com (HTTPS); Web3Forms enquiry email (-> florisbokx@gmail.com); Supabase
+`/admin` booking portal; enquiry -> calendar sync as tentative options; live availability on
+the public calendar.
 
 **A. To a real public launch**
 1. Dedicated house inbox **canmiro@gmail.com** -> new Web3Forms key + repoint
    `PUBLIC_CONTACT_EMAIL` (variable + `.env` + workflow).
 2. Real **tourist registration number** in `villa.ts` (still `VT-XXXXXX-A`; legally required
    in the footer for Comunidad Valenciana).
-3. Real **rates + reviews** (currently placeholders; reviews predate the distance fix).
-4. **Interior photography** (+ new `MAP` entries in `process-photos.mjs`).
-5. **Remove `noindex`** from `Base.astro` (keep it on `admin.astro`).
+3. Real **reviews** (still placeholders, and they predate the distance fix).
+4. **Remove `noindex`** from `Base.astro` (keep it on `admin.astro`).
 
 **B. Channels / bookings (later)**
-6. Airbnb/Booking **iCal** sync: export our confirmed bookings as an iCal feed for the
+5. Airbnb/Booking **iCal** sync: export our confirmed bookings as an iCal feed for the
    platforms to import, and a scheduled function to import their feeds into `bookings`
    (status `blocked`). Or use a channel manager (Smoobu etc.). Low urgency: our form is
    enquiry-only + handled manually, so there is no instant-double-book risk on our side.
 
 **C. Nice-to-haves**
-7. Real seasonal **date ranges** in `availability.ts` (not just month buckets).
-8. Privacy-friendly **analytics** (e.g. Plausible) once public.
-9. Consider **Cloudflare Pages** if a private repo / serverless is wanted (static build ports
+6. Real seasonal **date ranges** in `availability.ts` (not just month buckets).
+7. Privacy-friendly **analytics** (e.g. Plausible) once public.
+8. Consider **Cloudflare Pages** if a private repo / serverless is wanted (static build ports
    with no code change; re-point DNS, drop `CNAME`).
 
 ## Plain-language git (the family works on this site)

@@ -34,6 +34,9 @@ const paths: Record<string, string> = {
   // ui
   chevron: '<path d="m6 9 6 6 6-6"/>',
   arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  // Four corner brackets: "open this photo large". A plain right arrow
+  // read as "go to the next photo", which is not what a tile click does.
+  expand: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
   arrowUp: '<path d="M12 19V5M6 11l6-6 6 6"/>',
   star: '<path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 17l-5.3 2.6 1-5.8L3.5 9.7l5.9-.9z"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',

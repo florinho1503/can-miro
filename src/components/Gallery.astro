@@ -16,36 +16,48 @@ const files = import.meta.glob<{ default: ImageMetadata }>(
   { eager: true }
 );
 
-// Map filename token -> caption key. Order matters: more specific tokens first.
+// Map filename token -> caption key. captionKey() does a SUBSTRING match in
+// key order, so every compound token must be listed before the shorter token
+// it contains: `pool-loungers` before `pool-lounge`, `living-doors` before
+// `living`, `dusk-olive` before `dusk`, and so on.
 const captionByToken: Record<string, string> = {
+  'pool-villa': 'poolVilla',
+  'pool-garden': 'poolGarden',
+  'pool-montgo': 'poolMontgo',
+  'pool-pergola': 'poolPergola',
+  'pool-loungers': 'poolLoungers',
+  'pool-planting': 'poolPlanting',
+  'pool-lounge': 'poolLounge',
   'pool-terrace': 'poolTerrace',
   'pool-night': 'poolNight',
-  'aerial-pool': 'aerial',
-  'outdoor-lounge': 'outdoorLounge',
-  'garden-lounge': 'gardenLounge',
-  dining: 'alfresco',
-  lounge: 'outdoorLounge',
+  'pergola-dining': 'pergolaDining',
+  'living-dining': 'livingDining',
+  'living-doors': 'livingDoors',
+  'terrace-bbq': 'terraceBbq',
+  'terrace-table': 'terraceTable',
+  'garden-sofa': 'gardenSofa',
+  'garden-palms': 'gardenPalms',
+  'dusk-olive': 'duskOlive',
   living: 'living',
-  // 04-living and 05-sitting are two views of the SAME room, so both get the
-  // "living room" caption. Point this at a `sitting` caption of its own only
-  // if a genuinely separate second sitting room is photographed later.
-  sitting: 'living',
-  // Two separate kitchens, so the numbered tokens must come before the plain
-  // `kitchen` fallback. Same for the en-suite bathroom before `bathroom`.
+  dining: 'dining',
+  snug: 'snug',
   kitchen1: 'kitchenOne',
   kitchen2: 'kitchenTwo',
-  kitchen: 'kitchen',
-  bedroom: 'bedroom',
-  'bathroom-ensuite': 'bathroomEnsuite',
-  bathroom: 'bathroom',
-  snug: 'snug',
-  terrace: 'terrace',
-  sunset: 'sunset',
-  daybed: 'daybed',
-  villa: 'villa',
+  bedroom1: 'bedroomOne',
+  bedroom2: 'bedroomTwo',
+  bedroom3: 'bedroomThree',
+  bedroom4: 'bedroomFour',
+  bathroom1: 'bathroomOne',
+  bathroom2: 'bathroomTwo',
+  bathroom3: 'bathroomThree',
+  facade: 'facade',
+  courtyard: 'courtyard',
+  gate: 'gate',
+  view: 'view',
   gardens: 'gardens',
-  setting: 'setting',
-  overview: 'overview',
+  aerial: 'aerial',
+  dusk: 'dusk',
+  villa: 'villa',
 };
 
 function captionKey(path: string): string {
@@ -111,7 +123,7 @@ const items = await Promise.all(
           />
           <span class="gallery__caption">
             <span>{item.caption}</span>
-            <Icon name="arrow" size={18} />
+            <Icon name="expand" size={16} />
           </span>
         </a>
       ))}
