@@ -122,10 +122,6 @@ const items = await Promise.all(
         <h2 class="section-title">{t('gallery.title')}</h2>
         <p class="lead">{t('gallery.subtitle')}</p>
       </div>
-      <button type="button" class="btn btn--ghost gallery__video-btn" data-video-open>
-        <Icon name="play" size={18} />
-        {t('gallery.video')}
-      </button>
     </div>
   </div>
 
@@ -162,6 +158,15 @@ const items = await Promise.all(
         </a>
       ))}
     </div>
+
+    <!-- The video sits AFTER the photos on purpose (owner, Nov 2026): the
+         gallery should open with the house itself, not with a film. -->
+    <div class="gallery__foot reveal">
+      <button type="button" class="btn btn--ghost gallery__video-btn" data-video-open>
+        <Icon name="play" size={18} />
+        {t('gallery.video')}
+      </button>
+    </div>
   </div>
 
   <!--
@@ -182,21 +187,13 @@ const items = await Promise.all(
 
 <style>
   .gallery__head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    max-width: var(--container-narrow);
     margin-bottom: 2.5rem;
   }
-  /* The heading block stays narrow for readability, but the row itself runs
-     the full container width so the video button lines up with the right
-     edge of the photo grid. */
-  .gallery__head > div {
-    max-width: var(--container-narrow);
-  }
-  .gallery__video-btn {
-    flex: none;
+  .gallery__foot {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
   }
 
   /* Video overlay. Fixed, above everything, below nothing. */

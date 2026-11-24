@@ -128,7 +128,8 @@ npm run build    # -> dist/  (static)
 ## House video
 
 The owner's own YouTube clip ("Villa Can Miro, Javea", 2:19, channel Robert Bokx) sits
-behind a **Watch the video** button in the gallery heading. The id lives in `villa.video`;
+behind a **Watch the video** button placed AFTER the photo grid (owner, Nov 2026: the
+gallery should open with the house, not with a film). The id lives in `villa.video`;
 `Gallery.astro` builds the player URL. The iframe is **created on first click**, on
 `youtube-nocookie.com`, so nothing is fetched from YouTube and no cookie is set for
 visitors who never press play. Closing resets the src, otherwise the clip plays on behind
