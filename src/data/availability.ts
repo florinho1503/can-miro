@@ -57,7 +57,14 @@ export interface BlockedRange {
   end: string; // checkout day, exclusive (YYYY-MM-DD)
 }
 
-export const blockedRanges: BlockedRange[] = [];
+export const blockedRanges: BlockedRange[] = [
+  // Booked, told to us directly by the owner (Nov 2026). `end` is the checkout
+  // day and is NOT itself blocked, so this covers the nights of 31 July up to
+  // and including 6 August; 7 August is free again for the next arrival.
+  // The live Supabase rows are pushed on top of this list, never replacing it,
+  // so adding the same stay in /admin later only duplicates it harmlessly.
+  { start: '2027-07-31', end: '2027-08-07' },
+];
 
 export function isAvailable(d: Date, today: Date): boolean {
   const start = new Date(today.getFullYear(), today.getMonth(), today.getDate());

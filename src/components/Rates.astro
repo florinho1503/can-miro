@@ -42,7 +42,7 @@ const optional = extras.filter((e) => !e.required);
       <p class="lead">{t('rates.subtitle')}</p>
     </div>
 
-    <div class="rates__cards reveal">
+    <div class:list={['rates__cards', 'reveal', { 'rates__cards--single': periods.length === 1 }]}>
       {periods.map((row, i) => (
         <div class:list={['rates__card', { 'rates__card--featured': i === periods.length - 1 }]}>
           <h3 class="rates__season">{periodLabel(row.from, row.to)}</h3>
@@ -56,7 +56,8 @@ const optional = extras.filter((e) => !e.required);
     </div>
 
     <p class="rates__nightly reveal">
-      {t('rates.perNightNote')} <strong>{currency}{money.format(pricePerNight)}</strong>
+      {t('rates.perNightNote')} <strong>{currency}{money.format(pricePerNight)}</strong>{'. '}
+      {t('rates.perNightExtra')}
     </p>
 
     <div class="rates__panels reveal">
@@ -126,6 +127,11 @@ const optional = extras.filter((e) => !e.required);
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     margin-bottom: 1.25rem;
+  }
+  /* A single season-wide rate should not stretch across the full width. */
+  .rates__cards--single {
+    grid-template-columns: minmax(260px, 420px);
+    justify-content: center;
   }
   .rates__card {
     border: 1px solid var(--border);

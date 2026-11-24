@@ -126,10 +126,17 @@ Source of truth is the owner's own Micazu listing (read Nov 2026):
 - **Let in JULY AND AUGUST ONLY**, minimum 7 nights. The window lives in `villa.season`;
   `availability.ts` reads it, so the calendar greys out the rest of the year and `Booking`
   opens on the season's first month instead of today when today is before it.
-- **Rates per stay** in `villa.rates.periods` (dated, `to` exclusive): 1-17 Jul €5,000,
-  17-24 Jul €5,100, 24 Jul-1 Sep €5,200; €750 a night throughout. Micazu lists the first two
-  weeks separately at the same price; they are merged here. Period labels are generated from
-  the dates per locale, so there is no hand-written label to translate.
+- **One flat rate across the season** (owner, Nov 2026): €5,000 a week, 1 Jul-1 Sep, in
+  `villa.rates.periods`. Split that back into several dated rows if the weeks ever differ
+  again; `Rates.astro` renders however many there are and centres a single card. Period
+  labels are generated from the dates per locale, nothing to translate.
+- **The nightly price (€750) deliberately does NOT divide into the week price.** 7 x €750 =
+  €5,250 against €5,000 for the same week, and the calendar totals per night, so it quotes
+  €5,250 for seven nights. The owner was shown this and chose to keep it (Nov 2026): €750 is
+  the single-night rate. `rates.perNightExtra` says so under the price and points the guest
+  at the weekly rate, so it does not read as a bug. Do not "fix" it silently.
+- **Blocked by hand:** 31 Jul-7 Aug 2027 is booked and sits in `blockedRanges` in
+  `availability.ts`. Live Supabase rows are pushed on top of that list, never replacing it.
 - **Extras are NOT included** (`villa.rates.extras`): bed linen €30pp, final cleaning €350,
   deposit €750, late-arrival surcharge €50 (after 20:00), cot €45, high chair €45. Only
   water/electricity/Wi-Fi, air conditioning, pool and garden maintenance are in the price.
@@ -168,13 +175,17 @@ On submit it does two things:
 2. **Creates a tentative booking** in Supabase via the `create_enquiry` RPC (best-effort,
    background) -> the enquiry shows in `/admin` as an **"Optie"** (paid = false).
 
-- **Web3Forms:** key in `.env` + GH variable `PUBLIC_WEB3FORMS_KEY`. Delivers to the email of
-  the account the key was created under = **florisbokx@gmail.com** (also the displayed
-  contact email, kept in sync on purpose). Free plan **blocks server-side (curl) submits**,
-  so test via a real browser. First-time Gmail may mark it spam; owner has a "never spam"
-  filter on subject `Can Miró enquiry`.
-- **Planned:** dedicated house inbox `canmiro@gmail.com` (new Web3Forms key under it, then
-  swap `PUBLIC_WEB3FORMS_KEY` + `PUBLIC_CONTACT_EMAIL`).
+- **Web3Forms:** key in `.env` + GH variable `PUBLIC_WEB3FORMS_KEY`. It delivers to the
+  account the key was created under, and the request sets no `to` field, so **the key alone
+  decides where enquiries land**. Free plan **blocks server-side (curl) submits**, so test
+  via a real browser. First-time Gmail may mark it spam; there is a "never spam" filter on
+  subject `Can Miró enquiry`.
+- **MISMATCH, open:** the displayed contact address is **michaelabokx@gmail.com**
+  (`PUBLIC_CONTACT_EMAIL` in the workflow + the fallback in `src/config.ts`, changed Nov
+  2026), but the Web3Forms key still belongs to **florisbokx@gmail.com**, so submitted forms
+  keep arriving there. Only the `mailto:` fallback and the printed address follow the new
+  value. To move the enquiries themselves, create a Web3Forms key under
+  michaelabokx@gmail.com and swap `PUBLIC_WEB3FORMS_KEY`.
 
 ## Admin portal & bookings (Supabase)
 
@@ -219,8 +230,8 @@ villacanmiro.com (HTTPS); Web3Forms enquiry email (-> florisbokx@gmail.com); Sup
 the public calendar.
 
 **A. To a real public launch**
-1. Dedicated house inbox **canmiro@gmail.com** -> new Web3Forms key + repoint
-   `PUBLIC_CONTACT_EMAIL` (variable + `.env` + workflow).
+1. **New Web3Forms key under michaelabokx@gmail.com** and swap `PUBLIC_WEB3FORMS_KEY`, so
+   enquiries arrive at the address the site now displays (see Enquiry form).
 2. Real **reviews** (still placeholders, and they predate the distance fix).
 3. **Remove `noindex`** from `Base.astro` (keep it on `admin.astro`).
 

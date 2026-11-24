@@ -107,9 +107,10 @@ export const villa = {
     currency: '€',
     unit: 'week',
     periods: [
-      { id: 'early', from: '2027-07-01', to: '2027-07-17', pricePerWeek: 5000, minNights: 7 },
-      { id: 'mid', from: '2027-07-17', to: '2027-07-24', pricePerWeek: 5100, minNights: 7 },
-      { id: 'high', from: '2027-07-24', to: '2027-09-01', pricePerWeek: 5200, minNights: 7 },
+      // One flat rate across the whole season (owner, Nov 2026). Split this
+      // back into several dated rows if the weeks ever differ in price again;
+      // Rates.astro renders however many there are.
+      { id: 'season', from: '2027-07-01', to: '2027-09-01', pricePerWeek: 5000, minNights: 7 },
     ],
     pricePerNight: 750,
     /**
