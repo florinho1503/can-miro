@@ -420,6 +420,22 @@ const bi = {
   .booking .b-mfrom--closed { font-style: italic; opacity: 0.75; }
   .booking .b-mavail { font-size: 0.8rem; color: var(--c-olive); font-weight: 600; }
 
+  /*
+   * One month per screen. The day cells are square (aspect-ratio 1/1), which
+   * works on a phone but not on a laptop: the card is then ~1100px wide, so a
+   * square cell is ~150px and a six-row August runs far past the fold.
+   * From tablet width up the cell therefore keeps the full column width but
+   * takes its HEIGHT from the viewport, so the whole month fits on screen and
+   * the grid still fills the card. Checked at 1920x1080 down to 1024x768 on
+   * August 2027, the six-row worst case. Phones keep the square cells.
+   */
+  @media (min-width: 700px) {
+    .booking .booking__grid--month .b-day {
+      aspect-ratio: auto;
+      height: clamp(46px, 7vh, 82px);
+    }
+  }
+
   @media (max-width: 560px) {
     .booking .b-price { font-size: 0.6rem; }
     .booking .b-wday .b-num { font-size: 1.15rem; }
