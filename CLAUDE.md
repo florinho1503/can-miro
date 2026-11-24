@@ -118,6 +118,15 @@ npm run build    # -> dist/  (static)
   ~1400-1670px (the four bedrooms among them). Fine at the 1600px gallery target, slightly
   soft in the lightbox. Re-export from the photographer's originals if they ever turn up.
 
+## House video
+
+The owner's own YouTube clip ("Villa Can Miro, Javea", 2:19, channel Robert Bokx) sits
+behind a **Watch the video** button in the gallery heading. The id lives in `villa.video`;
+`Gallery.astro` builds the player URL. The iframe is **created on first click**, on
+`youtube-nocookie.com`, so nothing is fetched from YouTube and no cookie is set for
+visitors who never press play. Closing resets the src, otherwise the clip plays on behind
+the overlay. Labels: `gallery.video`, `gallery.videoTitle`, `gallery.videoClose`.
+
 ## Season, rates & terms
 
 Source of truth is the owner's own Micazu listing (read Nov 2026):

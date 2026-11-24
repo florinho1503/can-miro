@@ -2,7 +2,7 @@
 import { Image, getImage } from 'astro:assets';
 import Icon from './Icon.astro';
 import { useTranslations } from '../i18n';
-import type { Locale } from '../data/villa';
+import { villa, type Locale } from '../data/villa';
 
 interface Props {
   locale: Locale;
@@ -98,6 +98,10 @@ const items = await Promise.all(
         <h2 class="section-title">{t('gallery.title')}</h2>
         <p class="lead">{t('gallery.subtitle')}</p>
       </div>
+      <button type="button" class="btn btn--ghost gallery__video-btn" data-video-open>
+        <Icon name="play" size={18} />
+        {t('gallery.video')}
+      </button>
     </div>
   </div>
 
@@ -129,12 +133,105 @@ const items = await Promise.all(
       ))}
     </div>
   </div>
+
+  <!--
+    The player is NOT in the page until someone presses the button: the script
+    builds the iframe on first open. That keeps YouTube from loading (and
+    setting cookies) for every visitor, and keeps the page light.
+  -->
+  <div class="gallery__video" data-video-modal hidden>
+    <div class="gallery__video-backdrop" data-video-close></div>
+    <div class="gallery__video-box" role="dialog" aria-modal="true" aria-label={t('gallery.videoTitle')}>
+      <button type="button" class="gallery__video-x" data-video-close aria-label={t('gallery.videoClose')}>
+        <Icon name="close" size={22} />
+      </button>
+      <div class="gallery__video-frame" data-video-frame data-youtube-id={villa.video.youtubeId}></div>
+    </div>
+  </div>
 </section>
 
 <style>
   .gallery__head {
-    max-width: var(--container-narrow);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
     margin-bottom: 2.5rem;
+  }
+  /* The heading block stays narrow for readability, but the row itself runs
+     the full container width so the video button lines up with the right
+     edge of the photo grid. */
+  .gallery__head > div {
+    max-width: var(--container-narrow);
+  }
+  .gallery__video-btn {
+    flex: none;
+  }
+
+  /* Video overlay. Fixed, above everything, below nothing. */
+  .gallery__video[hidden] {
+    display: none;
+  }
+  .gallery__video {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 4vw, 3rem);
+  }
+  .gallery__video-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(28, 24, 20, 0.88);
+    backdrop-filter: blur(3px);
+  }
+  .gallery__video-box {
+    position: relative;
+    width: min(100%, 1100px);
+  }
+  .gallery__video-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-height: 80vh;
+    margin-inline: auto;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #000;
+    box-shadow: var(--shadow);
+  }
+  .gallery__video-frame :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .gallery__video-x {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s var(--ease);
+  }
+  .gallery__video-x:hover {
+    background: rgba(255, 255, 255, 0.28);
+  }
+  @media (max-width: 760px) {
+    .gallery__video-x {
+      top: -3.25rem;
+    }
   }
   .gallery__grid {
     display: grid;
@@ -238,6 +335,53 @@ const items = await Promise.all(
   });
 
   lightbox.init();
+
+  /*
+   * Video overlay. The iframe is created on the first open and then kept, so
+   * YouTube is contacted only when a visitor asks for it. Closing resets the
+   * src, otherwise the clip keeps playing behind the overlay.
+   */
+  const videoModal = document.querySelector<HTMLElement>('[data-video-modal]');
+  const videoFrame = document.querySelector<HTMLElement>('[data-video-frame]');
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-video-open]');
+
+  if (videoModal && videoFrame && openBtn) {
+    const id = videoFrame.getAttribute('data-youtube-id');
+
+    function openVideo() {
+      if (!videoFrame.querySelector('iframe')) {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+        iframe.allow =
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.title = openBtn.textContent?.trim() ?? 'Video';
+        videoFrame.appendChild(iframe);
+      } else {
+        const iframe = videoFrame.querySelector('iframe') as HTMLIFrameElement;
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      }
+      videoModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      videoModal.querySelector<HTMLButtonElement>('.gallery__video-x')?.focus();
+    }
+
+    function closeVideo() {
+      videoModal.hidden = true;
+      document.body.style.overflow = '';
+      const iframe = videoFrame.querySelector('iframe');
+      if (iframe) iframe.src = 'about:blank'; // stop playback
+      openBtn.focus();
+    }
+
+    openBtn.addEventListener('click', openVideo);
+    videoModal.querySelectorAll('[data-video-close]').forEach((el) =>
+      el.addEventListener('click', closeVideo)
+    );
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !videoModal.hidden) closeVideo();
+    });
+  }
 </script>
 
 <style is:global>

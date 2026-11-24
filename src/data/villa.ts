@@ -234,6 +234,14 @@ export const villa = {
   ratingAverage: 4.9,
   ratingCount: 37,
 
+  /**
+   * House tour on YouTube ("Villa Can Miro, Javea", owner's own channel).
+   * Only the id: `Gallery.astro` builds the player URL from it, and uses the
+   * youtube-nocookie domain so nothing is loaded or tracked until a visitor
+   * actually presses play.
+   */
+  video: { youtubeId: 'JLLqiMm1Ypc' },
+
   /** FAQ, `id` maps to `faq.items.<id>.q` and `.a`. */
   faq: ['season', 'apartment', 'checkin', 'deposit', 'cancellation', 'cleaning', 'pool', 'kids', 'pets', 'parking'],
 
