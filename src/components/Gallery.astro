@@ -60,6 +60,27 @@ const captionByToken: Record<string, string> = {
   villa: 'villa',
 };
 
+/*
+ * The grid used to carry a caption on every tile, which on a phone (where the
+ * captions are always visible) left text lying across every small photo. The
+ * walk-through runs in blocks of related shots, so only the FIRST photo of
+ * each block now shows a label, naming the whole block. The per-photo caption
+ * is kept as the alt text and is what the lightbox shows once a visitor opens
+ * a photo, so nothing is lost. Keys are the leading number of the filename;
+ * renumber these too if the MAP in scripts/process-photos.mjs is re-ordered.
+ */
+const groupLeadByNumber: Record<string, string> = {
+  '01': 'pool', // 01-09 pool and house
+  '10': 'outdoor', // 10-13 terraces, garden lounge
+  '14': 'indoor', // 14-17 living and dining
+  '18': 'kitchens', // 18-19
+  '20': 'bedrooms', // 20-23
+  '24': 'bathrooms', // 24-26
+  '27': 'arrival', // 27-29 facade, courtyard, gate
+  '30': 'gardens', // 30-33 view, gardens, from above
+  '34': 'evening', // 34-36 night and dusk
+};
+
 function captionKey(path: string): string {
   const base = path.split('/').pop() ?? '';
   for (const token of Object.keys(captionByToken)) {
@@ -76,12 +97,15 @@ const items = await Promise.all(
     const src = mod.default;
     const full = await getImage({ src, width: 1600, format: 'webp' });
     const caption = t(`gallery.captions.${captionKey(path)}`);
+    const group = groupLeadByNumber[(path.split('/').pop() ?? '').slice(0, 2)];
     return {
       src,
       fullSrc: full.src,
       fullW: 1600,
       fullH: Math.round((1600 * src.height) / src.width),
       caption,
+      // Block label, only on the first photo of each block.
+      label: group ? t(`gallery.groups.${group}`) : null,
       // Emphasis pattern for a varied editorial grid.
       big: i === 0 || i === 3 || i === 6,
       index: i,
@@ -125,10 +149,16 @@ const items = await Promise.all(
             loading="lazy"
             class="gallery__img"
           />
-          <span class="gallery__caption">
-            <span>{item.caption}</span>
-            <Icon name="expand" size={16} />
-          </span>
+          {item.label ? (
+            <span class="gallery__caption">
+              <span>{item.label}</span>
+              <Icon name="expand" size={16} />
+            </span>
+          ) : (
+            <span class="gallery__zoom" aria-hidden="true">
+              <Icon name="expand" size={15} />
+            </span>
+          )}
         </a>
       ))}
     </div>
@@ -293,6 +323,31 @@ const items = await Promise.all(
     transform: none;
   }
 
+  /* Tiles without a label still need to look openable, so they carry the
+     zoom glyph on its own instead of a full caption bar. */
+  .gallery__zoom {
+    position: absolute;
+    right: 0.7rem;
+    bottom: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    color: #fff;
+    background: rgba(36, 31, 25, 0.45);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .gallery__item:hover .gallery__zoom,
+  .gallery__item:focus-visible .gallery__zoom {
+    opacity: 1;
+    transform: none;
+  }
+
   @media (max-width: 760px) {
     .gallery__grid {
       grid-template-columns: repeat(2, 1fr);
@@ -300,6 +355,8 @@ const items = await Promise.all(
     }
     .gallery__item--big { grid-column: span 2; grid-row: span 1; aspect-ratio: 16 / 10; }
     .gallery__caption { opacity: 1; transform: none; padding-top: 2rem; }
+    /* No hover on a phone: show the glyph, but keep it quiet. */
+    .gallery__zoom { opacity: 0.75; transform: none; width: 1.6rem; height: 1.6rem; right: 0.5rem; bottom: 0.5rem; }
   }
 </style>
 

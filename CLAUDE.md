@@ -98,6 +98,13 @@ npm run build    # -> dist/  (static)
   coherent full set (interiors included). The older `ground/` + `drone/` phone shots stay on
   disk as a fallback but nothing selects them any more. Optimized copies in
   `src/assets/images/` are committed and are what the site uses.
+- **Only the first photo of each block carries a visible label** (owner, Nov 2026: a caption
+  on every tile left text lying across every small photo on a phone, where captions are
+  always shown). `groupLeadByNumber` in `Gallery.astro` maps a filename's leading number to
+  a `gallery.groups.<id>` label: 01 pool, 10 outdoor, 14 indoor, 18 kitchens, 20 bedrooms,
+  24 bathrooms, 27 arrival, 30 gardens, 34 evening. Renumber it alongside the MAP. The
+  per-photo caption is still the alt text and is what the lightbox shows, so nothing is
+  lost; tiles without a label get a small zoom glyph instead.
 - Pipeline: edit the `MAP` in `scripts/process-photos.mjs`, then
   `node scripts/process-photos.mjs` (rebuilds gallery + hero + intro + `public/og-image.jpg`;
   prints unused sources). Gallery caption comes from the filename token (`…-dining.jpg` ->

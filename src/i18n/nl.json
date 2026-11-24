@@ -48,6 +48,17 @@
     "video": "Bekijk de video",
     "videoTitle": "Een rondleiding door het huis",
     "videoClose": "Video sluiten",
+    "groups": {
+      "pool": "Het zwembad en het huis",
+      "outdoor": "Terrassen en tuin",
+      "indoor": "Wonen en eten",
+      "kitchens": "De twee keukens",
+      "bedrooms": "De vier slaapkamers",
+      "bathrooms": "De drie badkamers",
+      "arrival": "Aankomst bij Can Miró",
+      "gardens": "Tuin en uitzicht",
+      "evening": "De avond valt"
+    },
     "captions": {
       "poolVilla": "Het zwembad en het huis",
       "poolGarden": "Zwembad en tuin",

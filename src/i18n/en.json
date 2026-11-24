@@ -48,6 +48,17 @@
     "video": "Watch the video",
     "videoTitle": "A tour of the house",
     "videoClose": "Close video",
+    "groups": {
+      "pool": "The pool and the house",
+      "outdoor": "Terraces and garden",
+      "indoor": "Living and dining",
+      "kitchens": "The two kitchens",
+      "bedrooms": "The four bedrooms",
+      "bathrooms": "The three bathrooms",
+      "arrival": "Arriving at Can Miró",
+      "gardens": "Garden and views",
+      "evening": "As evening falls"
+    },
     "captions": {
       "poolVilla": "The pool and the house",
       "poolGarden": "Pool and garden",
