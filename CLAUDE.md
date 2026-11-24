@@ -180,12 +180,11 @@ On submit it does two things:
   decides where enquiries land**. Free plan **blocks server-side (curl) submits**, so test
   via a real browser. First-time Gmail may mark it spam; there is a "never spam" filter on
   subject `Can Miró enquiry`.
-- **MISMATCH, open:** the displayed contact address is **michaelabokx@gmail.com**
-  (`PUBLIC_CONTACT_EMAIL` in the workflow + the fallback in `src/config.ts`, changed Nov
-  2026), but the Web3Forms key still belongs to **florisbokx@gmail.com**, so submitted forms
-  keep arriving there. Only the `mailto:` fallback and the printed address follow the new
-  value. To move the enquiries themselves, create a Web3Forms key under
-  michaelabokx@gmail.com and swap `PUBLIC_WEB3FORMS_KEY`.
+- **Everything points at michaelabokx@gmail.com** (Nov 2026): the printed address and the
+  `mailto:` fallback via `PUBLIC_CONTACT_EMAIL`, and the enquiries themselves via a
+  Web3Forms key created under that mailbox (GH variable `PUBLIC_WEB3FORMS_KEY`, swapped 24
+  Nov 2026). The old key belonged to florisbokx@gmail.com. Changing the displayed address
+  alone does NOT move the enquiries; the key is the only thing that decides that.
 
 ## Admin portal & bookings (Supabase)
 
@@ -225,15 +224,13 @@ despite the offset. "Open in Google Maps" links to the neighbourhood, never the 
 **Done:** full photo set incl. interiors (Nov 2026 shoot); real rates, extras, house rules,
 room-by-room layout and full facilities list (from the Micazu listing); real registration
 number VT-510483-A; custom domain
-villacanmiro.com (HTTPS); Web3Forms enquiry email (-> florisbokx@gmail.com); Supabase
+villacanmiro.com (HTTPS); Web3Forms enquiry email (-> michaelabokx@gmail.com); Supabase
 `/admin` booking portal; enquiry -> calendar sync as tentative options; live availability on
 the public calendar.
 
 **A. To a real public launch**
-1. **New Web3Forms key under michaelabokx@gmail.com** and swap `PUBLIC_WEB3FORMS_KEY`, so
-   enquiries arrive at the address the site now displays (see Enquiry form).
-2. Real **reviews** (still placeholders, and they predate the distance fix).
-3. **Remove `noindex`** from `Base.astro` (keep it on `admin.astro`).
+1. Real **reviews** (still placeholders, and they predate the distance fix).
+2. **Remove `noindex`** from `Base.astro` (keep it on `admin.astro`).
 
 **B. Channels / bookings (later)**
 5. Airbnb/Booking **iCal** sync: export our confirmed bookings as an iCal feed for the
