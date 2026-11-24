@@ -51,7 +51,10 @@ const statIcon: Record<string, string> = {
     </ul>
 
     <div class="hero__actions">
-      <a href="#enquire" class="btn hero__cta">{t('hero.cta')}</a>
+      <!-- Label is "Check availability", so it must land on the calendar
+           (#booking), not the enquiry form. Request these dates in the
+           calendar then carries the guest on to #enquire. -->
+      <a href="#booking" class="btn hero__cta">{t('hero.cta')}</a>
       <a href="#gallery" class="btn btn--light">{t('hero.ctaSecondary')}</a>
     </div>
   </div>
