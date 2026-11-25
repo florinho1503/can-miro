@@ -119,8 +119,8 @@ npm run build    # -> dist/  (static)
   screen keeps only a narrow strip from the middle, and on `02.jpg` that strip misses the
   villa entirely: you get palms and a garden wall. So phones load `hero-phone.jpg`, a
   portrait cut of `10.jpg` (`mode: 'phone'` in the photo script: centre crop to 1200x2600
-  with the top 10% of sky trimmed, which puts the house in the upper third and leaves the
-  pool as a calm surface for the headline). `Hero.astro` serves them through a `<picture>`
+  with the top 18% trimmed, which puts the house in the upper third and leaves the pool as
+  a calm surface for the headline). `Hero.astro` serves them through a `<picture>`
   with `<source media="(max-width: 520px)">`, so a browser downloads only one. Wide screens
   keep the dusk shot: it is the best image on the site and its pale sky keeps the dark
   header readable. The breakpoint stops at phones on purpose; a tablet would crop the
@@ -131,6 +131,17 @@ npm run build    # -> dist/  (static)
   `Header.astro` turns the logo, the menu button and the language pill light while the bar
   is still transparent, because that photo's top band holds dark arches and roof tiles.
   Keep the three 520px breakpoints in step if the phone photo is ever changed.
+- **Where the hero text lands is a measurement, not a guess** (owner on a Pixel, Nov 2026:
+  the kicker sat exactly on the edge of the pool). The text is anchored to the bottom of
+  the hero, so on a short viewport it rides up; `100svh` means the hero keeps the *small*
+  viewport height, about 740px on a Pixel with the address bar and a larger display-size
+  setting. The edge of the pool sits at 42% of the frame after the 18% trim, and the block
+  must start below it. Levers, in the order they were used: trim more off the top of the
+  photo (18% is the limit, beyond that the arches go and the villa reads as a blank wall),
+  tighten the margins inside the block, and keep the two buttons on one row under 400px
+  (wrapping adds ~50px). Check with the text block's `top` against `0.42 * innerHeight` at
+  360x740, which is the tightest case, in all four languages. The bottom padding is NOT a
+  lever: the WhatsApp button sits in that corner.
 - Every gallery tile is a fixed `4/3` crop with `object-fit: cover` (the big ones span two
   rows), so source aspect ratio barely matters: `35.jpg` is the one portrait shot and crops
   cleanly. The intro renders at `4/3` too, so it is a centre crop of a 16:9 source.

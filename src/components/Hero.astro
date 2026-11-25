@@ -235,17 +235,17 @@ const heroPhone = await getImage({
     .hero__kicker {
       font-size: 0.72rem;
       letter-spacing: 0.13em;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.5rem;
     }
     .hero__title {
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.5rem;
     }
     .hero__subtitle {
-      margin-bottom: 1.3rem;
+      margin-bottom: 1rem;
     }
     .hero__stats {
       gap: 0.45rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.9rem;
     }
     .chip {
       gap: 0.35rem;
@@ -266,6 +266,28 @@ const heroPhone = await getImage({
     .hero__cta {
       padding: 0.7rem 1.25rem;
       font-size: 0.95rem;
+    }
+  }
+
+  /*
+   * The narrowest phones (360px and down). Here the two buttons would wrap to
+   * two rows, which adds about 50px and pushes the whole block back up onto
+   * the pool edge, so they are shrunk just enough to stay side by side. The
+   * longest label of the four languages is the Dutch "Bekijk beschikbaarheid".
+   */
+  @media (max-width: 400px) {
+    .hero__actions {
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+    }
+    .hero__actions :global(.btn) {
+      padding: 0.65rem 0.8rem;
+      font-size: 0.84rem;
+      min-width: 0;
+    }
+    .hero__cta {
+      padding: 0.65rem 0.85rem;
+      font-size: 0.84rem;
     }
   }
 </style>

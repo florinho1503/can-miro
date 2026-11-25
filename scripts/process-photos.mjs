@@ -103,10 +103,15 @@ async function processItem(item) {
   } else if (item.mode === 'portrait') {
     img = img.resize(1200, 1500, { fit: 'cover', position: 'attention' });
   } else if (item.mode === 'phone') {
-    // Portrait 1200x2600 (roughly 9:19.5), cut from the middle of the frame
-    // with the top 10% of sky removed so the waterline sits high enough.
+    // Portrait 1200x2600 (roughly 9:19.5), cut from the middle of the frame.
+    // The top 18% goes: that is sky and roof, and removing it lifts the edge
+    // of the pool from 47% to 42% of the frame. The hero text is anchored to
+    // the bottom of the screen, so on a short phone viewport (a Pixel with the
+    // address bar showing is about 740px tall) it used to land exactly on that
+    // edge. The villa's arches survive the cut; do not trim much further or
+    // the house turns into an anonymous white wall.
     const meta = await sharp(item.src).metadata();
-    const top = Math.round(meta.height * 0.1);
+    const top = Math.round(meta.height * 0.18);
     const h = meta.height - top;
     const w = Math.round(h * (1200 / 2600));
     const left = Math.round((meta.width - w) / 2);

@@ -42,6 +42,23 @@ const t = useTranslations(locale);
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 14px 30px -6px rgba(37, 211, 102, 0.7);
   }
+  /*
+   * On a phone this sits in the same corner as the hero's second button, and
+   * at 58px it covered its bottom-right corner. 48px tucked a little lower
+   * clears it and is still a comfortable tap target.
+   */
+  @media (max-width: 520px) {
+    .fab {
+      width: 48px;
+      height: 48px;
+      right: 0.75rem;
+      bottom: 0.75rem;
+    }
+    .fab :global(svg) {
+      width: 26px;
+      height: 26px;
+    }
+  }
   .fab::after {
     content: '';
     position: absolute;
