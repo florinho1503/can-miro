@@ -247,6 +247,14 @@ Nov 2026: guests found mailing their review awkward). What it does and does not 
   on `villa.reviews`; it is not any more.
 - **Link to mail to a guest: `https://villacanmiro.com/nl/#review`** (any language prefix).
   The form opens straight away on that hash, and closing it takes the hash back out.
+- **Ratings use `starFilled`, never `star`.** The icon set is stroke-based, so the plain
+  `star` is an outline and a five-star review read as "no stars given" (owner, Nov 2026).
+  A review card always draws **five** stars, the ones not given in `--border` grey.
+- Two CSS traps in this file, both already bitten once: the `[data-count]` grid rules are
+  **inside a `min-width` query**, because they outrank a plain `.reviews__grid` in a
+  `max-width` query and would keep two cards side by side on a phone; and the star label
+  rule needs `.rv__stars .rv__star`, because `.rv__field label` above it is more specific
+  than a bare `.rv__star` and paints an unchosen star heading-dark.
 
 ## Phone layout: the min-width: 0 trap
 
