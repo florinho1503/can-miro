@@ -346,8 +346,14 @@ the public calendar.
    `villa.reviews` by hand (see Review form).
    - A review's `date` is **"YYYY-MM"**, never a month name: `Reviews.astro` writes it out
      per language, so a Spanish reader gets "Julio de 2026".
-   - The Dutch text is the original; the other three dictionaries carry a translation of
-     the same quote, so every visitor can read it.
+   - Each quote has **one original language**, kept word for word, accents and all: Dutch
+     for `llansana` and `deRidder`, English for `deReus`. The other three dictionaries
+     carry a translation, so every visitor can read it.
+   - **Never edit a guest's own words**, not even to vary them. All three happened to end
+     on "we will definitely be back", and the owner found that repetitive (Nov 2026); the
+     fix was to vary only the **translations**, which are ours to word, and leave every
+     original untouched. Dutch therefore still has two similar endings, which is correct:
+     both guests really wrote that.
    - `ratingAverage` / `ratingCount` are still **null** on purpose. "5.0 from 2 stays"
      reads thin, and a figure in the structured data has to be one real guests gave. Fill
      them in once there are enough reviews to average honestly.
