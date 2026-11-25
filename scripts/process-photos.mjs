@@ -47,12 +47,13 @@ const W = (n) => join(wendyDir, n);
 // `dusk`.
 const MAP = [
   { src: W('02.jpg'), dest: 'hero.jpg', mode: 'wide' },
-  // Phones get their own hero. A 16:9 photo cropped to a tall phone screen
-  // keeps only a narrow strip from the middle, and on 02.jpg that strip misses
-  // the villa entirely. 10.jpg, cut to portrait with some sky trimmed off the
-  // top, puts the house in the upper third and leaves the pool as a calm
-  // surface for the headline to sit on. See the 'phone' mode below.
-  { src: W('10.jpg'), dest: 'hero-phone.jpg', mode: 'phone' },
+  // Phones get their own cut of the SAME dusk photo. A 16:9 frame squeezed
+  // into a tall phone screen keeps only a narrow strip, so this crop is made
+  // on purpose instead of leaving it to the browser: the two palms, the arched
+  // garden gate, the parasol and the loungers all stay in frame above the
+  // pool. The owner chose this over a daylight shot of the house (Nov 2026):
+  // the evening light is what sells it. See the 'phone' mode below.
+  { src: W('02.jpg'), dest: 'hero-phone.jpg', mode: 'phone' },
   { src: W('05.jpg'), dest: 'intro.jpg', mode: 'feature' },
 
   { src: W('10.jpg'), dest: 'gallery/01-pool-villa.jpg', mode: 'gallery' },
@@ -108,14 +109,8 @@ async function processItem(item) {
     img = img.resize(1200, 1500, { fit: 'cover', position: 'attention' });
   } else if (item.mode === 'phone') {
     // Portrait 1200x2600 (roughly 9:19.5), cut from the middle of the frame.
-    // The top 18% goes: that is sky and roof, and removing it lifts the edge
-    // of the pool from 47% to 42% of the frame. The hero text is anchored to
-    // the bottom of the screen, so on a short phone viewport (a Pixel with the
-    // address bar showing is about 740px tall) it used to land exactly on that
-    // edge. The villa's arches survive the cut; do not trim much further or
-    // the house turns into an anonymous white wall.
     const meta = await sharp(item.src).metadata();
-    const top = Math.round(meta.height * 0.18);
+    const top = 0; // full height: the pink sky is half the reason for this photo
     const h = meta.height - top;
     const w = Math.round(h * (1200 / 2600));
     const left = Math.round((meta.width - w) / 2);

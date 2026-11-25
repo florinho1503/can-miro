@@ -117,43 +117,26 @@ npm run build    # -> dist/  (static)
   outdoor living, indoor living, kitchens, the four bedrooms, the three bathrooms, arrival,
   gardens, evening), plus `02.jpg` again as `03-pool-dusk.jpg`. The owner asked for the
   dusk shot in the gallery too (Nov 2026), because phones never see it as the hero.
-- **Two heroes, split at 520px** (owner, Nov 2026). A 16:9 photo cropped to a tall phone
-  screen keeps only a narrow strip from the middle, and on `02.jpg` that strip misses the
-  villa entirely: you get palms and a garden wall. So phones load `hero-phone.jpg`, a
-  portrait cut of `10.jpg` (`mode: 'phone'` in the photo script: centre crop to 1200x2600
-  with the top 18% trimmed, which puts the house in the upper third and leaves the pool as
-  a calm surface for the headline). `Hero.astro` serves them through a `<picture>`
-  with `<source media="(max-width: 520px)">`, so a browser downloads only one. Wide screens
-  keep the dusk shot: it is the best image on the site and its pale sky keeps the dark
-  header readable. The breakpoint stops at phones on purpose; a tablet would crop the
-  portrait image hard, and a phone held sideways is wider than 520px.
-- **The phone hero also drives two style blocks**, both at the same 520px: the hero content
-  is compacted (smaller kicker, chips and buttons, tighter margins) so that, being
-  bottom-anchored, the whole block drops onto the water where white text reads best; and
-  `Header.astro` turns the logo, the menu button and the language pill light while the bar
-  is still transparent, because that photo's top band holds dark arches and roof tiles.
-  Keep the three 520px breakpoints in step if the phone photo is ever changed.
-- **Where the hero text lands is a measurement, not a guess** (owner on a Pixel, Nov 2026:
-  the kicker sat exactly on the edge of the pool). The text is anchored to the bottom of
-  the hero, so on a short viewport it rides up; `100svh` means the hero keeps the *small*
-  viewport height, about 740px on a Pixel with the address bar and a larger display-size
-  setting. The edge of the pool sits at 42% of the frame after the 18% trim, and the block
-  must start below it. Levers, in the order they were used: trim more off the top of the
-  photo (18% is the limit, beyond that the arches go and the villa reads as a blank wall),
-  tighten the margins inside the block, and keep the two buttons on one row under 400px
-  (wrapping adds ~50px). Check with the text block's `top` against `0.42 * innerHeight` at
-  360x740, which is the tightest case, in all four languages. The bottom padding is NOT a
-  lever: the WhatsApp button sits in that corner.
-- Every gallery tile is a fixed `4/3` crop with `object-fit: cover` (the big ones span two
-  rows), so source aspect ratio barely matters: `35.jpg` is the one portrait shot and crops
-  cleanly. The intro renders at `4/3` too, so it is a centre crop of a 16:9 source.
-- **Address privacy:** the shoot's `38.jpg` originally showed the house number on the gate
-  post. The owner retouched it out; the name "Can Miró" stays. Check any new arrival/gate
-  photo for the number before shipping it.
-- Resolution: most of the set is ~4000px wide, but `04, 13, 21, 29-33` came back at
-  ~1400-1670px (the four bedrooms among them). Fine at the 1600px gallery target, slightly
-  soft in the lightbox. Re-export from the photographer's originals if they ever turn up.
-
+- **Two cuts of the dusk photo, split at 520px.** A 16:9 frame squeezed into a tall phone
+  screen keeps only a narrow strip, and letting the browser take that strip from the middle
+  lost half the picture. So phones load `hero-phone.jpg`, a deliberate portrait cut of the
+  same `02.jpg` (`mode: 'phone'` in the photo script: centre crop to 1200x2600, full
+  height). It keeps the two palms, the arched garden gate, the parasol and the loungers in
+  frame above the pool, with the pink sky along the top. `Hero.astro` serves the two
+  through a `<picture>` with `<source media="(max-width: 520px)">`, so a browser downloads
+  only one. The breakpoint stops at phones on purpose: a tablet would crop the portrait
+  image hard, and a phone held sideways is wider than 520px.
+- **A daylight shot of the house was tried on phones and rejected** (Nov 2026). It showed
+  the villa more plainly and put the text on calm water, but the owner found the evening
+  light far more attractive, and on a short viewport the daylight crop came down to a wall
+  beside a pool. Do not "improve" the phone hero back to a house shot without asking.
+- **The phone hero drives two style blocks**, both at the same 520px: the hero content is
+  compacted (smaller kicker, chips and buttons, tighter margins), and `Header.astro` turns
+  the logo, the menu button and the language pill light while the bar is still transparent,
+  which reads on both the pale sky and the palms. Under 400px the two buttons are shrunk
+  further so they stay on one row; wrapping costs about 50px of height and pushes the whole
+  block up. `WhatsAppFab.astro` is 48px on phones so it clears the second button. Keep
+  these breakpoints in step if the phone photo is ever changed.
 - **The hero's second button jumps to `#gallery-grid`, not `#gallery`.** The section
   anchor stops at the heading and leaves the photos below the fold on a phone, so the
   visitor had to scroll again. The grid carries a `scroll-margin-top: 24px` to cancel the
