@@ -241,6 +241,13 @@ export const villa = {
   // Newest stay first.
   reviews: [
     {
+      quoteId: 'deReus',
+      name: 'YA de Reus',
+      origin: 'Eelderwolde',
+      rating: 5,
+      date: '2026-10',
+    },
+    {
       quoteId: 'llansana',
       name: 'Anna Llansana',
       origin: 'Amsterdam',
