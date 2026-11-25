@@ -90,7 +90,10 @@ const heroPhone = await getImage({
            (#booking), not the enquiry form. Request these dates in the
            calendar then carries the guest on to #enquire. -->
       <a href="#booking" class="btn hero__cta">{t('hero.cta')}</a>
-      <a href="#gallery" class="btn btn--light">{t('hero.ctaSecondary')}</a>
+      <!-- Lands on the photo grid itself, not on #gallery: that anchor stops at
+           the section heading and leaves the photos below the fold on a phone,
+           so the visitor had to scroll again to see any. -->
+      <a href="#gallery-grid" class="btn btn--light">{t('hero.ctaSecondary')}</a>
     </div>
   </div>
 

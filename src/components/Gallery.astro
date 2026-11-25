@@ -30,6 +30,7 @@ const captionByToken: Record<string, string> = {
   'pool-lounge': 'poolLounge',
   'pool-terrace': 'poolTerrace',
   'pool-night': 'poolNight',
+  'pool-dusk': 'poolDusk',
   'pergola-dining': 'pergolaDining',
   'living-dining': 'livingDining',
   'living-doors': 'livingDoors',
@@ -70,15 +71,15 @@ const captionByToken: Record<string, string> = {
  * renumber these too if the MAP in scripts/process-photos.mjs is re-ordered.
  */
 const groupLeadByNumber: Record<string, string> = {
-  '01': 'pool', // 01-09 pool and house
-  '10': 'outdoor', // 10-13 terraces, garden lounge
-  '14': 'indoor', // 14-17 living and dining
-  '18': 'kitchens', // 18-19
-  '20': 'bedrooms', // 20-23
-  '24': 'bathrooms', // 24-26
-  '27': 'arrival', // 27-29 facade, courtyard, gate
-  '30': 'gardens', // 30-33 view, gardens, from above
-  '34': 'evening', // 34-36 night and dusk
+  '01': 'pool', // 01-10 pool and house
+  '11': 'outdoor', // 11-14 terraces, garden lounge
+  '15': 'indoor', // 15-18 living and dining
+  '19': 'kitchens', // 19-20
+  '21': 'bedrooms', // 21-24
+  '25': 'bathrooms', // 25-27
+  '28': 'arrival', // 28-30 facade, courtyard, gate
+  '31': 'gardens', // 31-34 view, gardens, from above
+  '35': 'evening', // 35-37 night and dusk
 };
 
 function captionKey(path: string): string {
@@ -261,6 +262,14 @@ const items = await Promise.all(
     }
   }
   .gallery__grid {
+    /*
+     * The hero's second button jumps straight here. The grid carries .reveal,
+     * which starts it 24px lower and slides it up once it is in view, so
+     * without this margin the scroll lands 24px too high and the top row ends
+     * up tucked under the fixed header. The global scroll-padding-top already
+     * accounts for the header itself.
+     */
+    scroll-margin-top: 24px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.9rem;

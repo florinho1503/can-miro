@@ -253,5 +253,8 @@ export const villa = {
 } as const;
 
 export type Locale = 'en' | 'nl' | 'de' | 'es';
-export const locales: Locale[] = ['en', 'nl', 'de', 'es'];
+// Order here is the order of the language menu (owner, Nov 2026: Spanish
+// third, German last). It also drives the hreflang tags and the generated
+// routes, where the order does not matter.
+export const locales: Locale[] = ['en', 'nl', 'es', 'de'];
 export const defaultLocale: Locale = 'en';

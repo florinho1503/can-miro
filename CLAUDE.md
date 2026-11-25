@@ -101,8 +101,8 @@ npm run build    # -> dist/  (static)
 - **Only the first photo of each block carries a visible label** (owner, Nov 2026: a caption
   on every tile left text lying across every small photo on a phone, where captions are
   always shown). `groupLeadByNumber` in `Gallery.astro` maps a filename's leading number to
-  a `gallery.groups.<id>` label: 01 pool, 10 outdoor, 14 indoor, 18 kitchens, 20 bedrooms,
-  24 bathrooms, 27 arrival, 30 gardens, 34 evening. Renumber it alongside the MAP. The
+  a `gallery.groups.<id>` label: 01 pool, 11 outdoor, 15 indoor, 19 kitchens, 21 bedrooms,
+  25 bathrooms, 28 arrival, 31 gardens, 35 evening. Renumber it alongside the MAP. The
   per-photo caption is still the alt text and is what the lightbox shows, so nothing is
   lost; tiles without a label get a small zoom glyph instead.
 - Pipeline: edit the `MAP` in `scripts/process-photos.mjs`, then
@@ -113,8 +113,10 @@ npm run build    # -> dist/  (static)
   (`living-dining` before `living`). Grid features tiles 0, 3, 6, so keep three strong photos
   at those positions.
 - **Every photo in the shoot is used.** Hero = `02.jpg` (dusk), intro = `05.jpg` (laid
-  table), and the other 36 are the gallery, ordered as a walk-through: pool, outdoor living,
-  indoor living, kitchens, the four bedrooms, the three bathrooms, arrival, gardens, evening.
+  table), and the gallery holds **37**: the other 36, ordered as a walk-through (pool,
+  outdoor living, indoor living, kitchens, the four bedrooms, the three bathrooms, arrival,
+  gardens, evening), plus `02.jpg` again as `03-pool-dusk.jpg`. The owner asked for the
+  dusk shot in the gallery too (Nov 2026), because phones never see it as the hero.
 - **Two heroes, split at 520px** (owner, Nov 2026). A 16:9 photo cropped to a tall phone
   screen keeps only a narrow strip from the middle, and on `02.jpg` that strip misses the
   villa entirely: you get palms and a garden wall. So phones load `hero-phone.jpg`, a
@@ -151,6 +153,13 @@ npm run build    # -> dist/  (static)
 - Resolution: most of the set is ~4000px wide, but `04, 13, 21, 29-33` came back at
   ~1400-1670px (the four bedrooms among them). Fine at the 1600px gallery target, slightly
   soft in the lightbox. Re-export from the photographer's originals if they ever turn up.
+
+- **The hero's second button jumps to `#gallery-grid`, not `#gallery`.** The section
+  anchor stops at the heading and leaves the photos below the fold on a phone, so the
+  visitor had to scroll again. The grid carries a `scroll-margin-top: 24px` to cancel the
+  `.reveal` shift, otherwise the top row lands under the fixed header.
+- **Language menu order is the order of `locales` in `villa.ts`**: en, nl, es, de (owner,
+  Nov 2026). It also drives hreflang and the generated routes, where order does not matter.
 
 ## House video
 
