@@ -311,8 +311,9 @@ the public calendar.
    guests who actually stayed, with the rating figures they actually gave.
 2. **Google Search Console:** the domain is verified (25 Nov 2026) through the
    `google-site-verification` meta tag in `Base.astro`, which must stay in the head.
-   Submitting `sitemap.xml` and asking for indexing happen in Search Console itself, in
-   the owner's own account; nothing in the repo can do those.
+   `sitemap.xml` was submitted there on 25 Nov 2026. Anything else in that account is the
+   owner's own; nothing in the repo can reach it. Direct link to the sitemaps page:
+   `search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fvillacanmiro.com%2F`
 
 **B. Channels / bookings (later)**
 5. Airbnb/Booking **iCal** sync: export our confirmed bookings as an iCal feed for the
