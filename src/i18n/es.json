@@ -252,11 +252,7 @@
     "eyebrow": "Opiniones",
     "title": "Nuestros huéspedes la adoran",
     "ratingSummary": "{avg} de media en {count} estancias",
-    "items": {
-      "r1": "Las fotos no le hacen justicia. La piscina y las terrazas fueron el corazón de nuestra semana; casi no queríamos salir. Impecable, tranquila y cuidada con mimo.",
-      "r2": "Perfecta para nuestra familia de seis. Con dos cocinas todo fue facilísimo, los niños no se despegaban de la mesa de ping-pong y la playa quedaba a diez minutos en coche. Ya estamos reservando otra vez.",
-      "r3": "Una semana realmente relajante. Cómoda, tranquila, y cada rincón exterior recibe el sol a una hora distinta del día. Además, unos anfitriones estupendos."
-    }
+    "items": {}
   },
   "faq": {
     "eyebrow": "Conviene saber",

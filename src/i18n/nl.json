@@ -252,11 +252,7 @@
     "eyebrow": "Reviews",
     "title": "Geliefd bij onze gasten",
     "ratingSummary": "{avg} gemiddeld over {count} verblijven",
-    "items": {
-      "r1": "De foto's doen het geen recht. Het zwembad en de terrassen waren het hart van onze week. We wilden nauwelijks weg. Brandschoon, rustig en prachtig onderhouden.",
-      "r2": "Perfect voor ons gezin van zes. Met twee keukens ging alles moeiteloos, de kinderen waren niet weg te slaan bij de tafeltennistafel en het strand was tien minuten rijden. We hebben alweer geboekt.",
-      "r3": "Een heerlijk ontspannen week. Comfortabel, rustig, en op elke plek buiten schijnt op een ander moment van de dag de zon. En hele gastvrije eigenaren."
-    }
+    "items": {}
   },
   "faq": {
     "eyebrow": "Goed om te weten",

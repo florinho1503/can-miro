@@ -223,16 +223,21 @@ export const villa = {
   ],
 
   /**
-   * Guest reviews, PLACEHOLDER. `quoteId` maps to `reviews.items.<quoteId>`.
-   * name/date shown as-is.
+   * Guest reviews. EMPTY ON PURPOSE (Nov 2026). This used to hold three
+   * invented quotes and a made-up "4.9 over 37 stays", written as a design
+   * placeholder while the site was private. Once the site went public those
+   * read as real to real guests, so they were removed. `Reviews.astro` renders
+   * nothing while this list is empty, and `Header`/`Footer` drop the nav item.
+   *
+   * To put real ones back: add an entry per guest, with the quote text under
+   * `reviews.items.<quoteId>` in all four dictionaries, and set the two rating
+   * figures to what the guests actually gave. Never invent either: fake
+   * consumer reviews are illegal in the EU and a rating in structured data
+   * that nobody gave earns a manual penalty from Google.
    */
-  reviews: [
-    { quoteId: 'r1', name: 'Sophie & Mark', origin: 'London, UK', rating: 5, date: 'August 2025' },
-    { quoteId: 'r2', name: 'Familie de Vries', origin: 'Utrecht, NL', rating: 5, date: 'July 2025' },
-    { quoteId: 'r3', name: 'Anna & Thomas', origin: 'Munich, DE', rating: 5, date: 'June 2025' },
-  ],
-  ratingAverage: 4.9,
-  ratingCount: 37,
+  reviews: [] as { quoteId: string; name: string; origin: string; rating: number; date: string }[],
+  ratingAverage: null as number | null,
+  ratingCount: null as number | null,
 
   /**
    * House tour on YouTube ("Villa Can Miro, Javea", owner's own channel).

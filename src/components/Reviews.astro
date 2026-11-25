@@ -9,26 +9,35 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
-const summary = t('reviews.ratingSummary')
-  .replace('{avg}', String(villa.ratingAverage))
-  .replace('{count}', String(villa.ratingCount));
+// No reviews yet: the whole section stays out of the page rather than showing
+// an empty shell. See the note on `reviews` in villa.ts.
+const reviews = villa.reviews;
+const hasRating = villa.ratingAverage !== null && villa.ratingCount !== null;
+const summary = hasRating
+  ? t('reviews.ratingSummary')
+      .replace('{avg}', String(villa.ratingAverage))
+      .replace('{count}', String(villa.ratingCount))
+  : '';
 ---
+{reviews.length > 0 && (
 
 <section class="section reviews" id="reviews">
   <div class="container">
     <div class="reviews__head reveal">
       <p class="eyebrow">{t('reviews.eyebrow')}</p>
       <h2 class="section-title">{t('reviews.title')}</h2>
-      <p class="reviews__rating">
-        <span class="reviews__stars" aria-hidden="true">
-          {Array.from({ length: 5 }).map(() => <Icon name="star" size={22} />)}
-        </span>
-        <span class="reviews__summary">{summary}</span>
-      </p>
+      {hasRating && (
+        <p class="reviews__rating">
+          <span class="reviews__stars" aria-hidden="true">
+            {Array.from({ length: 5 }).map(() => <Icon name="star" size={22} />)}
+          </span>
+          <span class="reviews__summary">{summary}</span>
+        </p>
+      )}
     </div>
 
     <div class="reviews__grid">
-      {villa.reviews.map((review) => (
+      {reviews.map((review) => (
         <figure class="review reveal">
           <div class="review__stars" aria-label={`${review.rating} / 5`}>
             {Array.from({ length: review.rating }).map(() => <Icon name="star" size={16} />)}
@@ -43,6 +52,8 @@ const summary = t('reviews.ratingSummary')
     </div>
   </div>
 </section>
+
+)}
 
 <style>
   .reviews {

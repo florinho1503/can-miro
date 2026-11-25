@@ -17,7 +17,8 @@ const links = [
   { href: '#area', label: t('nav.area') },
   { href: '#rates', label: t('nav.rates') },
   { href: '#booking', label: t('nav.book') },
-  { href: '#reviews', label: t('nav.reviews') },
+  // Comes back by itself once villa.reviews has real entries.
+  ...(villa.reviews.length ? [{ href: '#reviews', label: t('nav.reviews') }] : []),
   { href: '#enquire', label: t('nav.enquire') },
 ];
 ---

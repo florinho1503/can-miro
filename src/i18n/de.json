@@ -252,11 +252,7 @@
     "eyebrow": "Bewertungen",
     "title": "Von unseren Gästen geliebt",
     "ratingSummary": "{avg} im Schnitt aus {count} Aufenthalten",
-    "items": {
-      "r1": "Die Fotos werden ihr nicht gerecht. Pool und Terrassen waren das Herz unserer Woche, wir wollten kaum weg. Blitzsauber, ruhig und wunderschön gepflegt.",
-      "r2": "Perfekt für unsere sechsköpfige Familie. Mit zwei Küchen war alles unkompliziert, die Kinder waren von der Tischtennisplatte nicht wegzubekommen, und der Strand war zehn Minuten entfernt. Wir buchen schon wieder.",
-      "r3": "Eine wirklich erholsame Woche. Komfortabel, ruhig, und jede Ecke im Freien fängt zu einer anderen Tageszeit die Sonne ein. Dazu wunderbare Gastgeber."
-    }
+    "items": {}
   },
   "faq": {
     "eyebrow": "Gut zu wissen",

@@ -303,7 +303,10 @@ villacanmiro.com (HTTPS); Web3Forms enquiry email (-> michaelabokx@gmail.com); S
 the public calendar.
 
 **A. To a real public launch**
-1. Real **reviews** (still placeholders, and they predate the distance fix).
+1. Real **reviews**. The invented ones were removed in Nov 2026, the day the site went
+   public, and `villa.reviews` is an empty list: the section and its nav item disappear by
+   themselves and come back by themselves once there are real entries. Only quotes from
+   guests who actually stayed, with the rating figures they actually gave.
 2. **The owner must still verify the site in Google Search Console** and submit
    `https://villacanmiro.com/sitemap.xml`. Nothing in the repo can do that step.
 

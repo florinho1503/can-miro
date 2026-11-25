@@ -252,11 +252,7 @@
     "eyebrow": "Reviews",
     "title": "Loved by our guests",
     "ratingSummary": "{avg} average from {count} stays",
-    "items": {
-      "r1": "The photos don't do it justice. The pool and terraces were the heart of our week, we barely wanted to leave. Spotless, calm and beautifully kept.",
-      "r2": "Perfect for our family of six. Two kitchens made everything easy, the kids lived at the table-tennis table, and the beach was a five-minute drive. We're already rebooking.",
-      "r3": "A truly relaxing week. Comfortable, quiet, and every outdoor corner catches the sun at a different time of day. Wonderful hosts, too."
-    }
+    "items": {}
   },
   "faq": {
     "eyebrow": "Good to know",
