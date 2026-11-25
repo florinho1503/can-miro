@@ -3,7 +3,8 @@ import '@fontsource-variable/fraunces';
 import '@fontsource-variable/manrope';
 import '../styles/global.css';
 import { useTranslations, localizePath } from '../i18n';
-import { locales, type Locale } from '../data/villa';
+import { locales, villa, type Locale } from '../data/villa';
+import { config } from '../config';
 
 interface Props {
   locale: Locale;
@@ -16,6 +17,60 @@ const withBase = (p: string) => `${base.replace(/\/+$/, '')}/${p}`.replace(/\/{2
 const faviconHref = withBase('favicon.svg');
 const canonical = new URL(localizePath('/', locale), Astro.site ?? fallbackSite);
 const ogImage = new URL(withBase('og-image.jpg'), Astro.site ?? fallbackSite);
+
+/*
+ * Structured data, so search engines understand what this page is rather than
+ * guessing from the prose. Deliberately left out: the street address (kept off
+ * the site entirely, see the Map section in CLAUDE.md) and any rating, because
+ * the reviews on the page are still placeholders and marking up invented
+ * ratings is exactly what earns a manual penalty. The coordinates are the same
+ * offset pair the map circle uses, so nothing new is exposed.
+ */
+// Plain English labels on purpose: schema.org amenity names are read by
+// machines that do not translate, and `petsAllowed` has its own property.
+const amenities = [
+  'Private pool',
+  'Heated pool',
+  'Wi-Fi',
+  'Air conditioning',
+  'Private parking',
+  'Garden',
+  'Barbecue',
+  'Washing machine',
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'VacationRental',
+  name: villa.name,
+  description: t('meta.description'),
+  url: canonical.href,
+  image: ogImage.href,
+  inLanguage: locale,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: villa.location.town,
+    addressRegion: 'Alicante',
+    addressCountry: 'ES',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: villa.location.lat,
+    longitude: villa.location.lng,
+  },
+  email: config.email,
+  telephone: `+${config.whatsappNumber}`,
+  numberOfBedrooms: 4,
+  numberOfBathroomsTotal: 3,
+  occupancy: { '@type': 'QuantitativeValue', maxValue: 8 },
+  petsAllowed: false,
+  checkinTime: villa.houseRules.checkIn.from,
+  checkoutTime: villa.houseRules.checkOut,
+  amenityFeature: amenities.map((name) => ({
+    '@type': 'LocationFeatureSpecification',
+    name,
+    value: true,
+  })),
+};
 ---
 
 <!doctype html>
@@ -26,9 +81,8 @@ const ogImage = new URL(withBase('og-image.jpg'), Astro.site ?? fallbackSite);
     <link rel="icon" type="image/svg+xml" href={faviconHref} />
     <title>{t('meta.title')}</title>
     <meta name="description" content={t('meta.description')} />
-    <!-- PREVIEW ONLY: keep this out of search engines while showing family.
-         Remove this line before the real public launch. -->
-    <meta name="robots" content="noindex, nofollow" />
+    <!-- Public since Nov 2026. /admin keeps its own noindex. -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <link rel="canonical" href={canonical.href} />
     {
@@ -56,6 +110,8 @@ const ogImage = new URL(withBase('og-image.jpg'), Astro.site ?? fallbackSite);
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="theme-color" content="#faf6f0" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>

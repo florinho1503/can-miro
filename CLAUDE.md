@@ -36,9 +36,9 @@ npm run build    # -> dist/  (static)
   `villacanmiro.com`; DNS is at TransIP (4 A records to GitHub Pages IPs + `www` CNAME).
   Root-absolute links still route through `localizePath()` / `withBase()` (base resolves to
   `/`), so they keep working if a base is ever reintroduced.
-- **`noindex`:** `Base.astro` and `admin.astro` carry `<meta name="robots" content="noindex,
-  nofollow">` (family preview). **Remove it from `Base.astro` at the real public launch**
-  (keep it on `admin.astro`).
+- **Indexing:** public since Nov 2026. `Base.astro` sends `index, follow,
+  max-image-preview:large`; `admin.astro` keeps `noindex, nofollow` and `public/robots.txt`
+  disallows `/admin`.
 - **Build env:** contact + keys come from GitHub Actions **repo variables** (repo Settings ->
   Secrets and variables -> Actions -> Variables): `PUBLIC_WEB3FORMS_KEY`,
   `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`. `PUBLIC_WHATSAPP_NUMBER` +
@@ -264,6 +264,27 @@ paid, status, notes) incl. a quick paid toggle.
 - **Schema + policies + the two functions** were created via SQL in the Supabase SQL Editor
   (see git history / session notes). Re-run that SQL if recreating the project.
 
+## Search engines
+
+Opened to indexing in Nov 2026, when the owner asked to be findable. What is in place:
+
+- `Base.astro`: `index, follow, max-image-preview:large`, a canonical URL, hreflang for all
+  four languages plus `x-default`, Open Graph and Twitter cards.
+- `public/robots.txt`: everything allowed except `/admin`, and it points at the sitemap.
+- `src/pages/sitemap.xml.ts`: a build-time endpoint, generated from `locales`, one entry per
+  language with the other three as `xhtml:link` alternates. **Add a page and you must add it
+  here**; there is no sitemap integration, on purpose, for four URLs.
+- **JSON-LD** (`VacationRental`) in `Base.astro`: name, description, locality, the offset
+  coordinates, contact, bedrooms, occupancy, check-in/out and amenities. It deliberately
+  carries **no street address** and **no rating**: the reviews are still placeholders, and
+  marking up invented ratings earns a manual penalty.
+- `meta.title` / `meta.description` in the four dictionaries carry the rental intent
+  ("to rent", "te huur", "zu mieten", "en alquiler") plus Jávea, Xàbia and Costa Blanca.
+  Keep titles near 55 characters and descriptions near 155, or they get cut off.
+
+What the repo cannot do: verify the domain in Google Search Console and submit the sitemap.
+That is the owner's step, and nothing is indexed quickly without it.
+
 ## Map & location privacy
 
 Area map (`Area.astro`) = **Leaflet + OpenStreetMap tiles** (no API key), a **radius circle
@@ -283,7 +304,8 @@ the public calendar.
 
 **A. To a real public launch**
 1. Real **reviews** (still placeholders, and they predate the distance fix).
-2. **Remove `noindex`** from `Base.astro` (keep it on `admin.astro`).
+2. **The owner must still verify the site in Google Search Console** and submit
+   `https://villacanmiro.com/sitemap.xml`. Nothing in the repo can do that step.
 
 **B. Channels / bookings (later)**
 5. Airbnb/Booking **iCal** sync: export our confirmed bookings as an iCal feed for the

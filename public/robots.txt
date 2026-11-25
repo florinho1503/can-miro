@@ -1,0 +1,8 @@
+# Can Miró, villacanmiro.com
+# Everything public is open to search engines. The booking portal is not.
+
+User-agent: *
+Allow: /
+Disallow: /admin
+
+Sitemap: https://villacanmiro.com/sitemap.xml
