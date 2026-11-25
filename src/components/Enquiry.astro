@@ -130,7 +130,13 @@ const t = useTranslations(locale);
   }
   .enquiry__wa:hover { transform: translateY(-2px); }
   .enquiry__email { margin: 0; color: rgba(255, 255, 255, 0.85); }
-  .enquiry__email a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+  /* The address is one long unbreakable word; let it break on a narrow phone. */
+  .enquiry__email a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
   .enquiry__loc {
     display: flex;
     align-items: center;
@@ -149,6 +155,18 @@ const t = useTranslations(locale);
     padding: clamp(1.5rem, 3vw, 2.25rem);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
+  }
+  /*
+   * min-width: 0 on every grid child. Without it a grid item keeps its
+   * min-content width, and an <input> carries a browser default of about
+   * 170px, so the two-column form refused to go below ~404px and pushed the
+   * whole page sideways on a phone. Same reason on the aside, where the long
+   * e-mail address is one unbreakable word.
+   */
+  .enquiry__aside,
+  .enquiry__form,
+  .field {
+    min-width: 0;
   }
   .field { display: flex; flex-direction: column; gap: 0.4rem; }
   .field--full { grid-column: 1 / -1; }
@@ -195,6 +213,10 @@ const t = useTranslations(locale);
 
   @media (max-width: 860px) {
     .enquiry__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    /* Two fields side by side leave no room for the labels on a phone. */
+    .enquiry__form { grid-template-columns: 1fr; }
   }
 </style>
 

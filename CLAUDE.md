@@ -219,6 +219,23 @@ On submit it does two things:
   Nov 2026). The old key belonged to florisbokx@gmail.com. Changing the displayed address
   alone does NOT move the enquiries; the key is the only thing that decides that.
 
+## Phone layout: the min-width: 0 trap
+
+A grid or flex child keeps its **min-content** width unless told otherwise, and that broke
+the page sideways on phones until Nov 2026. Two cases, both fixed, both worth remembering
+before adding another grid:
+
+- `Enquiry.astro`: an `<input>` carries a browser default of roughly 170px, so the
+  two-column form would not go below ~404px inside a 350px track. Fixed with `min-width: 0`
+  on `.enquiry__aside`, `.enquiry__form` and `.field`, one column under 560px, and
+  `overflow-wrap: anywhere` on the e-mail address, which is one unbreakable word.
+- `Booking.astro`: `.btn` sets `white-space: nowrap`, so the two summary buttons could not
+  shrink. Fixed by letting the row wrap under 560px and allowing the labels to break.
+
+To check: `document.documentElement.scrollWidth` must equal `clientWidth` at 360px and
+390px. Elements inside the hero and the Leaflet map legitimately exceed the viewport; they
+sit in `overflow: hidden` containers and do not move the page.
+
 ## Admin portal & bookings (Supabase)
 
 `/admin` (`src/pages/admin.astro`): standalone, `noindex`, not linked. Login via **Supabase

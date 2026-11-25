@@ -301,8 +301,26 @@ const bi = {
   @media (max-width: 560px) {
     .booking__toolbar { justify-content: center; }
     .booking__summary { justify-content: center; text-align: center; }
-    .booking__summary-actions { width: 100%; }
-    .booking__request { flex: 1; }
+    /*
+     * Both buttons on one row no longer fit on a narrow phone: .btn sets
+     * white-space: nowrap, so a flex child will not shrink below its label and
+     * the row pushed out past the card, taking the whole page sideways with
+     * it. Let the row wrap, let each button shrink to the width it is given,
+     * and allow the label to break over two lines as a last resort.
+     */
+    .booking__summary-actions {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .booking__summary-actions .btn {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 100%;
+      white-space: normal;
+      padding-left: 1.1rem;
+      padding-right: 1.1rem;
+    }
   }
 </style>
 
