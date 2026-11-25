@@ -222,6 +222,31 @@ On submit it does two things:
   Nov 2026). The old key belonged to florisbokx@gmail.com. Changing the displayed address
   alone does NOT move the enquiries; the key is the only thing that decides that.
 
+## Review form
+
+`Reviews.astro` carries a **Write a review** button and an overlay with the form (owner,
+Nov 2026: guests found mailing their review awkward). What it does and does not do:
+
+- It **only sends an e-mail**, through the same Web3Forms key as the enquiry form, with
+  subject `Can Miró review`. **Nothing a visitor types reaches the site by itself.** A real
+  review is added to `villa.reviews` plus `reviews.items.<quoteId>` in the four
+  dictionaries by hand afterwards. That is on purpose: it keeps out spam and invented
+  praise, and lets the owner check the sender really stayed.
+- Fields: name, e-mail (not published, so the owner can reply), place (optional), month +
+  year of the stay, a 1-5 star rating, the review itself, and a **required consent tick**
+  ("I stayed here and my review may be published with my name"). Both date dropdowns start
+  empty so `required` actually fires. Honeypot spam trap included.
+- The stars are five radios in **reverse DOM order** inside a `row-reverse` row, so plain
+  CSS lights the chosen star and everything to its left with `~`. They are visually hidden
+  and therefore carry **no `required`**: the browser cannot focus an invisible invalid
+  control and swallows its own warning, so the script checks the rating itself.
+- **The section is always on the page now**, also with no reviews: with an empty list it
+  shows a plain heading (`reviews.titleEmpty`), the invitation and the button, not the
+  "Loved by our guests" claim. The **nav item stays conditional** on `villa.reviews`, so a
+  prospective guest is not sent to an empty section.
+- **Link to mail to a guest: `https://villacanmiro.com/nl/#review`** (any language prefix).
+  The form opens straight away on that hash, and closing it takes the hash back out.
+
 ## Phone layout: the min-width: 0 trap
 
 A grid or flex child keeps its **min-content** width unless told otherwise, and that broke
@@ -306,9 +331,11 @@ the public calendar.
 
 **A. To a real public launch**
 1. Real **reviews**. The invented ones were removed in Nov 2026, the day the site went
-   public, and `villa.reviews` is an empty list: the section and its nav item disappear by
+   public, and `villa.reviews` is an empty list: the cards and the nav item disappear by
    themselves and come back by themselves once there are real entries. Only quotes from
-   guests who actually stayed, with the rating figures they actually gave.
+   guests who actually stayed, with the rating figures they actually gave. Guests can now
+   write one themselves through the form in the reviews section (see Review form), but
+   what they send still has to be copied into `villa.reviews` by hand.
 2. **Google Search Console:** the domain is verified (25 Nov 2026) through the
    `google-site-verification` meta tag in `Base.astro`, which must stay in the head.
    `sitemap.xml` was submitted there on 25 Nov 2026. Anything else in that account is the

@@ -226,10 +226,13 @@ export const villa = {
    * Guest reviews. EMPTY ON PURPOSE (Nov 2026). This used to hold three
    * invented quotes and a made-up "4.9 over 37 stays", written as a design
    * placeholder while the site was private. Once the site went public those
-   * read as real to real guests, so they were removed. `Reviews.astro` renders
-   * nothing while this list is empty, and `Header`/`Footer` drop the nav item.
+   * read as real to real guests, so they were removed. While this list is
+   * empty `Reviews.astro` shows only its invitation and the "write a review"
+   * button, and `Header`/`Footer` drop the nav item.
    *
-   * To put real ones back: add an entry per guest, with the quote text under
+   * Guests write theirs through the form in `Reviews.astro`. That form only
+   * sends an e-mail: nothing a visitor types appears on the site by itself.
+   * Add it here by hand, one entry per guest, with the quote text under
    * `reviews.items.<quoteId>` in all four dictionaries, and set the two rating
    * figures to what the guests actually gave. Never invent either: fake
    * consumer reviews are illegal in the EU and a rating in structured data
