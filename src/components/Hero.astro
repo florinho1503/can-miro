@@ -1,7 +1,8 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import Icon from './Icon.astro';
 import heroImage from '../assets/images/hero.jpg';
+import heroPhoneImage from '../assets/images/hero-phone.jpg';
 import { useTranslations } from '../i18n';
 import { villa, type Locale } from '../data/villa';
 
@@ -17,19 +18,53 @@ const statIcon: Record<string, string> = {
   bathrooms: 'bath',
   pool: 'pool',
 };
+
+/*
+ * Two heroes, picked by the browser so only one is ever downloaded.
+ *
+ * Wide screens get the dusk shot (02.jpg): the best image on the site, and its
+ * pale sky keeps the dark logo in the header readable. Phones get a portrait
+ * cut of the daylight pool shot (10.jpg), because a tall crop of the dusk
+ * photo loses the villa altogether. See `mode: 'phone'` in
+ * scripts/process-photos.mjs for how that cut is made.
+ *
+ * The 520px breakpoint matches the one on .hero__content below. It stops at
+ * phones on purpose: the portrait image would be cropped hard on a tablet, and
+ * a phone held sideways is wider than 520px, so it correctly gets the wide one.
+ */
+const heroWide = await getImage({
+  src: heroImage,
+  widths: [768, 1280, 1920, 2400],
+  format: 'webp',
+});
+const heroPhone = await getImage({
+  src: heroPhoneImage,
+  widths: [600, 900, 1200],
+  format: 'webp',
+});
 ---
 
 <section class="hero" id="top">
   <div class="hero__media">
-    <Image
-      src={heroImage}
-      alt=""
-      widths={[768, 1280, 1920, 2400]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-      class="hero__img"
-    />
+    <picture>
+      <source
+        media="(max-width: 520px)"
+        type="image/webp"
+        srcset={heroPhone.srcSet.attribute}
+        sizes="100vw"
+      />
+      <source type="image/webp" srcset={heroWide.srcSet.attribute} sizes="100vw" />
+      <img
+        src={heroWide.src}
+        alt=""
+        width={heroWide.attributes.width ?? 2400}
+        height={heroWide.attributes.height ?? 1350}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="hero__img"
+      />
+    </picture>
     <div class="hero__scrim"></div>
   </div>
 
@@ -79,6 +114,11 @@ const statIcon: Record<string, string> = {
     position: absolute;
     inset: 0;
     z-index: -1;
+  }
+  .hero__media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
   .hero__img {
     width: 100%;
@@ -178,5 +218,54 @@ const statIcon: Record<string, string> = {
   }
   @media (max-width: 600px) {
     .hero__scroll { display: none; }
+  }
+
+  /*
+   * Phone layout. The hero content is anchored to the bottom, so making the
+   * chips and buttons smaller does not just shrink them: it lets the whole
+   * block start lower, which is the point. On the phone hero the pool fills
+   * everything below roughly a third of the screen, and white text over calm
+   * water reads far better than over the stonework and the villa. The
+   * breakpoint matches the <source media> above, so the compact block and the
+   * portrait photo always arrive together.
+   */
+  @media (max-width: 520px) {
+    /* One line on a 360px screen, which keeps the headline below the
+       waterline instead of pushing it up onto the stonework. */
+    .hero__kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
+      margin-bottom: 0.7rem;
+    }
+    .hero__title {
+      margin-bottom: 0.7rem;
+    }
+    .hero__subtitle {
+      margin-bottom: 1.3rem;
+    }
+    .hero__stats {
+      gap: 0.45rem;
+      margin-bottom: 1.2rem;
+    }
+    .chip {
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.82rem;
+    }
+    .chip :global(svg) {
+      width: 16px;
+      height: 16px;
+    }
+    .hero__actions {
+      gap: 0.6rem;
+    }
+    .hero__actions :global(.btn) {
+      padding: 0.7rem 1.15rem;
+      font-size: 0.92rem;
+    }
+    .hero__cta {
+      padding: 0.7rem 1.25rem;
+      font-size: 0.95rem;
+    }
   }
 </style>

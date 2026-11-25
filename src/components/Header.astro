@@ -71,6 +71,32 @@ const links = [
     border-bottom-color: var(--border);
     box-shadow: var(--shadow-sm);
   }
+
+  /*
+   * Phones open on the daylight pool photo, whose top band holds dark arches
+   * and roof tiles, so the default dark logo and controls disappear into it.
+   * While the bar is still transparent over that photo they go light instead;
+   * as soon as it picks up its sand background on scroll, the normal dark
+   * colours return. Wide screens keep the dusk photo, whose pale sky suits the
+   * dark bar, so this stays a phone-only rule. The drawer is deliberately left
+   * alone: it has its own light background and dark text.
+   */
+  @media (max-width: 520px) {
+    .header:not([data-scrolled]) .brand,
+    .header:not([data-scrolled]) .header__toggle,
+    .header:not([data-scrolled]) :global(.lang__btn) {
+      color: #fff;
+      text-shadow: 0 1px 10px rgba(28, 23, 18, 0.55);
+    }
+    .header:not([data-scrolled]) .brand__name {
+      color: #ffd4b8;
+    }
+    .header:not([data-scrolled]) :global(.lang__btn) {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(28, 23, 18, 0.22);
+      backdrop-filter: blur(4px);
+    }
+  }
   .header__inner {
     height: 100%;
     display: flex;

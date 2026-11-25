@@ -115,6 +115,22 @@ npm run build    # -> dist/  (static)
 - **Every photo in the shoot is used.** Hero = `02.jpg` (dusk), intro = `05.jpg` (laid
   table), and the other 36 are the gallery, ordered as a walk-through: pool, outdoor living,
   indoor living, kitchens, the four bedrooms, the three bathrooms, arrival, gardens, evening.
+- **Two heroes, split at 520px** (owner, Nov 2026). A 16:9 photo cropped to a tall phone
+  screen keeps only a narrow strip from the middle, and on `02.jpg` that strip misses the
+  villa entirely: you get palms and a garden wall. So phones load `hero-phone.jpg`, a
+  portrait cut of `10.jpg` (`mode: 'phone'` in the photo script: centre crop to 1200x2600
+  with the top 10% of sky trimmed, which puts the house in the upper third and leaves the
+  pool as a calm surface for the headline). `Hero.astro` serves them through a `<picture>`
+  with `<source media="(max-width: 520px)">`, so a browser downloads only one. Wide screens
+  keep the dusk shot: it is the best image on the site and its pale sky keeps the dark
+  header readable. The breakpoint stops at phones on purpose; a tablet would crop the
+  portrait image hard, and a phone held sideways is wider than 520px.
+- **The phone hero also drives two style blocks**, both at the same 520px: the hero content
+  is compacted (smaller kicker, chips and buttons, tighter margins) so that, being
+  bottom-anchored, the whole block drops onto the water where white text reads best; and
+  `Header.astro` turns the logo, the menu button and the language pill light while the bar
+  is still transparent, because that photo's top band holds dark arches and roof tiles.
+  Keep the three 520px breakpoints in step if the phone photo is ever changed.
 - Every gallery tile is a fixed `4/3` crop with `object-fit: cover` (the big ones span two
   rows), so source aspect ratio barely matters: `35.jpg` is the one portrait shot and crops
   cleanly. The intro renders at `4/3` too, so it is a centre crop of a 16:9 source.

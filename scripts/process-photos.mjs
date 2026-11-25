@@ -47,6 +47,12 @@ const W = (n) => join(wendyDir, n);
 // `dusk`.
 const MAP = [
   { src: W('02.jpg'), dest: 'hero.jpg', mode: 'wide' },
+  // Phones get their own hero. A 16:9 photo cropped to a tall phone screen
+  // keeps only a narrow strip from the middle, and on 02.jpg that strip misses
+  // the villa entirely. 10.jpg, cut to portrait with some sky trimmed off the
+  // top, puts the house in the upper third and leaves the pool as a calm
+  // surface for the headline to sit on. See the 'phone' mode below.
+  { src: W('10.jpg'), dest: 'hero-phone.jpg', mode: 'phone' },
   { src: W('05.jpg'), dest: 'intro.jpg', mode: 'feature' },
 
   { src: W('10.jpg'), dest: 'gallery/01-pool-villa.jpg', mode: 'gallery' },
@@ -96,6 +102,15 @@ async function processItem(item) {
     img = img.resize({ width: 2400, withoutEnlargement: true });
   } else if (item.mode === 'portrait') {
     img = img.resize(1200, 1500, { fit: 'cover', position: 'attention' });
+  } else if (item.mode === 'phone') {
+    // Portrait 1200x2600 (roughly 9:19.5), cut from the middle of the frame
+    // with the top 10% of sky removed so the waterline sits high enough.
+    const meta = await sharp(item.src).metadata();
+    const top = Math.round(meta.height * 0.1);
+    const h = meta.height - top;
+    const w = Math.round(h * (1200 / 2600));
+    const left = Math.round((meta.width - w) / 2);
+    img = img.extract({ left, top, width: w, height: h }).resize(1200, 2600);
   } else if (item.mode === 'feature') {
     // Natural landscape, no hard crop, so it never looks stretched.
     img = img.resize({ width: 1600, withoutEnlargement: true });
