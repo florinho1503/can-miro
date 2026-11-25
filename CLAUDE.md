@@ -307,8 +307,10 @@ the public calendar.
    public, and `villa.reviews` is an empty list: the section and its nav item disappear by
    themselves and come back by themselves once there are real entries. Only quotes from
    guests who actually stayed, with the rating figures they actually gave.
-2. **The owner must still verify the site in Google Search Console** and submit
-   `https://villacanmiro.com/sitemap.xml`. Nothing in the repo can do that step.
+2. **Google Search Console:** the domain is verified (25 Nov 2026) through the
+   `google-site-verification` meta tag in `Base.astro`, which must stay in the head.
+   Submitting `sitemap.xml` and asking for indexing happen in Search Console itself, in
+   the owner's own account; nothing in the repo can do those.
 
 **B. Channels / bookings (later)**
 5. Airbnb/Booking **iCal** sync: export our confirmed bookings as an iCal feed for the
