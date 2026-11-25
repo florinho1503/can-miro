@@ -84,6 +84,13 @@ const structuredData = {
     <!-- Public since Nov 2026. /admin keeps its own noindex. -->
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
+    <!-- Proves the domain belongs to the owner's Google Search Console account.
+         It must stay: removing it drops the verification. -->
+    <meta
+      name="google-site-verification"
+      content="2AtGFP0kMSS3lE0Szz0iqd99qAUBluj-OKR7dZqv10M"
+    />
+
     <link rel="canonical" href={canonical.href} />
     {
       locales.map((l) => (
