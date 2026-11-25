@@ -282,8 +282,10 @@ Opened to indexing in Nov 2026, when the owner asked to be findable. What is in 
   ("to rent", "te huur", "zu mieten", "en alquiler") plus Jávea, Xàbia and Costa Blanca.
   Keep titles near 55 characters and descriptions near 155, or they get cut off.
 
-What the repo cannot do: verify the domain in Google Search Console and submit the sitemap.
-That is the owner's step, and nothing is indexed quickly without it.
+Registered with both engines on 25 Nov 2026: Google Search Console (verified by the
+`google-site-verification` meta tag in `Base.astro`, which must stay) and Bing Webmaster
+Tools (imported from Search Console, so no second tag). Bing also feeds DuckDuckGo and
+Ecosia. Everything else in those accounts is the owner's own; the repo cannot reach them.
 
 ## Map & location privacy
 
