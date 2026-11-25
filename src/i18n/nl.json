@@ -252,7 +252,10 @@
     "eyebrow": "Reviews",
     "title": "Geliefd bij onze gasten",
     "ratingSummary": "{avg} gemiddeld over {count} verblijven",
-    "items": {},
+    "items": {
+      "deRidder": "We vonden het fantástisch om met onze familie te verblijven in deze prachtige villa! We voelden ons meteen thuis in een heerlijk relaxte sfeer en hebben leuke activiteiten ondernomen en genoten van de Costa Blanca. Een échte aanrader! We komen zéker terug!",
+      "llansana": "Fantastische vakantie met ons gezin, zeer rustig gelegen, paradijs, alles wat je wenst aanwezig. Wij komen zeker terug."
+    },
     "titleEmpty": "Reviews van onze gasten",
     "invite": "Bent u te gast geweest in Can Miró? We lezen graag wat u ervan vond.",
     "write": "Schrijf een review",

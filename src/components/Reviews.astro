@@ -44,6 +44,18 @@ const thisYear = new Date().getFullYear();
 const years = Array.from({ length: 6 }, (_, i) => thisYear - i);
 
 const starLabel = (n: number) => t('reviews.form.starLabel').replace('{n}', String(n));
+
+/*
+ * A review's `date` is stored as "2025-07" and written out in the visitor's
+ * own language here, so a Spanish reader does not get "July 2025". Never put
+ * a month name in villa.ts.
+ */
+const stayFmt = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' });
+const formatStay = (ym: string) => {
+  const [y, m] = ym.split('-').map(Number);
+  const out = stayFmt.format(new Date(Date.UTC(y, (m || 1) - 1, 1)));
+  return out.charAt(0).toUpperCase() + out.slice(1);
+};
 ---
 
 <section class="section reviews" id="reviews">
@@ -64,7 +76,7 @@ const starLabel = (n: number) => t('reviews.form.starLabel').replace('{n}', Stri
     </div>
 
     {reviews.length > 0 && (
-      <div class="reviews__grid">
+      <div class="reviews__grid" data-count={Math.min(reviews.length, 3)}>
         {reviews.map((review) => (
           <figure class="review reveal">
             <div class="review__stars" aria-label={`${review.rating} / 5`}>
@@ -73,7 +85,9 @@ const starLabel = (n: number) => t('reviews.form.starLabel').replace('{n}', Stri
             <blockquote class="review__quote">{t(`reviews.items.${review.quoteId}`)}</blockquote>
             <figcaption class="review__by">
               <span class="review__name">{review.name}</span>
-              <span class="review__meta">{review.origin} · {review.date}</span>
+              <span class="review__meta">
+                {[review.origin, formatStay(review.date)].filter(Boolean).join(' · ')}
+              </span>
             </figcaption>
           </figure>
         ))}
@@ -229,6 +243,18 @@ const starLabel = (n: number) => t('reviews.form.starLabel').replace('{n}', Stri
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+  }
+  /* One or two reviews should not be stretched across a three-column row,
+     nor left clinging to the left edge. */
+  .reviews__grid[data-count='1'] {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin-inline: auto;
+  }
+  .reviews__grid[data-count='2'] {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin-inline: auto;
   }
   .review {
     background: var(--c-white);

@@ -252,7 +252,10 @@
     "eyebrow": "Opiniones",
     "title": "Nuestros huéspedes la adoran",
     "ratingSummary": "{avg} de media en {count} estancias",
-    "items": {},
+    "items": {
+      "deRidder": "¡Nos pareció fantástico alojarnos con nuestra familia en esta preciosa villa! Nos sentimos como en casa desde el primer momento, en un ambiente maravillosamente relajado, hicimos cosas estupendas y disfrutamos de la Costa Blanca. ¡Muy recomendable! ¡Seguro que volveremos!",
+      "llansana": "Unas vacaciones fantásticas con nuestra familia. Muy tranquilo, un paraíso, con todo lo que se pueda desear. Seguro que volveremos."
+    },
     "titleEmpty": "Reseñas de nuestros huéspedes",
     "invite": "¿Se ha alojado en Can Miró? Nos encantaría leer qué le pareció.",
     "write": "Escribir una reseña",

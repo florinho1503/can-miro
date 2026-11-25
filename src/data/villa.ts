@@ -238,7 +238,25 @@ export const villa = {
    * consumer reviews are illegal in the EU and a rating in structured data
    * that nobody gave earns a manual penalty from Google.
    */
-  reviews: [] as { quoteId: string; name: string; origin: string; rating: number; date: string }[],
+  // Newest stay first.
+  reviews: [
+    {
+      quoteId: 'llansana',
+      name: 'Anna Llansana',
+      origin: 'Amsterdam',
+      rating: 5,
+      date: '2026-07',
+    },
+    {
+      quoteId: 'deRidder',
+      name: 'Familie De Ridder',
+      origin: 'Haren (Gr)',
+      rating: 5,
+      // Year and month only. `Reviews.astro` writes it out in the visitor's
+      // own language, so never put a month name here.
+      date: '2025-07',
+    },
+  ] as { quoteId: string; name: string; origin: string; rating: number; date: string }[],
   ratingAverage: null as number | null,
   ratingCount: null as number | null,
 

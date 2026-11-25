@@ -332,11 +332,17 @@ the public calendar.
 
 **A. To a real public launch**
 1. Real **reviews**. The invented ones were removed in Nov 2026, the day the site went
-   public, and `villa.reviews` is an empty list: the cards appear by themselves once there
-   are real entries. Only quotes from
-   guests who actually stayed, with the rating figures they actually gave. Guests can now
-   write one themselves through the form in the reviews section (see Review form), but
-   what they send still has to be copied into `villa.reviews` by hand.
+   public. **Two real ones are up** (25 Nov 2026), both sent through the form and both
+   approved by the owner. Only quotes from guests who actually stayed, with the rating
+   figures they actually gave. What the form sends still has to be copied into
+   `villa.reviews` by hand (see Review form).
+   - A review's `date` is **"YYYY-MM"**, never a month name: `Reviews.astro` writes it out
+     per language, so a Spanish reader gets "Julio de 2026".
+   - The Dutch text is the original; the other three dictionaries carry a translation of
+     the same quote, so every visitor can read it.
+   - `ratingAverage` / `ratingCount` are still **null** on purpose. "5.0 from 2 stays"
+     reads thin, and a figure in the structured data has to be one real guests gave. Fill
+     them in once there are enough reviews to average honestly.
 2. **Google Search Console:** the domain is verified (25 Nov 2026) through the
    `google-site-verification` meta tag in `Base.astro`, which must stay in the head.
    `sitemap.xml` was submitted there on 25 Nov 2026. Anything else in that account is the
