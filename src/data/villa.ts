@@ -228,7 +228,7 @@ export const villa = {
    * placeholder while the site was private. Once the site went public those
    * read as real to real guests, so they were removed. While this list is
    * empty `Reviews.astro` shows only its invitation and the "write a review"
-   * button, and `Header`/`Footer` drop the nav item.
+   * button; the section and its nav item stay on the page either way.
    *
    * Guests write theirs through the form in `Reviews.astro`. That form only
    * sends an e-mail: nothing a visitor types appears on the site by itself.

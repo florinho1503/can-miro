@@ -17,8 +17,8 @@ const links = [
   { href: '#area', label: t('nav.area') },
   { href: '#rates', label: t('nav.rates') },
   { href: '#booking', label: t('nav.book') },
-  // Comes back by itself once villa.reviews has real entries.
-  ...(villa.reviews.length ? [{ href: '#reviews', label: t('nav.reviews') }] : []),
+  // Always listed, also with no reviews yet: see the note in Header.astro.
+  { href: '#reviews', label: t('nav.reviews') },
   { href: '#enquire', label: t('nav.enquire') },
 ];
 ---

@@ -242,8 +242,9 @@ Nov 2026: guests found mailing their review awkward). What it does and does not 
   control and swallows its own warning, so the script checks the rating itself.
 - **The section is always on the page now**, also with no reviews: with an empty list it
   shows a plain heading (`reviews.titleEmpty`), the invitation and the button, not the
-  "Loved by our guests" claim. The **nav item stays conditional** on `villa.reviews`, so a
-  prospective guest is not sent to an empty section.
+  "Loved by our guests" claim. The **nav item in the header and footer is always there**
+  too (owner, Nov 2026, who wanted the menu to read as before). It was briefly conditional
+  on `villa.reviews`; it is not any more.
 - **Link to mail to a guest: `https://villacanmiro.com/nl/#review`** (any language prefix).
   The form opens straight away on that hash, and closing it takes the hash back out.
 
@@ -331,8 +332,8 @@ the public calendar.
 
 **A. To a real public launch**
 1. Real **reviews**. The invented ones were removed in Nov 2026, the day the site went
-   public, and `villa.reviews` is an empty list: the cards and the nav item disappear by
-   themselves and come back by themselves once there are real entries. Only quotes from
+   public, and `villa.reviews` is an empty list: the cards appear by themselves once there
+   are real entries. Only quotes from
    guests who actually stayed, with the rating figures they actually gave. Guests can now
    write one themselves through the form in the reviews section (see Review form), but
    what they send still has to be copied into `villa.reviews` by hand.

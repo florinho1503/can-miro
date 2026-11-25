@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 import LangSwitcher from './LangSwitcher.astro';
 import { useTranslations } from '../i18n';
-import { villa, type Locale } from '../data/villa';
+import { type Locale } from '../data/villa';
 
 interface Props {
   locale: Locale;
@@ -10,16 +10,16 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
-// The reviews link appears by itself once there are real reviews in villa.ts.
-// It is out while that list is empty, so the menu never points at a section
-// that is not on the page.
+// The reviews link is always in the menu (owner, Nov 2026), also while there
+// are no reviews yet: the section is on the page either way, and with an empty
+// list it invites former guests to write the first one.
 const links = [
   { href: '#gallery', label: t('nav.gallery') },
   { href: '#villa', label: t('nav.villa') },
   { href: '#area', label: t('nav.area') },
   { href: '#rates', label: t('nav.rates') },
   { href: '#booking', label: t('nav.book') },
-  ...(villa.reviews.length ? [{ href: '#reviews', label: t('nav.reviews') }] : []),
+  { href: '#reviews', label: t('nav.reviews') },
 ];
 ---
 
