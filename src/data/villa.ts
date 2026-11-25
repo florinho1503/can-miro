@@ -245,7 +245,9 @@ export const villa = {
       name: 'YA de Reus',
       origin: 'Eelderwolde',
       rating: 5,
-      date: '2026-10',
+      // The form said October; the owner corrected it to July, which is inside
+      // the letting season.
+      date: '2026-07',
     },
     {
       quoteId: 'llansana',
