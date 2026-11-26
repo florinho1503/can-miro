@@ -223,12 +223,13 @@ export const villa = {
   ],
 
   /**
-   * Guest reviews. EMPTY ON PURPOSE (Nov 2026). This used to hold three
-   * invented quotes and a made-up "4.9 over 37 stays", written as a design
-   * placeholder while the site was private. Once the site went public those
-   * read as real to real guests, so they were removed. While this list is
-   * empty `Reviews.astro` shows only its invitation and the "write a review"
-   * button; the section and its nav item stay on the page either way.
+   * Guest reviews. REAL ONES ONLY. This list used to hold three invented
+   * quotes and a made-up "4.9 over 37 stays", written as a design placeholder
+   * while the site was private; once the site went public those read as real
+   * to real guests, so they were removed and replaced one by one with the
+   * genuine ones below. While the list is empty `Reviews.astro` shows only its
+   * invitation and the "write a review" button; the section and its nav item
+   * stay on the page either way.
    *
    * Guests write theirs through the form in `Reviews.astro`. That form only
    * sends an e-mail: nothing a visitor types appears on the site by itself.
@@ -240,6 +241,15 @@ export const villa = {
    */
   // Newest stay first.
   reviews: [
+    {
+      quoteId: 'eestermans',
+      name: 'Marja Eestermans',
+      origin: 'Utrechtse Heuvelrug',
+      rating: 5,
+      // Sent by WhatsApp, not through the form, and typed into the form by the
+      // owner on her behalf. The rating is the one she gave in that message.
+      date: '2026-08',
+    },
     {
       quoteId: 'deReus',
       name: 'YA de Reus',

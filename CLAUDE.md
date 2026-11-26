@@ -340,21 +340,34 @@ the public calendar.
 
 **A. To a real public launch**
 1. Real **reviews**. The invented ones were removed in Nov 2026, the day the site went
-   public. **Two real ones are up** (25 Nov 2026), both sent through the form and both
-   approved by the owner. Only quotes from guests who actually stayed, with the rating
-   figures they actually gave. What the form sends still has to be copied into
-   `villa.reviews` by hand (see Review form).
+   public. **Four real ones are up** (25-26 Nov 2026), all approved by the owner. Only
+   quotes from guests who actually stayed, with the rating figures they actually gave.
+   What the form sends still has to be copied into `villa.reviews` by hand (see Review
+   form).
    - A review's `date` is **"YYYY-MM"**, never a month name: `Reviews.astro` writes it out
      per language, so a Spanish reader gets "Julio de 2026".
    - Each quote has **one original language**, kept word for word, accents and all: Dutch
-     for `llansana` and `deRidder`, English for `deReus`. The other three dictionaries
-     carry a translation, so every visitor can read it.
-   - **Never edit a guest's own words**, not even to vary them. All three happened to end
-     on "we will definitely be back", and the owner found that repetitive (Nov 2026); the
-     fix was to vary only the **translations**, which are ours to word, and leave every
-     original untouched. Dutch therefore still has two similar endings, which is correct:
-     both guests really wrote that.
-   - `ratingAverage` / `ratingCount` are still **null** on purpose. "5.0 from 2 stays"
+     for `llansana`, `deRidder` and `eestermans`, English for `deReus`. The other three
+     dictionaries carry a translation, so every visitor can read it.
+   - **Never edit a guest's own words** on your own initiative, not even to vary them. The
+     first three all ended on "we will definitely be back" and the owner found that
+     repetitive (Nov 2026); the fix was to vary only the **translations**, which are ours
+     to word, and leave every original untouched. Dutch therefore still has two similar
+     endings, which is correct: both guests really wrote that. The owner may ask for a
+     change to an original (she did for `eestermans`, see below): say once that those are
+     the guest's words and that asking the guest is the clean route, then do as she asks.
+   - **`eestermans` did not come through the form.** Marja Eestermans sent her review to
+     the owner by WhatsApp and the owner typed it into the enquiry form herself, so the
+     e-mail carries no star rating and no consent tick. The owner supplied the 5 stars
+     from the WhatsApp message. At her request two things in the Dutch original were
+     changed: "volleyballen" became "zwemmen", and the closing "We komen zeker terug!"
+     became "Voor herhaling vatbaar!", with the four translations following suit. Her
+     misspelling of "Javéa" was corrected to "Jávea" (the owner's own typing, and the
+     site spells it that way everywhere else).
+   - **Four reviews lay out two by two**, not three plus a lonely fourth: see the
+     `[data-count='4']` rule in `Reviews.astro`. Three, and five or more, fill the
+     three-column grid.
+   - `ratingAverage` / `ratingCount` are still **null** on purpose. "5.0 from 4 stays"
      reads thin, and a figure in the structured data has to be one real guests gave. Fill
      them in once there are enough reviews to average honestly.
 2. **Google Search Console:** the domain is verified (25 Nov 2026) through the

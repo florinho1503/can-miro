@@ -76,7 +76,7 @@ const formatStay = (ym: string) => {
     </div>
 
     {reviews.length > 0 && (
-      <div class="reviews__grid" data-count={Math.min(reviews.length, 3)}>
+      <div class="reviews__grid" data-count={reviews.length}>
         {reviews.map((review) => (
           <figure class="review reveal">
             <!--
@@ -266,12 +266,15 @@ const formatStay = (ym: string) => {
       max-width: none;
     }
     /* One or two reviews should not be stretched across a three-column row,
-       nor left clinging to the left edge. */
+       nor left clinging to the left edge. Four go two by two, because three
+       columns would leave the fourth card alone on its own row. Any other
+       number, three or five and up, fills the three-column grid. */
     .reviews__grid[data-count='1'] {
       grid-template-columns: 1fr;
       max-width: 620px;
     }
-    .reviews__grid[data-count='2'] {
+    .reviews__grid[data-count='2'],
+    .reviews__grid[data-count='4'] {
       grid-template-columns: repeat(2, 1fr);
       max-width: 900px;
     }
